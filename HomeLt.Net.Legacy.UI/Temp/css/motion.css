@@ -1,0 +1,12 @@
+﻿.feature-info-content p:hover{
+    cursor:default
+}
+
+
+
+.active-service {
+    background: #26ae612e;
+    border-radius: 25px;
+    padding: 5px;
+    box-shadow: 0 0 20px 0px darkseagreen;
+}

@@ -1,0 +1,272 @@
+﻿@using HomeLt.Net.Legacy.UI.Helpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Real Villa - Real Estate HTML5 Template" />
+    <meta name="author" content="potenzaglobalsolutions.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Real Villa - Real Estate HTML5 Template</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:300,500,600,700%7CRoboto:300,400,500,700">
+
+    <!-- CSS Global Compulsory (Do not remove)-->
+    <link rel="stylesheet" href="/Temp/css/font-awesome/all.min.css" />
+    <link rel="stylesheet" href="/Temp/css/flaticon/flaticon.css" />
+    <link rel="stylesheet" href="/Temp/css/bootstrap/bootstrap.min.css" />
+
+    <!-- Page CSS Implementing Plugins (Remove the plugin CSS here if site does not use that feature)-->
+    <link rel="stylesheet" href="/Temp/css/select2/select2.css" />
+    <link rel="stylesheet" href="/Temp/css/range-slider/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="/Temp/css/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/Temp/css/magnific-popup/magnific-popup.css" />
+    <link rel="stylesheet" href="/Temp/css/datetimepicker/datetimepicker.min.css" />
+    <link rel="stylesheet" href="/Temp/css/slick/slick-theme.css" />
+
+    <link href="~/Temp/css/motion.css" rel="stylesheet" />
+    <link href="~/Temp/card/dist/card.css" rel="stylesheet" />
+
+
+
+    <!-- Template Style -->
+    <link rel="stylesheet" href="/Temp/css/style.css" />
+
+
+</head>
+
+<body>
+
+    <!--=================================
+    header -->
+    <header class="header">
+        <div class="topbar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-block d-md-flex align-items-center text-center">
+                            <div class=" d-inline-block mr-auto">
+                                <a href="tel:1-800-555-1234"><i class="fa fa-phone mr-2 fa fa-flip-horizontal"></i>1-800-555-1234 </a>
+                            </div>
+                            @*<div class="mr-auto d-inline-block">
+                                    <span class="mr-2 text-white">Get App:</span>
+                                    <a class="pr-1" href="#"><i class="fab fa-android"></i></a>
+                                    <a href="#"><i class="fab fa-apple"></i></a>
+                                </div>*@
+                            <div class=" dropdown d-inline-block pl-2 pl-md-0 ">
+                                <a class="dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Choose location<i class="fas fa-chevron-down pl-2"></i>
+                                </a>
+                                <div class="dropdown-menu mt-0" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Global</a>
+                                    <a class="dropdown-item" href="#">Arizona</a>
+                                    <a class="dropdown-item" href="#">British columbia</a>
+                                    <a class="dropdown-item" href="#">Commercial</a>
+                                </div>
+                            </div>
+                            @*<div class="social d-inline-block">
+                                    <ul class="list-unstyled">
+                                        <li><a href="#"> <i class="fab fa-facebook-f"></i> </a></li>
+                                        <li><a href="#"> <i class="fab fa-twitter"></i> </a></li>
+                                        <li><a href="#"> <i class="fab fa-linkedin"></i> </a></li>
+                                        <li><a href="#"> <i class="fab fa-pinterest"></i> </a></li>
+                                        <li><a href="#"> <i class="fab fa-instagram"></i> </a></li>
+                                    </ul>
+                                </div>*@
+                            <div class="login d-inline-block">
+                                @*<a data-toggle="modal" data-target="#loginModal" href="/Profile/Index/">Hello sign in<i class="fa fa-user pl-2"></i></a>*@
+                                <a href="/User/Profile/">Hello sign in<i class="fa fa-user pl-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-light bg-white navbar-static-top navbar-expand-lg header-sticky">
+            <div class="container-fluid">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse"><i class="fas fa-align-left"></i></button>
+                <a class="navbar-brand" href="/">
+                    <img class="img-fluid" src="/Temp/images/logo.svg" alt="logo">
+                </a>
+                <div class="navbar-collapse collapse justify-content-center">
+                    <ul class="nav navbar-nav">
+
+                        @Html.MenuLink("Home", "Index", "Home", "", "nav-link")
+                        @*@Html.MenuLink("Properties", "Index", "Search", "", "nav-link")*@
+                        @Html.MenuLink("Approved Properties", "Approved", "Search", "", "nav-link")
+                        @Html.MenuLink("Non-Approved Properties", "NonApproved", "Search", "", "nav-link")
+                        @Html.MenuLink("Direct", "Direct", "Search", "", "nav-link")
+                        @Html.MenuLink("Lottery", "Lottery", "Search", "", "nav-link")
+                        @Html.MenuLink("Lottery Results", "Draws", "Lottery", "", "nav-link")
+
+
+
+                        @*@Html.MenuLink("Turkish Citizenship", "citizenship", "services", "", "nav-link")*@
+                        @*@Html.MenuLink("How To Join", "howtobuy", "services", "", "nav-link")*@
+
+                        @Html.MenuLink("Blog", "Index", "Blog", "", "nav-link")
+
+
+
+                        @*<li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Services <i class="fas fa-chevron-down fa-xs"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @Html.MenuLink("Properties For You", "propertiesforyou", "Services", "", "dropdown-item")
+
+                                    @Html.MenuLink("Property Management", "PropertyManagement", "Services", "", "dropdown-item")
+                                    @Html.MenuLink("After Join Service", "AfterSale", "Services", "", "dropdown-item")
+                                    @Html.MenuLink("Residence Permit Service", "ResidentPermit", "Services", "", "dropdown-item")
+
+
+
+
+
+                                </ul>
+                            </li>*@
+                        <li class="nav-item dropdown">
+                            @Html.MenuLink("About Us", "Index", "AboutUs", "", "nav-link")
+
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <!--=================================
+    @RenderBody()
+      <!--=================================
+      footer-->
+    <footer class="footer bg-dark space-pt">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-contact-info">
+                        <h5 class="text-primary mb-4">About real villa</h5>
+                        <p class="text-white mb-4">Real Villa helped thousands of clients to find the right property for their needs.</p>
+                        <ul class="list-unstyled mb-0">
+                            <li> <b> <i class="fas fa-map-marker-alt"></i></b><span>214 West Arnold St. New York, NY 10002</span> </li>
+                            <li> <b><i class="fas fa-microphone-alt"></i></b><span>(123) 345-6789</span> </li>
+                            <li> <b><i class="fas fa-headset"></i></b><span>support@realvilla.demo</span> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+                    <div class="footer-link">
+                        <h5 class="text-primary mb-4">Useful links</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li> <a href="#">Commercial </a> </li>
+                            <li> <a href="#">House </a> </li>
+                            <li> <a href="#">Office </a> </li>
+                            <li> <a href="#">Residential </a> </li>
+                            <li> <a href="#">Residential Tower </a> </li>
+                        </ul>
+                        <ul class="list-unstyled mb-0">
+                            <li> <a href="#">Beverly Hills </a> </li>
+                            <li> <a href="#">Los angeles </a> </li>
+                            <li> <a href="#">Mission Viejo </a> </li>
+                            <li> <a href="#">Newport  </a> </li>
+                            <li> <a href="#">Beach Pasadena </a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                    <div class="footer-recent-List">
+                        <h5 class="text-primary mb-4">Recently listed properties</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <div class="footer-recent-list-item">
+                                    <img class="img-fluid" src="/Temp/images/property/list/01.jpg" alt="">
+                                    <div class="footer-recent-list-item-info">
+                                        <h6 class="text-white"><a class="category font-md mb-2" href="/Property/Index/">Awesome family home</a></h6>
+                                        <a class="address mb-2 font-sm" href="/Search/Index/">Vermont dr. hephzibah</a>
+                                        <span class="price text-white">$350.000.00 </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="footer-recent-list-item">
+                                    <img class="img-fluid" src="/Temp/images/property/list/02.jpg" alt="">
+                                    <div class="footer-recent-list-item-info">
+                                        <h6 class="text-white"><a class="category font-md mb-2" href="/Property/Index/">Lawn court villa</a></h6>
+                                        <a class="address mb-2 font-sm" href="/Search/Index/">Newport st. mebane, nc</a>
+                                        <span class="price text-white">$350.000.00 </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                    <h5 class="text-primary mb-4">Subscribe us</h5>
+                    <div class="footer-subscribe">
+                        <p class="text-white">Sign up to our newsletter to get the latest news and offers.</p>
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Enter email">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">Get notified</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-4 text-center text-md-left">
+                        <a href="/"><img class="img-fluid footer-logo" src="/Temp/images/logo-light.svg" alt=""> </a>
+                    </div>
+                    <div class="col-md-4 text-center my-3 mt-md-0 mb-md-0">
+                        <a id="back-to-top" class="back-to-top" href="#"><i class="fas fa-angle-double-up"></i> </a>
+                    </div>
+                    <div class="col-md-4 text-center text-md-right">
+                        <p class="mb-0 text-white">
+                            &copy;Copyright <span id="copyright">
+                                <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+                            </span> <a href="#"> Motion Steel </a> All Rights Reserved
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--=================================
+    footer-->
+    <!--=================================
+    Javascript -->
+    <!-- JS Global Compulsory (Do not remove)-->
+    <script src="/Temp/js/jquery-3.4.1.min.js"></script>
+    <script src="/Temp/js/popper/popper.min.js"></script>
+    <script src="/Temp/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Page JS Implementing Plugins (Remove the plugin script here if site does not use that feature)-->
+    <script src="/Temp/js/jquery.appear.js"></script>
+    <script src="/Temp/js/counter/jquery.countTo.js"></script>
+    <script src="/Temp/js/select2/select2.full.js"></script>
+    <script src="/Temp/js/range-slider/ion.rangeSlider.min.js"></script>
+    <script src="/Temp/js/owl-carousel/owl.carousel.min.js"></script>
+    <script src="/Temp/js/jarallax/jarallax.min.js"></script>
+    <script src="/Temp/js/jarallax/jarallax-video.min.js"></script>
+    <script src="/Temp/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/Temp/js/countdown/jquery.downCount.js"></script>
+    <script src="/Temp/js/slick/slick.min.js"></script>
+    <script src="/Temp/js/datetimepicker/moment.min.js"></script>
+    <script src="/Temp/js/datetimepicker/datetimepicker.min.js"></script>
+
+    <!-- Template Scripts (Do not remove)-->
+    <script src="/Temp/js/custom.js"></script>
+    <script src="~/Temp/js/motion.custom.js"></script>
+    <script src="~/Temp/card/dist/jquery.card.js"></script>
+    <script src="~/Temp/card/dist/card.js"></script>
+ 
+
+
+</body>
+</html>
