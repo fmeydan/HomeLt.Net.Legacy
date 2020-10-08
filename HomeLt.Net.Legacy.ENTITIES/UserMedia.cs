@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,19 +8,15 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.ENTITIES
 {
-   public class Draw
+    public class UserMedia
     {
         [Key]
-        public int DrawId { get; set; }
-        public int HomeId { get; set; }
-        [DefaultValue(false)]
-        public bool isComplated { get; set; }
-        
+        public int UserMediaId { get; set; }
+        public int UserId { get; set; }
+        public string Path { get; set; }
 
         //navigation
-        [ForeignKey("HomeId")]
-        public virtual Home Home { get; set; }
-
-        
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
     }
 }

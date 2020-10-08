@@ -10,18 +10,18 @@ namespace HomeLt.Net.Legacy.ENTITIES
 {
    public class PropertyAdress
     {
+
         [Key]
         public int PropertyAdressId { get; set; }
-        public int HomeId { get; set; }
         public int DistrictId { get; set; }
-        public string Descrpiton { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
         public string ZipCode { get; set; }
 
         //navigation
         [ForeignKey("DistrictId")]
         public virtual District District { get; set; }
 
-        [ForeignKey("HomeId")]
-        public virtual Home Home { get; set; }
+        
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,11 @@ namespace HomeLt.Net.Legacy.ENTITIES
 {
     public class User
     {
+        public User()
+        {
+            this.Homes = new HashSet<Home>();
+            this.UserMedias = new HashSet<UserMedia>();
+        }
         [Key]
         public int UserId { get; set; }
         public string FirstName { get; set; }
@@ -19,11 +25,14 @@ namespace HomeLt.Net.Legacy.ENTITIES
         public string Email { get; set; }
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public DateTime BirthDay { get; set; }
-        public DateTime LastLogin { get; set; }
+        public DateTime? BirthDay { get; set; }
+        public DateTime? LastLogin { get; set; }
         [DefaultValue(false)]
         public bool isActive { get; set; }
         public Guid ActivationCode { get; set; }
+       
 
+        public ICollection<UserMedia> UserMedias { get; set; }
+        public ICollection <Home> Homes { get; set; }
     }
 }

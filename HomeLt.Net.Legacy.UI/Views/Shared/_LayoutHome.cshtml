@@ -77,10 +77,18 @@
                                         <li><a href="#"> <i class="fab fa-instagram"></i> </a></li>
                                     </ul>
                                 </div>*@
-                            <div class="login d-inline-block">
-                                @*<a data-toggle="modal" data-target="#loginModal" href="/Profile/Index/">Hello sign in<i class="fa fa-user pl-2"></i></a>*@
+                        <div class="login d-inline-block">
+                            @*<a data-toggle="modal" data-target="#loginModal" href="/Profile/Index/">Hello sign in<i class="fa fa-user pl-2"></i></a>*@
+                            @if (Session[HomeLt.Net.Legacy.UI.Constants.Sessions.SessionUser] == null)
+                            {
+                                <a data-toggle="modal" data-target="#loginModal" href="#">Hello sign in<i class="fa fa-user pl-2"></i></a>
+                            }
+                            else
+                            {
                                 <a href="/User/Profile/">Hello sign in<i class="fa fa-user pl-2"></i></a>
-                            </div>
+                            }
+
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -265,7 +273,7 @@
     <script src="~/Temp/js/motion.custom.js"></script>
     <script src="~/Temp/card/dist/jquery.card.js"></script>
     <script src="~/Temp/card/dist/card.js"></script>
- 
+
 
 
 </body>
