@@ -89,7 +89,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HomeLtPgContext.cs" />
+    <Compile Include="BaseContext.cs" />
+    <Compile Include="HomeltPostgre.cs" />
+    <Compile Include="HomeLtSql.cs" />
     <Compile Include="Migrations\202010022328356_v1.cs" />
     <Compile Include="Migrations\202010022328356_v1.designer.cs">
       <DependentUpon>202010022328356_v1.cs</DependentUpon>
