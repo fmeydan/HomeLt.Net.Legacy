@@ -46,6 +46,7 @@
     <Compile Include="District.cs" />
     <Compile Include="Draw.cs" />
     <Compile Include="Home.cs" />
+    <Compile Include="IEntitiy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyAdress.cs" />
     <Compile Include="PropertyMedia.cs" />

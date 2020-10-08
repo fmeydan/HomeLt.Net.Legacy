@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.ENTITIES
 {
-    public class User
+    public class User : IEntitiy
     {
         public User()
         {
             this.Homes = new HashSet<Home>();
             this.UserMedias = new HashSet<UserMedia>();
+            this.Tickets = new HashSet<Ticket>();
         }
         [Key]
         public int UserId { get; set; }
@@ -34,5 +35,6 @@ namespace HomeLt.Net.Legacy.ENTITIES
 
         public ICollection<UserMedia> UserMedias { get; set; }
         public ICollection <Home> Homes { get; set; }
+        public ICollection <Ticket> Tickets { get; set; }
     }
 }

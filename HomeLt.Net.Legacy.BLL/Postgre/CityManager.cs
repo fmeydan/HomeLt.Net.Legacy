@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.BLL.Postgre
 {
-    public class DrawManager: BaseManager<Draw>
+    public class CityManager : BaseManager<City>
     {
-        
+      
     }
 }

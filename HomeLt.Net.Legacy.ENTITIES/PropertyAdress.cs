@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.ENTITIES
 {
-   public class PropertyAdress
+   public class PropertyAdress : IEntitiy
     {
 
         [Key]

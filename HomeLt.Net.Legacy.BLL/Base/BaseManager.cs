@@ -1,4 +1,4 @@
-﻿using HomeLt.Net.Legacy.BLL.Base;
+﻿using HomeLt.Net.Legacy.BLL.Postgre;
 using HomeLt.Net.Legacy.DAL;
 using HomeLt.Net.Legacy.ENTITIES;
 using System;
@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeLt.Net.Legacy.BLL.Postgre
+namespace HomeLt.Net.Legacy.BLL.Base
 {
-    public class DrawManager: BaseManager<Draw>
+    public class BaseManager<E> : BaseRepository<E, HomeLtSql> where E : IEntitiy
     {
-        
     }
 }

@@ -92,9 +92,9 @@
     <Compile Include="BaseContext.cs" />
     <Compile Include="HomeltPostgre.cs" />
     <Compile Include="HomeLtSql.cs" />
-    <Compile Include="Migrations\202010022328356_v1.cs" />
-    <Compile Include="Migrations\202010022328356_v1.designer.cs">
-      <DependentUpon>202010022328356_v1.cs</DependentUpon>
+    <Compile Include="Migrations\202010082100351_test.cs" />
+    <Compile Include="Migrations\202010082100351_test.designer.cs">
+      <DependentUpon>202010082100351_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,8 +110,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010022328356_v1.resx">
-      <DependentUpon>202010022328356_v1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010082100351_test.resx">
+      <DependentUpon>202010082100351_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -92,6 +92,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseManager.cs" />
+    <Compile Include="Postgre\CityManager.cs" />
     <Compile Include="Postgre\DrawManager.cs" />
     <Compile Include="Postgre\HomeManager.cs" />
     <Compile Include="Base\BaseRepository.cs" />

@@ -540,6 +540,10 @@
       <Project>{d4a9eee9-19b0-435f-b5ff-aae4d99b4ba4}</Project>
       <Name>HomeLt.Net.Legacy.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HomeLt.Net.Legacy.DAL\HomeLt.Net.Legacy.DAL.csproj">
+      <Project>{1E7F62BA-E2A1-4A4B-9F67-41210F2718AA}</Project>
+      <Name>HomeLt.Net.Legacy.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HomeLt.Net.Legacy.ENTITIES\HomeLt.Net.Legacy.ENTITIES.csproj">
       <Project>{b0d9b2fe-b141-4f26-b6be-e0201834769b}</Project>
       <Name>HomeLt.Net.Legacy.ENTITIES</Name>

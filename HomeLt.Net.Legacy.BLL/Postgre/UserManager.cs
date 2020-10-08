@@ -1,4 +1,5 @@
-﻿using HomeLt.Net.Legacy.DAL;
+﻿using HomeLt.Net.Legacy.BLL.Base;
+using HomeLt.Net.Legacy.DAL;
 using HomeLt.Net.Legacy.ENTITIES;
 using System;
 using System.Collections.Generic;
@@ -8,37 +9,11 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.BLL.Postgre
 {
-    public class UserManager : BaseRepository<User, HomeltPostgre>, IDisposable
+    public class UserManager : BaseManager<User>, IDisposable
     {
-        private bool disposedValue;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects)
-                }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
-                // TODO: set large fields to null
-                disposedValue = true;
-            }
-        }
-
-        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
-        // ~UserManager()
-        // {
-        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-        //     Dispose(disposing: false);
-        // }
-
         public void Dispose()
         {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
+            throw new NotImplementedException();
         }
     }
 }

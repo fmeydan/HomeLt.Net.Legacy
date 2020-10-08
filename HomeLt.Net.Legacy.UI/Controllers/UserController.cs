@@ -14,13 +14,13 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         // GET: User
         public ActionResult Login(LoginViewModel model)
         {
-            using (UserManager manager= new UserManager())
+            using (UserManager manager = new UserManager())
             {
                 var result = manager.Get(f => f.Email == model.Email && f.Password == model.Password);
-                if (result!=null)
+                if (result != null)
                 {
                     Session.Add(Constants.Sessions.SessionUser, result);
-                    
+
                 }
                 return RedirectToAction("Index", "Home");
             }
@@ -28,18 +28,18 @@ namespace HomeLt.Net.Legacy.UI.Controllers
 
         public JsonResult Register(RegisterViewModel model)
         {
-            using (UserManager manager=new UserManager())
+            using (UserManager manager = new UserManager())
             {
-              var result=  manager.Add(new ENTITIES.User
+                var result = manager.Add(new ENTITIES.User
                 {
                     Email = model.Email,
                     Password = model.Password,
                     ActivationCode = new Guid()
-                }) ;
-               return result == true ? Json("Success") : Json("Fail");
+                });
+                return result == true ? Json("Success") : Json("Fail");
             }
-            
-            
+
+
         }
     }
 }

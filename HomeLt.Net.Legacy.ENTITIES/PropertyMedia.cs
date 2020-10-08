@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.ENTITIES
 {
-  public  class PropertyMedia
+  public  class PropertyMedia : IEntitiy
     {
         [Key]
         public int PropertyMediaId { get; set; }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.ENTITIES
 {
-    public class Ticket
+    public class Ticket : IEntitiy
     {
         [Key]
         public int TicketId { get; set; }

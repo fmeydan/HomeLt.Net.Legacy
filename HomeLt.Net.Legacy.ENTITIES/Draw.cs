@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.ENTITIES
 {
-   public class Draw
+   public class Draw : IEntitiy
     {
         [Key]
         public int DrawId { get; set; }

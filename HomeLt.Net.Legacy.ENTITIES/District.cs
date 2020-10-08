@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.ENTITIES
 {
-   public class District
+   public class District : IEntitiy
     {
        
         public string Name { get; set; }

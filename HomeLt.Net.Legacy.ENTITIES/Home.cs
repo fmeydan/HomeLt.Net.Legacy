@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.ENTITIES
 {
-    public class Home
+    public class Home : IEntitiy
     {
         public Home()
         {

@@ -1,5 +1,6 @@
 ﻿
 using HomeLt.Net.Legacy.DAL;
+using HomeLt.Net.Legacy.ENTITIES;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.BLL.Postgre
 {
-    public class BaseRepository<T, C> where T : class where C : BaseContext, new()
+    public class BaseRepository<T, C> where T : IEntitiy where C : BaseContext, new()
     {
         BaseContext context = new C();
         public bool Add(T entity)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.ENTITIES
 {
-    public class City
+    public class City:IEntitiy
     {
         public City()
         {

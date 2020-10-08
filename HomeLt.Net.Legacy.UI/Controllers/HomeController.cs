@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HomeLt.Net.Legacy.BLL.Postgre;
+using HomeLt.Net.Legacy.ENTITIES;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +13,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            new UserManager().GetList();
             return View();
         }
     }
