@@ -13,7 +13,7 @@ namespace HomeLt.Net.Legacy.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202010022328356_v1"; }
+            get { return "202010081344391_v1"; }
         }
         
         string IMigrationMetadata.Source

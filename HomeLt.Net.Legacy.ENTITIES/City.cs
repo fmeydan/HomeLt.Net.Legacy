@@ -9,9 +9,16 @@ namespace HomeLt.Net.Legacy.ENTITIES
 {
     public class City
     {
+        public City()
+        {
+            this.Districts = new HashSet<District>();
+        }
         [Key]
         public int CityId { get; set; }
         public string Name { get; set; }
+
+        //navigation
+        public ICollection<District> Districts { get; set; }
 
     }
 }

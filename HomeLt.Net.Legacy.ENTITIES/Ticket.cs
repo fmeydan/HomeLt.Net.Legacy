@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace HomeLt.Net.Legacy.ENTITIES
         public int TicketId { get; set; }
         public int DrawId { get; set; }
         public int UserId { get; set; }
+        public string TicketCode { get; set; }
+        [DefaultValue(false)]
+        public bool isWin { get; set; }
 
         //navigation
         [ForeignKey("DrawId")]
