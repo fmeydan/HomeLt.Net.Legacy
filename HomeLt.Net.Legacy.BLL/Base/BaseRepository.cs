@@ -10,10 +10,9 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.BLL.Postgre
 {
-    public class PostgreBaseRepository<T> where T:class,new()
+    public class BaseRepository<T, C> where T : class where C : BaseContext, new()
     {
-        HomeLtPgContext context = new HomeLtPgContext();
-
+        BaseContext context = new C();
         public bool Add(T entity)
         {
             using (context)
@@ -22,7 +21,7 @@ namespace HomeLt.Net.Legacy.BLL.Postgre
                 added.State = EntityState.Added;
                 return context.SaveChanges() > 0 ? true : false;
             }
-            
+
         }
 
         public bool Delete(T entity)
@@ -31,7 +30,7 @@ namespace HomeLt.Net.Legacy.BLL.Postgre
             {
                 var deleted = context.Entry(entity);
                 deleted.State = EntityState.Deleted;
-                return context.SaveChanges()>0?true:false;
+                return context.SaveChanges() > 0 ? true : false;
 
             }
         }
@@ -42,7 +41,7 @@ namespace HomeLt.Net.Legacy.BLL.Postgre
             {
                 var updated = context.Entry(entity);
                 updated.State = EntityState.Modified;
-                return context.SaveChanges()>0?true:false;
+                return context.SaveChanges() > 0 ? true : false;
             }
         }
 
@@ -54,7 +53,7 @@ namespace HomeLt.Net.Legacy.BLL.Postgre
             }
         }
 
-        public List<T> GetList(Expression<Func<T, bool>> filter=null)
+        public List<T> GetList(Expression<Func<T, bool>> filter = null)
         {
             using (context)
             {

@@ -94,7 +94,7 @@
   <ItemGroup>
     <Compile Include="Postgre\DrawManager.cs" />
     <Compile Include="Postgre\HomeManager.cs" />
-    <Compile Include="Postgre\PostgreBaseRepository.cs" />
+    <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Postgre\TicketManager.cs" />
     <Compile Include="Postgre\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
