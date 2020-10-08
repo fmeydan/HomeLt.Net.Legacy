@@ -20,5 +20,14 @@ namespace HomeLt.Net.Legacy.DAL
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<Draw> Draw { get; set; }
+        public virtual DbSet<City> City { get; set; }
+        public virtual DbSet<District> District { get; set; }
+        public virtual DbSet<PropertyAdress> PropertyAdress { get; set; }
+        public virtual DbSet<PropertyMedia> PropertyMedia { get; set; }
+        public virtual DbSet<UserMedia> UserMedia { get; set; }
+
+       
+
+
     }
 }

@@ -15,6 +15,7 @@ namespace HomeLt.Net.Legacy.ENTITIES
         {
             this.Homes = new HashSet<Home>();
             this.UserMedias = new HashSet<UserMedia>();
+            this.Tickets = new HashSet<Ticket>();
         }
         [Key]
         public int UserId { get; set; }
@@ -34,5 +35,6 @@ namespace HomeLt.Net.Legacy.ENTITIES
 
         public ICollection<UserMedia> UserMedias { get; set; }
         public ICollection <Home> Homes { get; set; }
+        public ICollection<Ticket> Tickets { get; set; }
     }
 }
