@@ -9,6 +9,7 @@ namespace HomeLt.Net.Legacy.DAL
     public class HomeLtSql : BaseContext
     {
         //TODO şuraya da sql connection string lazım
-        public HomeLtSql() : base("name=HomeLtPgContext") { }
+        public HomeLtSql() : base("name=HomeLtSqlContext") { 
+        }
     }
 }

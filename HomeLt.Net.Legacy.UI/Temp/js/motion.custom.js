@@ -27,11 +27,20 @@ var urParts = path.split("/");
 $("#ButtonSignUp").click(function () {
 
 
-    var email = document.getElementsByName("UserEmail");
-    var password = document.getElementsByName("Pssword");
+    var email = document.getElementById("signupmail").value;
+    var password = document.getElementById("signuppassword").value;
+    var passwordagain = document.getElementById("signuppasswordagain").value;
+   
+    console.log(email)
+    console.log(password)
+   
+
+    if (email != null && password != null & password == passwordagain) {
+
+    
     $.ajax({
         type: "POST",
-        data: [email, password],
+        data: { "Email": email, "Password": password },
         url: "/User/Register",
         success: function (data) {
             console.log("Success Returned")
@@ -45,6 +54,7 @@ $("#ButtonSignUp").click(function () {
         }
 
     })
+    }
 })
 
 
