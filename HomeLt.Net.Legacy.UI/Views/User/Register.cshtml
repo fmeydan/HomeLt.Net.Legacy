@@ -1,6 +1,85 @@
-﻿<!--=================================
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+
+
+
+
+
+
+
+
+<!--=================================
+
  Modal login -->
-<div class="modal login fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+
+
+<section>
+    <div class="container">
+    @Html.Partial("_PartialMessage")
+        <div class="">
+            <div class="col-12 col-md-8 offset-md-2">
+                <form action="/User/Register" method="post" class="form-container form-row" enctype="multipart/form-data">
+
+                    <h1 class="col-12">Register</h1>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label class="col-form-label">First Name</label>
+                            <input class="form-control" required type="text" name="FirstName" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Middle Name</label>
+                            <input class="form-control"  type="text" name="MiddleName" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Last Name</label>
+                            <input class="form-control" required type="text" name="LastName" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Birth Day</label>
+                            <input class="form-control" required type="date" name="BirthDay" value="" />
+                        </div>
+
+
+                    </div>
+                    <div class="col-12 col-md-6">
+
+                        <div class="form-group">
+                            <label class="col-form-label">E-Mail</label>
+                            <input class="form-control" required type="email" name="Email" value="" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label">Password</label>
+                            <input class="form-control" required type="password" name="Password" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Password Again</label>
+                            <input class="form-control" required type="password" name="PasswordAgain" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Profile Picture</label>
+                            <input class="form-control" type="file" name="ProfilePic" value="" />
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+
+                        <input class="btn btn-outline-success col-12" type="submit" value="Submit" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--<div class="modal login fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div id="msg"></div>
@@ -64,14 +143,14 @@
                                 <input type="Password" required class="form-control" placeholder="Confirm Password" name="PasswordAgain" id="signuppasswordagain">
                             </div>
                             <div class="col-sm-6 offset-sm-3 mt-3">
-                                <input  class="btn btn-primary btn-block" type="submit" id="ButtonSignUp" value="Sign Up">
-                            </div>
+                                <input class="btn btn-primary btn-block" type="submit" id="ButtonSignUp" value="Sign Up">
+                            </div>-->
                             @*<div class="col-sm-6">
                                     <ul class="list-unstyled d-flex mb-1 mt-sm-0 mt-3">
                                         <li class="mr-1"><a href="#"><b>Already Registered User? Click here to login</b></a></li>
                                     </ul>
                                 </div>*@
-                        </form>
+                        <!--</form>
                         <div class="login-social-media border pl-4 pr-4 pb-4 pt-0 rounded">
                             <div class="mb-4 d-block text-center"><b class="bg-white pl-2 pr-2 mt-3 d-block">Login or Sign in with</b></div>
                             <form class="row">
@@ -94,6 +173,6 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <!--=================================
   Modal login -->

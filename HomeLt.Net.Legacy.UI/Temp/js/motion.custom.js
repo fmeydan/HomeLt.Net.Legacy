@@ -35,7 +35,7 @@ $("#ButtonSignUp").click(function () {
     console.log(password)
    
 
-    if (email != null && password != null & password == passwordagain) {
+    if (email != null && password != null && password == passwordagain) {
 
     
     $.ajax({
@@ -44,11 +44,11 @@ $("#ButtonSignUp").click(function () {
         url: "/User/Register",
         success: function (data) {
             console.log("Success Returned")
-            //if (data == "Success") {
-            //    window.location.href = "/Index/Home"
-            //}
-            if (data) {
-                $("#msg").css("class", "alert alert-danger")
+            if (data == "Success") {
+                window.location.href = "/Index/Home"
+            }
+            else {
+                $("#msg").addClass("alert alert-danger")
                 $("#msg").html("Kayıt olurken bir hata oluştu lütfen tekrar deneyin");
             }
         }

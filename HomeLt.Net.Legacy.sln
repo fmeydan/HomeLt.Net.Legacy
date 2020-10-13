@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeLt.Net.Legacy.ENTITIES"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeLt.Net.Legacy.UI", "HomeLt.Net.Legacy.UI\HomeLt.Net.Legacy.UI.csproj", "{D9292881-68EB-4EB5-830B-9E8D18C31732}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSaver", "ImageSaver\ImageSaver.csproj", "{04FE119B-61C1-43E5-A955-44D0ECB81726}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D9292881-68EB-4EB5-830B-9E8D18C31732}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9292881-68EB-4EB5-830B-9E8D18C31732}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9292881-68EB-4EB5-830B-9E8D18C31732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04FE119B-61C1-43E5-A955-44D0ECB81726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04FE119B-61C1-43E5-A955-44D0ECB81726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04FE119B-61C1-43E5-A955-44D0ECB81726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04FE119B-61C1-43E5-A955-44D0ECB81726}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -408,6 +408,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Constants\ConstantPaths.cs" />
+    <Compile Include="Constants\MailBodies.cs" />
     <Compile Include="Constants\Sessions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -415,6 +417,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ActiveMenuHelper.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Models\User\LoginViewModel.cs" />
     <Compile Include="Models\User\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -522,6 +525,8 @@
     <Content Include="Temp\card\src\scss\logos\_visaelectron.scss" />
     <Content Include="Temp\card\src\scss\_mixins.scss" />
     <Content Include="Views\Shared\_PartialLoginRegister.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Shared\_PartialMessage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -533,16 +538,23 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Documents\" />
     <Folder Include="Content\Images\Homes\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HomeLt.Net.Legacy.BLL\HomeLt.Net.Legacy.BLL.csproj">
       <Project>{d4a9eee9-19b0-435f-b5ff-aae4d99b4ba4}</Project>
       <Name>HomeLt.Net.Legacy.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HomeLt.Net.Legacy.DAL\HomeLt.Net.Legacy.DAL.csproj">
+      <Project>{1E7F62BA-E2A1-4A4B-9F67-41210F2718AA}</Project>
+      <Name>HomeLt.Net.Legacy.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HomeLt.Net.Legacy.ENTITIES\HomeLt.Net.Legacy.ENTITIES.csproj">
       <Project>{b0d9b2fe-b141-4f26-b6be-e0201834769b}</Project>
       <Name>HomeLt.Net.Legacy.ENTITIES</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageSaver\ImageSaver.csproj">
+      <Project>{04FE119B-61C1-43E5-A955-44D0ECB81726}</Project>
+      <Name>ImageSaver</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

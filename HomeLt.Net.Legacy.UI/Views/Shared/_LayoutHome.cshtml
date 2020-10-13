@@ -81,7 +81,9 @@
                             @*<a data-toggle="modal" data-target="#loginModal" href="/Profile/Index/">Hello sign in<i class="fa fa-user pl-2"></i></a>*@
                             @if (Session[HomeLt.Net.Legacy.UI.Constants.Sessions.SessionUser] == null)
                             {
-                                <a data-toggle="modal" data-target="#loginModal" href="#">Hello sign in<i class="fa fa-user pl-2"></i></a>
+                                @*<a data-toggle="modal" data-target="#loginModal" href="#">Hello sign in<i class="fa fa-user pl-2"></i></a>*@
+                                <a href="/User/Register/">Hello sign in<i class="fa fa-user pl-2"></i></a>
+
                             }
                             else
                             {

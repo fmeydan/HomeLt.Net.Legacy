@@ -19,11 +19,14 @@ namespace HomeLt.Net.Legacy.ENTITIES
         }
         [Key]
         public int UserId { get; set; }
+        
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         [DataType(DataType.EmailAddress)]
+        [Required]
         public string Email { get; set; }
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public DateTime? BirthDay { get; set; }

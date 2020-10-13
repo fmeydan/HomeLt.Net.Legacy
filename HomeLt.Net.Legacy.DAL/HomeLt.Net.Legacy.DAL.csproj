@@ -101,6 +101,10 @@
     <Compile Include="Postgre\202010082134297_v1.designer.cs">
       <DependentUpon>202010082134297_v1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Postgre\202010121007511_v2.cs" />
+    <Compile Include="Postgre\202010121007511_v2.designer.cs">
+      <DependentUpon>202010121007511_v2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Postgre\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Postgre\202010082134297_v1.resx">
       <DependentUpon>202010082134297_v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Postgre\202010121007511_v2.resx">
+      <DependentUpon>202010121007511_v2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

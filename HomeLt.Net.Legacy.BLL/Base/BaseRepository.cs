@@ -12,7 +12,7 @@ namespace HomeLt.Net.Legacy.BLL.Postgre
 {
     public class BaseRepository<T, C> where T : class where C : BaseContext, new()
     {
-        BaseContext context = new C();
+       protected readonly BaseContext context = new C();
         public bool Add(T entity)
         {
             using (context)
