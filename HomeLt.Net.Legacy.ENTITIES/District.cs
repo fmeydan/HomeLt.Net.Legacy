@@ -10,7 +10,8 @@ namespace HomeLt.Net.Legacy.ENTITIES
 {
    public class District
     {
-       
+        [Key]
+        public int DistrictId { get; set; }
         public string Name { get; set; }
         [Key]
         public int CityId { get; set; }

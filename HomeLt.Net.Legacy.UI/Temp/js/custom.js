@@ -271,10 +271,10 @@ $('[data-toggle="popover"]').popover()
       var rangeslider = jQuery(".rangeslider-wrapper");
       $("#property-price-slider").ionRangeSlider({
         type: "double",
-        min: 0,
-        max: 10000,
-        from: 1000,
-        to: 8000,
+        min: 50000,
+        max: 1000000,
+        from: 100000,
+        to: 300000,
         prefix: "$",
         hide_min_max: true,
         hide_from_to: false

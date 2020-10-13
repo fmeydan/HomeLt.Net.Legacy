@@ -1,5 +1,4 @@
 ﻿using HomeLt.Net.Legacy.DAL;
-using HomeLt.Net.Legacy.ENTITIES;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.BLL.Postgre
 {
-    public class HomeManager : BaseRepository<Home, HomeltPostgre>, IDisposable
+    public class DistrictManager : BaseRepository<DistrictManager, HomeltPostgre>, IDisposable
     {
         private bool disposedValue;
 
@@ -28,7 +27,7 @@ namespace HomeLt.Net.Legacy.BLL.Postgre
         }
 
         // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
-        // ~HomeManager()
+        // ~DistrictManager()
         // {
         //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
         //     Dispose(disposing: false);
