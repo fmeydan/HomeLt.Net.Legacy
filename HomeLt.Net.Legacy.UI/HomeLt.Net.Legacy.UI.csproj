@@ -409,6 +409,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Constants\ConstantPaths.cs" />
+    <Compile Include="Constants\EnumPropertyType.cs" />
     <Compile Include="Constants\MailBodies.cs" />
     <Compile Include="Constants\Sessions.cs" />
     <Compile Include="Constants\TempDataMessages.cs" />

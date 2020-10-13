@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace HomeLt.Net.Legacy.ENTITIES
         public int PropertyMediaId { get; set; }
         public int HomeId { get; set; }
         public string Path { get; set; }
+        [DefaultValue(false)]
+        public bool isDefault { get; set; }
        //navigation
        [ForeignKey("HomeId")]
        public virtual Home Home { get; set; }

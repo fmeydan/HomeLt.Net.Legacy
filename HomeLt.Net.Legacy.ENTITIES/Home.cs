@@ -20,12 +20,17 @@ namespace HomeLt.Net.Legacy.ENTITIES
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
+        public decimal TicketPrice { get; set; }
         public short RoomNumber { get; set; }
+        public short BedroomNumber { get; set; }
+        public short BathNumber { get; set; }
+        public short Sqft { get; set; }
         public short PropertyType { get; set; }
         public int UserId { get; set; }
         public int AddressId { get; set; }
         [DefaultValue(true)]
         public bool isAvaible { get; set; }
+        public DateTime InsertDate { get; set; }
 
         //navigation
         [ForeignKey("UserId")]

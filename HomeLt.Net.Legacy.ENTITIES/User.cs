@@ -16,6 +16,7 @@ namespace HomeLt.Net.Legacy.ENTITIES
             this.Homes = new HashSet<Home>();
             this.UserMedias = new HashSet<UserMedia>();
             this.Tickets = new HashSet<Ticket>();
+            this.FavoriteHomes = new HashSet<Favorite>();
         }
         [Key]
         public int UserId { get; set; }
@@ -34,10 +35,16 @@ namespace HomeLt.Net.Legacy.ENTITIES
         [DefaultValue(false)]
         public bool isActive { get; set; }
         public Guid ActivationCode { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        public string Phone { get; set; }
+
+
+      
        
 
         public ICollection<UserMedia> UserMedias { get; set; }
         public ICollection <Home> Homes { get; set; }
         public ICollection<Ticket> Tickets { get; set; }
+        public ICollection<Favorite> FavoriteHomes { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HomeLt.Net.Legacy.BLL.Postgre;
+using HomeLt.Net.Legacy.ENTITIES;
 using HomeLt.Net.Legacy.UI.Helpers;
 using HomeLt.Net.Legacy.UI.Models;
 using HomeLt.Net.Legacy.UI.Models.User;
@@ -92,7 +93,32 @@ namespace HomeLt.Net.Legacy.UI.Controllers
 
         public ActionResult Profile(int id)
         {
-            return View();
+            using (UserManager manager =new UserManager())
+            {
+                var user = manager.Get(f => f.UserId == id);
+                return View(user);
+            }
+          
+        }
+
+
+        public ActionResult Editprofile(User user)
+        {
+            using (UserManager manager=new UserManager())
+            {
+                
+                if (manager.Update(user)) {
+                    TempData["Message"]= Constants.TempDataMessages.CreateTempDataMessage("alert alert-success", "Profile updated successfully");
+
+                }
+                else
+                {
+                    TempData["Message"] = Constants.TempDataMessages.CreateTempDataMessage("alert alert-danger", "An error occured while updating profile.");
+                }
+               
+                return RedirectToAction("Profile", "User", new { id = user.UserId });
+
+            }
         }
       
     }

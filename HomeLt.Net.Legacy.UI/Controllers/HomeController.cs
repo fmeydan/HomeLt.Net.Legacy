@@ -13,5 +13,11 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         {
             return View();
         }
+
+
+        public ActionResult AddFav(int homeId,int userId)
+        {
+            return View();
+        }
     }
 }
