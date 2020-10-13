@@ -21,7 +21,32 @@ var urParts = path.split("/");
 
 
 
-	})
+    })
+
+$(document).ready(function (event) {
+    var loginForm = $("#LoginForm");
+    loginForm.submit(function (ev) {
+        ev.preventDefault();
+        var email = $("#LoginUserMail").val();
+        var password = $("#LoginUserPassword").val();
+        $.ajax({
+            type: "POST",
+            data: { "Email": email, "Password": password },
+            url: /User/Login,
+            success: function (data) {
+                console.log(data)
+                //if (data == false) {
+                //    $("#msg").addClass("alert alert-danger")
+                //    $("#msg").html("Kayıt olurken bir hata oluştu lütfen tekrar deneyin");
+                //} else {
+                //    window.location = "/";
+                //}
+
+            }
+       
+    })
+    })
+})
 
 
 $("#ButtonSignUp").click(function () {

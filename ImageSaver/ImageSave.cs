@@ -61,6 +61,14 @@ namespace ImageSaver
             return imagePaths;
         }
 
+
+        /// <summary>
+        /// Save an image to selected path
+        /// </summary>
+        /// <param name="Image"></param>
+        /// <param name="Name"></param>
+        /// <param name="Path"></param>
+        /// <returns></returns>
         public string SaveImage(HttpPostedFileBase Image,string Name,string Path)
         {
             if (Image!=null)

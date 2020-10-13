@@ -411,6 +411,7 @@
     <Compile Include="Constants\ConstantPaths.cs" />
     <Compile Include="Constants\MailBodies.cs" />
     <Compile Include="Constants\Sessions.cs" />
+    <Compile Include="Constants\TempDataMessages.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -525,8 +526,9 @@
     <Content Include="Temp\card\src\scss\logos\_visaelectron.scss" />
     <Content Include="Temp\card\src\scss\_mixins.scss" />
     <Content Include="Views\Shared\_PartialLoginRegister.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\LoginRegister.cshtml" />
     <Content Include="Views\Shared\_PartialMessage.cshtml" />
+    <Content Include="Views\User\Profile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

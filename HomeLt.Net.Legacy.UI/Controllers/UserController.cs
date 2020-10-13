@@ -11,6 +11,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 
@@ -19,7 +20,13 @@ namespace HomeLt.Net.Legacy.UI.Controllers
 {
     public class UserController : Controller
     {
-        
+
+        public ActionResult LoginRegister()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
             using (UserManager manager = new UserManager())
@@ -28,15 +35,14 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                 if (result != null)
                 {
                     Session.Add(Constants.Sessions.SessionUser, result);
+                    return RedirectToAction("Index", "Home");
 
                 }
-                return RedirectToAction("Index", "Home");
+                TempData["Message"] = Constants.TempDataMessages.CreateTempDataMessage("alert alert-danger col-12 col-md-6 offset-md-3", "Invalid Email or Password");
+                return RedirectToAction("Register");
             }
         }
-        public ActionResult Register()
-        {
-            return View();
-        }
+
 
         [HttpPost]
         public ActionResult Register (HomeLt.Net.Legacy.ENTITIES.User user,HttpPostedFileBase ProfilePic)
@@ -70,32 +76,24 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                         }
 
                     }
-                    TempData["message"] = new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Registiration is success. please check your email." } };
+                    TempData["message"] = Constants.TempDataMessages.CreateTempDataMessage("alert alert-success", "Registiration is success. please check your email.");
                     return RedirectToAction("Register");
                 }
-                TempData["message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "This E-Mail is already registered." } };
+                TempData["message"] = Constants.TempDataMessages.CreateTempDataMessage("alert alert-danger", "This E-Mail has been registered already.");
                 return RedirectToAction("Register");
             }
            
-
+           
            
             
         }
-        //[HttpPost]
-        //public JsonResult Register(RegisterViewModel model)
-        //{
-        //    using (UserManager manager = new UserManager())
-        //    {
-        //        var result = manager.Add(new ENTITIES.User
-        //        {
-        //            Email = model.Email,
-        //            Password = model.Password,
-        //            ActivationCode = new Guid()
-        //        });
-        //        return result == true ? Json("Success") : Json("Fail");
-        //    }
 
 
-        //}
+
+        public ActionResult Profile(int id)
+        {
+            return View();
+        }
+      
     }
 }
