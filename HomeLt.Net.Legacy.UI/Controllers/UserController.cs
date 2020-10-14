@@ -40,7 +40,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
 
                 }
                 TempData["Message"] = Constants.TempDataMessages.CreateTempDataMessage("alert alert-danger col-12 col-md-6 offset-md-3", "Invalid Email or Password");
-                return RedirectToAction("Register");
+                return RedirectToAction("LoginRegister");
             }
         }
 
@@ -78,10 +78,10 @@ namespace HomeLt.Net.Legacy.UI.Controllers
 
                     }
                     TempData["message"] = Constants.TempDataMessages.CreateTempDataMessage("alert alert-success", "Registiration is success. please check your email.");
-                    return RedirectToAction("Register");
+                    return RedirectToAction("LoginRegister");
                 }
                 TempData["message"] = Constants.TempDataMessages.CreateTempDataMessage("alert alert-danger", "This E-Mail has been registered already.");
-                return RedirectToAction("Register");
+                return RedirectToAction("LoginRegister");
             }
            
            
