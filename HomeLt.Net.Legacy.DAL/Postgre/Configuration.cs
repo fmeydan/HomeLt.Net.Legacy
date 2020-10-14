@@ -16,13 +16,19 @@
 
         protected override void Seed(HomeLt.Net.Legacy.DAL.HomeltPostgre context)
         {
-            Cities.LoadCities();
-            Districts.LoadDistricts();
-            
+           
+            if (context.District.ToList().Count == 0)
+            {
+                string districts = Districts.LoadDistricts();
+                string cities = Cities.LoadCities();
+                context.Database.ExecuteSqlCommand(cities);
+                context.Database.ExecuteSqlCommand(districts);
+            }
+
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+                //  You can use the DbSet<T>.AddOrUpdate() helper extension method
+                //  to avoid creating duplicate seed data.
         }
     }
 }

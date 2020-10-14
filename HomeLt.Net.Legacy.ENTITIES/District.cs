@@ -13,7 +13,6 @@ namespace HomeLt.Net.Legacy.ENTITIES
         [Key]
         public int DistrictId { get; set; }
         public string Name { get; set; }
-        [Key]
         public int CityId { get; set; }
 
         //navigation

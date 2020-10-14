@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.DAL.Static
 {
-   public static class Cities
+    public static class Cities
     {
         public static string LoadCities()
         {
-            return @"INSERT INTO Province (CityId,Name) VALUES
-(1, 'Adana'),
+            string table = "dbo.\"Cities\"";
+            string colum1 = "\"CityId\"";
+            string colum2 = "\"Name\"";
+            string query = String.Format(@"INSERT INTO {0}({1},{2}) VALUES (1, 'Adana'),
 (2, 'Adıyaman'),
 (3, 'Afyonkarahisar'),
 (4, 'Ağrı'),
@@ -91,7 +93,8 @@ namespace HomeLt.Net.Legacy.DAL.Static
 (78, 'Karabük'),
 (79, 'Kilis'),
 (80, 'Osmaniye'),
-(81, 'Düzce');";
+(81, 'Düzce')", table, colum1, colum2);
+            return query;
         }
     }
 }

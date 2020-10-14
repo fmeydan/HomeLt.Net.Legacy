@@ -10,7 +10,11 @@ namespace HomeLt.Net.Legacy.DAL.Static
     {
         public static string LoadDistricts()
         {
-            return @"INSERT INTO District (DistrictId,Name,CityId) VALUES
+            string table = "dbo.\"Districts\"";
+            string column0 = "\"DistrictId\"";
+            string colum1 = "\"CityId\"";
+            string colum2 = "\"Name\"";
+            return $@"INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 (1,'Abana',37),
 (2,'Acıgöl',50),
 (3,'Acıpayam',20),
@@ -112,7 +116,7 @@ namespace HomeLt.Net.Legacy.DAL.Static
 (99,'Aydıncık',66),
 (100,'Aydıntepe',69);
  
-INSERT INTO District (DistrictId,Name,CityId) VALUES
+INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 (101,'Ayrancı',70),
 (102,'Ayvacık',17),
 (103,'Ayvacık',55),
@@ -214,7 +218,7 @@ INSERT INTO District (DistrictId,Name,CityId) VALUES
 (199,'Cihanbeyli',42),
 (200,'Cizre',73);
  
-INSERT INTO District (DistrictId,Name,CityId) VALUES
+INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 (201,'Cumayeri',81),
 (202,'Çağlayancerit',46),
 (203,'Çal',20),
@@ -316,7 +320,7 @@ INSERT INTO District (DistrictId,Name,CityId) VALUES
 (299,'Diyadin',4),
 (300,'Dodurga',19);
  
-INSERT INTO District (DistrictId,Name,CityId) VALUES
+INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 (301,'Doğanhisar',42),
 (302,'Doğankent',28),
 (303,'Doğanşar',58),
@@ -418,7 +422,7 @@ INSERT INTO District (DistrictId,Name,CityId) VALUES
 (399,'Göle',75),
 (400,'Gölhisar',15);
  
-INSERT INTO District (DistrictId,Name,CityId) VALUES
+INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 (401,'Gölköy',52),
 (402,'Gölmarmara',45),
 (403,'Gölova',58),
@@ -520,7 +524,7 @@ INSERT INTO District (DistrictId,Name,CityId) VALUES
 (499,'İskenderun',31),
 (500,'İskilip',19);
  
-INSERT INTO District (DistrictId,Name,CityId) VALUES
+INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 (501,'İslahiye',27),
 (502,'İspir',25),
 (503,'İvrindi',10),
@@ -622,7 +626,7 @@ INSERT INTO District (DistrictId,Name,CityId) VALUES
 (599,'Konak',35),
 (600,'Konyaaltı',7);
  
-INSERT INTO District (DistrictId,Name,CityId) VALUES
+INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 (601,'Korgan',52),
 (602,'Korgun',18),
 (603,'Korkut',49),
@@ -724,7 +728,7 @@ INSERT INTO District (DistrictId,Name,CityId) VALUES
 (699,'Oltu',25),
 (700,'Olur',25);
  
-INSERT INTO District (DistrictId,Name,CityId) VALUES
+INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 (701,'Ondokuzmayıs',55),
 (702,'Onikişubat',46),
 (703,'Orhaneli',16),
@@ -826,7 +830,7 @@ INSERT INTO District (DistrictId,Name,CityId) VALUES
 (799,'Siirt',56),
 (800,'Silifke',33);
  
-INSERT INTO District (DistrictId,Name,CityId) VALUES
+INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 (801,'Silivri',34),
 (802,'Silopi',73),
 (803,'Silvan',21),
@@ -928,7 +932,7 @@ INSERT INTO District (DistrictId,Name,CityId) VALUES
 (899,'Türkeli',57),
 (900,'Türkoğlu',46);
  
-INSERT INTO District (DistrictId,Name,CityId) VALUES
+INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 (901,'Uğurludağ',19),
 (902,'Ula',48),
 (903,'Ulaş',58),
@@ -1000,7 +1004,7 @@ INSERT INTO District (DistrictId,Name,CityId) VALUES
 (969,'Zile',60),
 (970,'Zonguldak',67);
  
-INSERT INTO District (DistrictId,Name,CityId) VALUES
+INSERT INTO {table} ({column0},{colum2},{colum1}) VALUES
 ('971', 'Kemalpaşa', '8'),
 ('972', 'Sultanhanı', '68');";
         }

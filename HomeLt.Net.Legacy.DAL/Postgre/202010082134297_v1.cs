@@ -68,7 +68,7 @@
                 "dbo.Cities",
                 c => new
                     {
-                        CityId = c.Int(nullable: false, identity: true),
+                        CityId = c.Int(nullable: true, identity: true),
                         Name = c.String(),
                     })
                 .PrimaryKey(t => t.CityId);

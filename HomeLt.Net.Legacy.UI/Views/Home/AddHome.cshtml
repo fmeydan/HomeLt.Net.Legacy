@@ -66,8 +66,9 @@ Submit Property -->
                             </li>
                         </ul>
                         <div class="tab-content mt-4" id="myTabContent">
-                            <div class="tab-pane fade show active" id="tab-01" role="tabpanel" aria-labelledby="tab-01-tab">
-                                <form action="#" method="post" enctype="multipart/form-data">
+                            <form action="#" method="post" enctype="multipart/form-data">
+                                <div class="tab-pane fade show active" id="tab-01" role="tabpanel" aria-labelledby="tab-01-tab">
+
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Property Title </label>
@@ -81,12 +82,12 @@ Submit Property -->
                                             </select>
                                         </div>
                                         @*<div class="form-group col-md-6 select-border">
-            <label>Rental Period</label>
-            <select class="form-control basic-select">
-                <option value="value 01" selected="selected">Monthly</option>
-                <option value="value 02">yearly</option>
-            </select>
-        </div>*@
+                    <label>Rental Period</label>
+                    <select class="form-control basic-select">
+                        <option value="value 01" selected="selected">Monthly</option>
+                        <option value="value 02">yearly</option>
+                    </select>
+                </div>*@
                                         <div class="form-group col-md-6 select-border">
                                             <label>Property Type</label>
                                             <select name="PropertyType" class="form-control basic-select">
@@ -136,114 +137,127 @@ Submit Property -->
                                             <input class="form-control" name="VideoUrl" placeholder="URL to oEmbed supported service">
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="tab-02" role="tabpanel" aria-labelledby="tab-02-tab">
-                                <div class="custom-file">
-                                    <input name="Galerry" type="file" multiple class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
+
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab-03" role="tabpanel" aria-labelledby="tab-03-tab">
-                                @*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8351288872545!2d144.9556518!3d-37.8173306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sin!4v1443621171568" style="border:0; width: 100%; height: 250px;"></iframe>*@
-                                
-                                <div class="form-row mt-4">
-                                    <div class="form-group col-md-6">
-                                        <label>Google Maps Address </label>
-                                        <input type="text" name="GoogleMapAdress" class="form-control" placeholder="Envato">
-                                    </div>
 
-                                    <div class="form-group col-md-6 select-border">
-                                        <label>Regions</label>
-                                        <select name="City" class="form-control basic-select" id="CitiySelect">
-                                            <option value="" selected disabled>Select City</option>
-                                            @foreach (var item in Model)
-                                            {
-                                                <option value="@item.CityId">@item.Name</option>
-                                            }
-
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6 select-border">
-                                        <label>Regions</label>
-                                        <select name="District" class="form-control basic-select" id="DistrictSelect">
-                                            <option value="" selected disabled>Select District</option>
-                                            @foreach (var item in Model)
-                                            {
-                                                <option value="@item.CityId">@item.Name</option>
-                                            }
-
-                                        </select>
+                                <div class="tab-pane fade" id="tab-02" role="tabpanel" aria-labelledby="tab-02-tab">
+                                    <div class="custom-file">
+                                        <input name="Galerry" type="file" multiple class="custom-file-input" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                 </div>
-                                
-                            </div>
-                            <div class="tab-pane fade" id="tab-04" role="tabpanel" aria-labelledby="tab-04-tab">
-                                <form>
+
+                                <div class="tab-pane fade" id="tab-03" role="tabpanel" aria-labelledby="tab-03-tab">
+                                    @*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8351288872545!2d144.9556518!3d-37.8173306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sin!4v1443621171568" style="border:0; width: 100%; height: 250px;"></iframe>*@
+
+                                    <div class="form-row mt-4">
+                                        <div class="form-group col-md-6">
+                                            <label>Google Maps Address </label>
+                                            <input type="text" name="GoogleMapAdress" class="form-control" placeholder="Envato">
+                                        </div>
+
+                                        <div class="form-group col-md-6 select-border">
+                                            <label>Regions</label>
+                                            <select name="City" class="form-control basic-select" id="CitiySelect">
+                                                <option value="" selected disabled>Select City</option>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <option value="@item.CityId">@item.Name</option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6 select-border">
+                                            <label>Regions</label>
+                                            <select name="District" class="form-control basic-select" id="DistrictSelect">
+                                                <option value="" selected disabled>Select District</option>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <option value="@item.CityId">@item.Name</option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane fade" id="tab-04" role="tabpanel" aria-labelledby="tab-04-tab">
+
                                     <div class="form-row mt-4">
                                         <div class="form-group col-md-6 select-border">
                                             <label>Building age</label>
-                                            <select class="form-control basic-select">
-                                                <option value="value 01" selected="selected">10 to 18 years</option>
-                                                <option value="value 02">10 to 18 years</option>
+                                            <select name="BuildingAge" class="form-control basic-select">
+                                                <option value="0-10">0 to 10 Years</option>
+                                                <option value="10-20">10 to 20 years</option>
+                                                <option value="20-99">20 to 99 years</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6 select-border">
                                             <label>Bedrooms</label>
-                                            <select class="form-control basic-select">
-                                                <option value="value 01" selected="selected">1</option>
-                                                <option value="value 02">2</option>
+                                            <select name="Bedroom" class="form-control basic-select">
+                                                @for (int i = 0; i < 10; i++)
+                                                {
+                                                    <option value="@i" selected="selected">@i</option>
+                                                }
+
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6 select-border">
                                             <label>Bathrooms</label>
-                                            <select class="form-control basic-select">
-                                                <option value="value 01" selected="selected">1</option>
-                                                <option value="value 02">2</option>
+                                            <select name="Bathroom" class="form-control basic-select">
+                                                @for (int i = 0; i < 10; i++)
+                                                {
+                                                    <option value="@i" selected="selected">@i</option>
+                                                }
+
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Parking </label>
-                                            <input type="text" class="form-control" placeholder="Parking">
+                                            <select name="Parking" class="form-control basic-select">
+
+
+                                                <option value="1" selected>Yes</option>
+                                                <option value="0">No</option>
+
+                                            </select>
+
                                         </div>
+
                                         <div class="form-group col-md-6">
-                                            <label>Cooling </label>
-                                            <input type="text" class="form-control" placeholder="Cooling">
+                                            <label>Central Heating </label>
+                                            <select name="Central Heating" class="form-control basic-select">
+                                                <option value="1" selected>Yes</option>
+                                                <option value="0">No</option>
+
+                                            </select>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Heating </label>
-                                            <input type="text" class="form-control" placeholder="Heating">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Sewer </label>
-                                            <input type="text" class="form-control" placeholder="Sewer">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Water </label>
-                                            <input type="text" class="form-control" placeholder="Water">
-                                        </div>
+
+
                                         <div class="form-group col-md-6">
                                             <label>Exercise Room </label>
-                                            <input type="text" class="form-control" placeholder="Exercise Room">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Storage Room </label>
-                                            <input type="text" class="form-control" placeholder="Storage Room">
+                                            <select name="Excersize Room" class="form-control basic-select">
+                                                <option value="1" selected>Yes</option>
+                                                <option value="0">No</option>
+
+                                            </select>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="tab-05" role="tabpanel" aria-labelledby="tab-05-tab">
-                                <form>
+
+                                </div>
+
+                                <div class="tab-pane fade" id="tab-05" role="tabpanel" aria-labelledby="tab-05-tab">
+
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Browser file</label>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="customFile">
+                                                <input type="file" class="custom-file-input" multiple="multiple" accept="image/x-png,image/gif,image/jpeg" id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        @*<div class="form-group col-md-6">
                                             <label>Floorplan Title </label>
                                             <input type="text" class="form-control" placeholder="Awesome family home">
                                         </div>
@@ -254,11 +268,12 @@ Submit Property -->
                                         <div class="form-group col-md-12">
                                             <label>Description</label>
                                             <textarea class="form-control" rows="4" placeholder="Description"></textarea>
-                                        </div>
+                                        </div>*@
                                     </div>
-                                </form>
-                                <a class="btn btn-primary mt-3" href="#"><i class="fas fa-plus-circle"></i> Upload floorplans</a>
-                            </div>
+
+                                    <a class="btn btn-primary mt-3" href="#"><i class="fas fa-plus-circle"></i> Upload floorplans</a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
