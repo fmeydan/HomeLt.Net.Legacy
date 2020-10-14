@@ -15,10 +15,7 @@ namespace HomeLt.Net.Legacy.ENTITIES
         public int HomeId { get; set; }
         public int UserId { get; set; }
 
-
-        [ForeignKey("UserId")]
-        public User User { get; set; }
         [ForeignKey("HomeId")]
-        public Home Home { get; set; }
+        public virtual Home Home { get; set; }
     }
 }

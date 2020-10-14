@@ -16,12 +16,12 @@ namespace HomeLt.Net.Legacy.UI.Models.Home
         public short BedroomNumber { get; set; }
         public short BathNumber { get; set; }
         
-        public short Sqft { get; set; }
+        public short Area { get; set; }
         public short PropertyType { get; set; }
         public int UserId { get; set; }
         public int AddressId { get; set; }
         public DateTime InsertDate { get; set; }
-        public short BuildingAge { get; set; }
+        public string BuildingAge { get; set; }
         [DefaultValue(false)]
         public bool Parking { get; set; }
         [DefaultValue(false)]

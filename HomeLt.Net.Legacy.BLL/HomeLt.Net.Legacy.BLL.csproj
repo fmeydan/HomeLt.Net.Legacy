@@ -102,8 +102,11 @@
     <Compile Include="Postgre\CityManager.cs" />
     <Compile Include="Postgre\DistrictManager.cs" />
     <Compile Include="Postgre\DrawManager.cs" />
+    <Compile Include="Postgre\FavoriteManager.cs" />
     <Compile Include="Postgre\HomeManager.cs" />
     <Compile Include="Base\BaseRepository.cs" />
+    <Compile Include="Postgre\PropertyAdressManager.cs" />
+    <Compile Include="Postgre\PropertyMediaManager.cs" />
     <Compile Include="Postgre\TicketManager.cs" />
     <Compile Include="Postgre\UserManager.cs" />
     <Compile Include="Postgre\UserMediaManager.cs" />

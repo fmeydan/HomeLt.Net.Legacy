@@ -42,9 +42,9 @@ namespace HomeLt.Net.Legacy.ENTITIES
       
        
 
-        public ICollection<UserMedia> UserMedias { get; set; }
-        public ICollection <Home> Homes { get; set; }
-        public ICollection<Ticket> Tickets { get; set; }
-        public ICollection<Favorite> FavoriteHomes { get; set; }
-    }
+        public virtual ICollection<UserMedia> UserMedias { get; set; }
+        public virtual ICollection <Home> Homes { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual ICollection<Favorite> FavoriteHomes { get; set; }
+    }                  
 }

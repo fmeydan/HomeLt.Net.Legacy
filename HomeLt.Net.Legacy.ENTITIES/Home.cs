@@ -53,7 +53,7 @@ namespace HomeLt.Net.Legacy.ENTITIES
         [ForeignKey("AddressId")]
         public virtual PropertyAdress Address { get; set; }
 
-        public ICollection<PropertyMedia> PropertyMedias { get; set; }
+        public virtual ICollection<PropertyMedia> PropertyMedias { get; set; }
 
 
     }

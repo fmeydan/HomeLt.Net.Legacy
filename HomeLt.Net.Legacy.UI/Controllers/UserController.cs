@@ -3,6 +3,7 @@ using HomeLt.Net.Legacy.ENTITIES;
 using HomeLt.Net.Legacy.UI.Helpers;
 using HomeLt.Net.Legacy.UI.Models;
 using HomeLt.Net.Legacy.UI.Models.User;
+using HomeLt.Net.Legacy.UI.Models.UserViewModel;
 using ImageSaver;
 using System;
 using System.Collections.Generic;
@@ -91,14 +92,46 @@ namespace HomeLt.Net.Legacy.UI.Controllers
 
 
 
-        public ActionResult Profile(int id)
+        public ActionResult Profile()
         {
+            UserProfileViewModel model = new UserProfileViewModel();
+            User currentUser = Session[Constants.Sessions.SessionUser] as User;
+            var user = new User();
             using (UserManager manager =new UserManager())
             {
-                var user = manager.Get(f => f.UserId == id);
-                return View(user);
+                
+                //var user = manager.Get(f => f.UserId == currentUser.UserId);
+                user = manager.Get(f => f.UserId == currentUser.UserId, "UserMedias");
+               
+
+
+
             }
-          
+
+            using (HomeManager homeManager = new HomeManager())
+            {
+
+                var homes = homeManager.GetList("PropertyMedias", f => f.UserId == currentUser.UserId);
+                user.Homes = homes;
+
+                model.User = user;
+                model.Homes = homes;
+
+
+
+            }
+            using (TicketManager ticketManager = new TicketManager())
+            {
+                model.Tickets = ticketManager.GetList(f => f.UserId == user.UserId);
+
+            }
+            using (FavoriteManager manager=new FavoriteManager())
+            {
+                model.Favorites = manager.GetList(f => f.UserId == user.UserId);
+            }
+
+            return View(model);
+
         }
 
 

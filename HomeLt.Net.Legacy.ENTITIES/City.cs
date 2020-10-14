@@ -18,7 +18,7 @@ namespace HomeLt.Net.Legacy.ENTITIES
         public string Name { get; set; }
 
         //navigation
-        public ICollection<District> Districts { get; set; }
+        public virtual ICollection<District> Districts { get; set; }
 
     }
 }

@@ -23,7 +23,5 @@ namespace HomeLt.Net.Legacy.ENTITIES
         [ForeignKey("DrawId")]
         public virtual Draw Draw { get; set; }
 
-        [ForeignKey("UserId")]
-        public virtual User User { get; set; }
     }
 }

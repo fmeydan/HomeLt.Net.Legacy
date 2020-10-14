@@ -10,6 +10,8 @@ namespace HomeLt.Net.Legacy.ENTITIES
 {
     public class UserMedia
     {
+
+
         [Key]
         public int UserMediaId { get; set; }
         public int UserId { get; set; }

@@ -26,7 +26,16 @@ namespace HomeLt.Net.Legacy.DAL
         public virtual DbSet<PropertyMedia> PropertyMedia { get; set; }
         public virtual DbSet<UserMedia> UserMedia { get; set; }
 
-       
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+
+        //    modelBuilder.Entity<User>()
+        //        .HasMany(e => e.UserMedias)
+        //        .WithRequired(e => e.User)
+        //        .WillCascadeOnDelete(false);
+        //}
+
+
 
 
     }

@@ -86,6 +86,31 @@ namespace ImageSaver
         }
 
 
+
+        public List<string> SaveMultiImage(HttpPostedFileBase[] Image, string Name, string Path)
+        {
+            List<string> paths = new List<string>() ;
+            if (Image != null)
+            {
+                
+                foreach (var item in Image)
+                {
+                    string extansion = System.IO.Path.GetExtension(item.FileName);
+                    Directory.CreateDirectory(Path);
+                    string savedImagePath = Path + "/" + new FileNamer().ConvertTRCharToENChar(Name) + extansion;
+
+                    item.SaveAs(savedImagePath);
+                    paths.Add(savedImagePath);
+                }
+               
+                return (paths);
+
+            }
+            return paths;
+
+        }
+
+
         public  string DeleteImage(string path, string name)
         {
 
