@@ -35,7 +35,8 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                     if (saleType!=null)
                     {
                         bool saletype = Convert.ToBoolean(saleType);
-                        var result = manager.GetList(f => f.SellingType == saletype);
+                        var result = manager.GetList(f => f.SellingType == saletype && f.isAvaible==true);
+                        return View(result);
                     }
                 }
                 catch (Exception e)

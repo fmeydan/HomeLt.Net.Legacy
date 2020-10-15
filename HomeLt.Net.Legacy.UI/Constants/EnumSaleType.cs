@@ -8,7 +8,7 @@ namespace HomeLt.Net.Legacy.UI.Constants
 {
     public enum EnumSaleType
     {
-        Direct,
-        Loattery
+        Lottery,
+        Direct
     }
 }
