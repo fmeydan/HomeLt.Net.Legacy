@@ -28,9 +28,13 @@ namespace HomeLt.Net.Legacy.UI.Models.Home
         public bool CentralHeating { get; set; }
         [DefaultValue(false)]
         public bool ExcerciseRoom { get; set; }
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool SellingType { get; set; }
 
+        [DefaultValue(true)]
+        public bool isAvailable { get; set; }
+
+        [DefaultValue(false)]
         public bool isApproved { get; set; }
 
         public HttpPostedFileBase[] Gallery  { get; set; }

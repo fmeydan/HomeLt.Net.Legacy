@@ -92,6 +92,8 @@ breadcrumb -->
                                                                     <div class="property-price">@Model.FirstOrDefault().Home.Price.ToString("C") </div>
 
                                                                     <div class="property-price">@Model.FirstOrDefault().Home.TicketPrice.ToString("C")<span> / Ticket </span> </div>
+                                                                    <div class="property-price">@((Model.FirstOrDefault().Home.TicketPrice*Model.Count()).ToString("C")) <span> / Total</span>
+                                                                </div>
 
                                                                 </div>
                                                                 <ul class="property-info list-unstyled d-flex">
@@ -101,9 +103,9 @@ breadcrumb -->
                                                                     <li class="flex-fill property-m-sqft text-right">
                                                                         <div class="input-group float-right" style="width:65%">
                                                                             <div class="input-group-prepend">
-                                                                                <div class="input-group-text"><i class="fas fa-ticket-alt"></i></div>
+                                                                                <div class="input-group-text"><i class="fas fa-ticket-alt"></i>   </div><span>x @Model.Count()</span>
                                                                             </div>
-                                                                            <input type="number" name="Amount" class="form-control" placeholder="Ticket Amount">
+                                                                            
                                                                         </div>
                                                                     </li>
                                                                 </ul>

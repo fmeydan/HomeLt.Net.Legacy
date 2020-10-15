@@ -1,0 +1,739 @@
+﻿@using HomeLt.Net.Legacy.UI.Constants
+
+@model HomeLt.Net.Legacy.ENTITIES.Home
+
+@{
+    ViewBag.Title = "HomeDetail";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<!--=================================
+Breadcrumb -->
+
+
+<div class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="/"> <i class="fas fa-home"></i> </a></li>
+                    <li class="breadcrumb-item"> <i class="fas fa-chevron-right"></i> <a href="/Search/Index/">Properties</a></li>
+                    <li class="breadcrumb-item active"> <i class="fas fa-chevron-right"></i> <span> @Model.Name</span></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!--=================================
+Breadcrumb -->
+
+<div class="wrapper">
+    <!--=================================
+    Property Detail -->
+    <section class="space-pt">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0 order-lg-2">
+                    <div class="sticky-top">
+                        <div class="mb-4">
+                            <h3>The citizen apartment 5th floor</h3>
+                            <span class="d-block mb-3"><i class="fas fa-map-marker-alt fa-xs pr-2"></i>Vermont dr. hephzibah</span>
+                            <span class="price font-xll text-primary d-block">@Model.Price.ToString("C")</span>
+
+                            <span class="sub-price font-lg text-dark d-block"><b>@Model.Sqft/Sqft </b> </span>
+                            <ul class="property-detail-meta list-unstyled ">
+                                @*<li><a href="#"> <i class="fas fa-star text-warning pr-2"></i>3.9/5 </a></li>*@
+                                <li class="share-box">
+                                    <a href="#"> <i class="fas fa-share-alt"></i> </a>
+                                    <ul class="list-unstyled share-box-social">
+                                        <li> <a href="#"><i class="fab fa-facebook-f"></i></a> </li>
+                                        <li> <a href="#"><i class="fab fa-twitter"></i></a> </li>
+                                        <li> <a href="#"><i class="fab fa-linkedin"></i></a> </li>
+                                        <li> <a href="#"><i class="fab fa-instagram"></i></a> </li>
+                                        <li> <a href="#"><i class="fab fa-pinterest"></i></a> </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"> <i class="fas fa-heart"></i> </a></li>
+                                @*<li><a href="#"> <i class="fas fa-exchange-alt"></i> </a></li>*@
+                                <li><a href="#"> <i class="fas fa-print"></i> </a></li>
+                                @*<li><a href="#" class="property-btn">Buy Ticket </a></li>*@
+                            </ul>
+                        </div>
+                        <div class="agent-contact-inner bg-dark p-4">
+                            <div class="pricing bg-dark text-white">
+                                <h5 class="pricing-title text-white">Get Your Ticket Now</h5>
+                                <span class="pricing-price d-block mb-2"> <strong>@Model.TicketPrice.ToString("c") </strong>/Ticket</span>
+                                <p>You are one click away</p>
+                                <a class="btn btn-primary btn-block" href="/Ticket/Buy/@Model.HomeId">Buy Ticket</a>
+                                <ul class="list-unstyled pricing-list">
+                                    <li>Buy more ticket and increase your chance! <span data-toggle="tooltip" data-placement="top" title="" data-original-title="I'm pricing note content"> <i class="fas fa-question-circle"></i></span> </li>
+                                    <li>1 attend for each Ticket</li>
+                                    <li>After Join Support </li>
+                                    <li>100% Payment Guarantee <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Your payment under our guarantee"> <i class="fas fa-question-circle"></i></span> </li>
+                                    @*<li>Premium Certification</li>
+                                        <li>Free Search Engine <span data-toggle="tooltip" data-placement="top" title="" data-original-title="I'm pricing note content"> <i class="fas fa-question-circle"></i></span> </li>*@
+                                    <li>This is the chance you looking for</li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        @*<div class="agent-contact-inner bg-dark p-4">
+
+                                <div class="d-flex mb-4 align-items-center">
+                                    <h2 class="text-center" style="color:wheat">Contact Us</h2>
+                                </div>
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Your email Adress">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Your Phone number">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="3" placeholder="Write Message"></textarea>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label text-white font-sm" for="customCheck1">I here by agree for processing my personal data </label>
+                                    </div>
+                                    <a class="btn btn-primary btn-block" href="#">Send Message</a>
+                                </form>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-lg-8 order-lg-1">
+                    <div class="property-detail-gallery overflow-hidden">
+                        <ul class="nav nav-tabs nav-tabs-02 mb-4" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link shadow active" id="photo-tab" data-toggle="pill" href="#photo" role="tab" aria-controls="photo" aria-selected="true">Photo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link shadow" id="map-tab" data-toggle="pill" href="#map" role="tab" aria-controls="map" aria-selected="false">Map</a>
+                            </li>
+                            @*<li class="nav-item">
+                                    <a class="nav-link shadow" id="street-map-view-tab" data-toggle="pill" href="#street-map-view" role="tab" aria-controls="street-map-view" aria-selected="false">Street view</a>
+                                </li>*@
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="photo" role="tabpanel" aria-labelledby="photo-tab">
+                                <div class="slider-slick">
+                                    <div class="slider slider-for detail-big-car-gallery">
+                                        @foreach (var item in Model.PropertyMedias)
+                                        {
+                                            <img class="img-fluid" src="@item.Path" alt="">
+                                        }
+
+                                    </div>
+                                    <div class="slider slider-nav">
+                                        @foreach (var item in Model.PropertyMedias)
+                                        {
+                                            <img class="img-fluid" src="@item.Path" alt="">
+                                        }
+
+
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab">
+                                
+                                <iframe src="
+                                        
+                                        
+                                        https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8351288872545!2d144.9556518!3d-37.8173306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sin!4v1443621171568" style="border:0; width: 100%; height: 100%;"></iframe>
+                            </div>
+                            <div class="tab-pane fade" id="street-map-view" role="tabpanel" aria-labelledby="street-map-view-tab">
+                                <div id="street-view"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info mt-5">
+                        <div class="row">
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <h5>Property details</h5>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row mb-3">
+                                    <div class="col-sm-6">
+                                        <ul class="property-list list-unstyled">
+
+                                            <li><b>Property ID:</b> @Model.HomeId</li>
+                                            <li><b>Price:</b> @Model.Price.ToString("C")</li>
+                                            <li><b>Property Size:</b> @Model.Sqft Sq Ft</li>
+                                            <li><b>Bedrooms:</b> @Model.BedroomNumber</li>
+                                            <li><b>Bathrooms:</b> @Model.BathNumber</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="property-list list-unstyled">
+                                            <li><b>Garage:</b> 1</li>
+                                            <li><b>Garage Size:</b> 458 SqFt</li>
+                                            <li><b>Building Age:</b>@Model.BuildingAge</li>
+                                            @*<li><b>Property Type:</b> @{}</li>*@
+                                            <li><b>Property Status:</b> @{((EnumPropertyType)Model.PropertyType).ToString();}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                @*<h6 class="text-primary">Additional details</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="property-list list-unstyled mb-0">
+                                            <li><b>Deposit:</b> 30%</li>
+                                            <li><b>Pool Size:</b> 457 Sqft</li>
+                                            <li><b>Last remodel year:</b> 1956</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="property-list list-unstyled mb-0">
+                                            <li><b>Amenities:</b> Clubhouse</li>
+                                            <li><b>Additional Rooms:</b> Guest Bat</li>
+                                            <li><b>Equipment:</b> Grill - Gas - light</li>
+                                        </ul>
+                                    </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-4 mb-4 mb-sm-5 mt-sm-5">
+                    <div class="property-description">
+                        <div class="row">
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <h5>Description</h5>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>@Model.Description</p>
+                                @*<p>Floor-to-ceiling windows accentuate the panoramic vistas that sweep across the Golden Gate Bridge, the downtown skyline, the artfully lit Bay Bridge and beyond. The floor plan features two bedroom suites, kitchen, living/dining room, two view terraces and ample storage space. </p>*@
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-4 mb-4 mb-sm-5 mt-sm-5">
+                    @*<div class="property-features">
+                        <div class="row">
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <h5>Features</h5>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="property-list-style-2 list-unstyled mb-0">
+                                            <li>TV Cable</li>
+                                            <li>Air Conditioning</li>
+                                            <li>Barbeque</li>
+                                            <li>Gym</li>
+                                            <li>Swimming Pool</li>
+                                            <li>Laundry</li>
+                                            <li>Microwave</li>
+                                            <li>Outdoor Shower</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="property-list-style-2 list-unstyled mb-0">
+                                            <li>Lawn</li>
+                                            <li>Refrigerator</li>
+                                            <li>Sauna</li>
+                                            <li>Washer</li>
+                                            <li>Dryer</li>
+                                            <li>WiFi</li>
+                                            <li>Window Coverings</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                    <hr class="mt-4 mb-4 mb-sm-5 mt-sm-5">
+                    <div class="property-address">
+                        <div class="row">
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <h5>Address</h5>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="property-list list-unstyled mb-0">
+                                            <li><b>Address:</b> @Model.Address.AddressLine1</li>
+                                           
+                                            <li><b>District:</b> @Model.Address.District.Name</li>
+
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="property-list list-unstyled mb-0">
+                                            <li><b>City:</b> @Model.Address.District.City.Name</li>
+                                            <li><b>Zip:</b> @Model.Address.ZipCode</li>
+                                            <li><b>Country:</b>Turkey</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-4 mb-4 mb-sm-5 mt-sm-5">
+                    <div class="property-floor-plans">
+                        <div class="row">
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <h5>Floor plans</h5>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="accordion-style-2" id="accordion">
+                                    @for (int i = 0; i <2 ; i++)
+                                    {
+
+                                    }
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="accordion-title mb-0">
+                                                <button class="btn btn-link d-flex ml-auto align-items-center" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">First Floor <i class="fas fa-chevron-down fa-xs"></i></button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show accordion-content" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Introspection is the trick. Understand what you want, why you want it and what it will do for you. This is a critical factor, and as such, is probably the most difficult step. For this reason, most people never!</p>
+                                                <img class="img-fluid" src="/Temp/images/property/floor-plans-01.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="accordion-title mb-0">
+                                                <button class="btn btn-link d-flex ml-auto align-items-center collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    Second Floor <i class="fas fa-chevron-down fa-xs"></i>
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse accordion-content" aria-labelledby="headingTwo" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Focus is having the unwavering attention to complete what you set out to do. There are a million distractions in every facet of our lives. Telephones and e-mail, clients and managers, spouses and kids, TV, newspapers and radio.</p>
+                                                <img class="img-fluid" src="/Temp/images/property/floor-plans-01.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-4 mb-4 mb-sm-5 mt-sm-5">
+                    <div class="property-video">
+                        <div class="row">
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <h5>Property video</h5>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kacyaEXqVhs" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-4 mb-4 mb-sm-5 mt-sm-5">
+                    @*<div class="property-walk-score">
+                            <div class="row">
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <h5>WalkScore</h5>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="walk-score-info d-sm-flex">
+                                        <div class="mb-2 mb-sm-0">
+                                            <img src="/Temp/images/property/walk-score.png" alt="">
+                                            <p class="mb-0 d-block mt-2">walkscore96 / Walker's Paradise</p>
+                                        </div>
+                                        <a class="btn btn-primary btn-sm ml-auto" href="#">More details here</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-4 mb-4 mb-sm-5 mt-sm-5">
+                        <div class="property-nearby">
+                            <div class="row">
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <h5>What's nearby</h5>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="nearby-info mb-4">
+                                        <span class="nearby-title mb-2 d-block text-info">
+                                            <i class="fas fa-graduation-cap mr-2"></i><b>Education</b>
+                                        </span>
+                                        <div class="nearby-list">
+                                            <ul class="property-list list-unstyled mb-0">
+                                                <li class="d-flex">
+                                                    <span class="mr-1"><b>Case Western Reserve University</b> (2.10 km)</span>
+                                                    <ul class="list-unstyled list-inline ml-auto">
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star-half-alt fa-xs"></i></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="d-flex">
+                                                    <span class="mr-1"><b>Georgia Institute of Technology</b> (1.42 km)</span>
+                                                    <ul class="list-unstyled list-inline ml-auto">
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star-half-alt fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="far fa-star fa-xs"></i></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="d-flex">
+                                                    <span class="mr-1"><b>Harvey Mudd College</b> (1.64 km)</span>
+                                                    <ul class="list-unstyled list-inline ml-auto">
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star-half-alt fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="far fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="far fa-star fa-xs"></i></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="nearby-info mb-4">
+                                        <span class="nearby-title mb-2 d-block text-success">
+                                            <i class="fas fa-user-md mr-2"></i><b>Health & Medical</b>
+                                        </span>
+                                        <div class="nearby-list">
+                                            <ul class="property-list list-unstyled mb-0">
+                                                <li class="d-flex">
+                                                    <span class="mr-1"><b>Hopedale Community Hospital</b> (2.04 km)</span>
+                                                    <ul class="list-unstyled list-inline ml-auto">
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star-half-alt fa-xs"></i></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="d-flex">
+                                                    <span class="mr-1"><b>North Star Medical Clinic</b> (1.45 km)</span>
+                                                    <ul class="list-unstyled list-inline ml-auto">
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star-half-alt fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="far fa-star fa-xs"></i></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="d-flex">
+                                                    <span class="mr-1"><b>Maple Valley General Hospital</b> (2.64 km)</span>
+                                                    <ul class="list-unstyled list-inline ml-auto">
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star-half-alt fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="far fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="far fa-star fa-xs"></i></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="nearby-info">
+                                        <span class="nearby-title mb-2 d-block text-danger">
+                                            <i class="fas fa-bus-alt mr-2"></i><b>Transportation</b>
+                                        </span>
+                                        <div class="nearby-list">
+                                            <ul class="property-list list-unstyled mb-0">
+                                                <li class="d-flex">
+                                                    <span class="mr-1"><b>Central bus depot </b> (2.04 km)</span>
+                                                    <ul class="list-unstyled list-inline ml-auto">
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star-half-alt fa-xs"></i></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="d-flex">
+                                                    <span class="mr-1"><b>Travello & Bus Charter Express</b> (2.54 km)</span>
+                                                    <ul class="list-unstyled list-inline ml-auto">
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star-half-alt fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="far fa-star fa-xs"></i></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="d-flex">
+                                                    <span class="mr-1"><b>Charing Cross & Paddington Shipping</b> (2.64 km)</span>
+                                                    <ul class="list-unstyled list-inline ml-auto">
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="fas fa-star-half-alt fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="far fa-star fa-xs"></i></li>
+                                                        <li class="list-inline-item m-0 text-warning"><i class="far fa-star fa-xs"></i></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-4 mb-4 mb-sm-5 mt-sm-5">
+                        <div class="property-schedule">
+                            <div class="row">
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <h5>Schedule a tour</h5>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6 datetimepickers">
+                                            <div class="input-group date" id="datetimepicker-01" data-target-input="nearest">
+                                                <input type="text" class="form-control datetimepicker-input" placeholder="Date" data-target="#datetimepicker-01">
+                                                <div class="input-group-append" data-target="#datetimepicker-01" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-6 datetimepickers">
+                                            <div class="input-group date" id="datetimepicker-03" data-target-input="nearest">
+                                                <input type="text" class="form-control datetimepicker-input" placeholder="Time" data-target="#datetimepicker-03" />
+                                                <div class="input-group-append" data-target="#datetimepicker-03" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <input type="text" class="form-control" placeholder="Name">
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <input type="email" class="form-control" placeholder="Email">
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <input type="Text" class="form-control" placeholder="Phone">
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <textarea class="form-control" rows="4" placeholder="Message"></textarea>
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                        <div class="col-sm-6"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-4 mb-4 mb-sm-5 mt-sm-5">
+                        <div class="property-statistics">
+                            <div class="row">
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <h5>Page views statistics</h5>
+                                </div>
+                                <div class="col-sm-9">
+                                    <img class="img-fluid" src="/Temp/images/property/views--statistics.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Property Detail -->
+    <!--=================================
+    Properties -->
+    <section class="space-pt">
+        <div class="container">
+            <hr class="mb-5 mt-0">
+            <h5 class="mb-4">Similar properties</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="property-item">
+                        <div class="property-image bg-overlay-gradient-04">
+                            <img class="img-fluid" src="~/Temp/images/homes/outdoor/9.jpg" alt="">
+                            <div class="property-lable">
+                                <span class="badge badge-md badge-primary">Approved</span>
+                                <span class="badge badge-md badge-info">Sale </span>
+                            </div>
+                            <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
+                            <div class="property-agent">
+                                <div class="property-agent-image">
+                                    <img class="img-fluid" src="/Temp/images/avatar/01.jpg" alt="">
+                                </div>
+                                <div class="property-agent-info">
+                                    <a class="property-agent-name" href="#">Alice Williams</a>
+                                    <span class="d-block">Company Agent</span>
+                                    <ul class="property-agent-contact list-unstyled">
+                                        <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
+                                        <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="property-agent-popup">
+                                <a href="#"><i class="fas fa-camera"></i> 06</a>
+                            </div>
+                        </div>
+                        <div class="property-details">
+                            <div class="property-details-inner">
+                                <h5 class="property-title"><a href="/Property/Index/">Ample apartment at last floor </a></h5>
+                                <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Virginia drive temple hills</span>
+                                <span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 days ago</span>
+                                <div class="property-price">$310.000.00 </div>
+                                <div class="property-price">$30.00<span> / Ticket</span> </div>
+                                <ul class="property-info list-unstyled d-flex">
+                                    <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>1</span></li>
+                                    <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
+                                    <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>145m</span></li>
+                                </ul>
+                            </div>
+                            <div class="property-btn">
+                                <a class="property-link" href="/Property/Index/">See Details</a>
+                                <ul class="property-listing-actions list-unstyled mb-0">
+                                    @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
+                                    <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="property-item">
+                        <div class="property-image bg-overlay-gradient-04">
+                            <img class="img-fluid" src="~/Temp/images/homes/outdoor/12.jpg" alt="">
+                            <div class="property-lable">
+                                <span class="badge badge-md badge-primary">Approved</span>
+                                <span class="badge badge-md badge-info">New </span>
+                            </div>
+                            <div class="property-agent">
+                                <div class="property-agent-image">
+                                    <img class="img-fluid" src="/Temp/images/avatar/02.jpg" alt="">
+                                </div>
+                                <div class="property-agent-info">
+                                    <a class="property-agent-name" href="#">John doe</a>
+                                    <span class="d-block">Company Agent</span>
+                                    <ul class="property-agent-contact list-unstyled">
+                                        <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
+                                        <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="property-agent-popup">
+                                <a href="#"><i class="fas fa-camera"></i> 12</a>
+                            </div>
+                        </div>
+                        <div class="property-details">
+                            <div class="property-details-inner">
+                                <h5 class="property-title"><a href="/Property/Index/">Awesome family home</a></h5>
+                                <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Vermont dr. hephzibah</span>
+                                <span class="property-agent-date"><i class="far fa-clock fa-md"></i>2 months ago</span>
+                                <div class="property-price">$350.000.00 </div>
+                                <div class="property-price">$30.00<span> / Ticket</span> </div>
+                                <ul class="property-info list-unstyled d-flex">
+                                    <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>2</span></li>
+                                    <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>3</span></li>
+                                    <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>215m</span></li>
+                                </ul>
+                            </div>
+                            <div class="property-btn">
+                                <a class="property-link" href="/Property/Index/">See Details</a>
+                                <ul class="property-listing-actions list-unstyled mb-0">
+                                    @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
+                                    <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="property-item">
+                        <div class="property-image bg-overlay-gradient-04">
+                            <img class="img-fluid" src="~/Temp/images/homes/outdoor/2.jpg" alt="">
+                            <div class="property-lable">
+                                <span class="badge badge-md badge-primary">Approved</span>
+                                <span class="badge badge-md badge-info">Hot </span>
+                            </div>
+                            <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
+                            <div class="property-agent">
+                                <div class="property-agent-image">
+                                    <img class="img-fluid" src="/Temp/images/avatar/03.jpg" alt="">
+                                </div>
+                                <div class="property-agent-info">
+                                    <a class="property-agent-name" href="#">Felica queen</a>
+                                    <span class="d-block">Investment</span>
+                                    <ul class="property-agent-contact list-unstyled">
+                                        <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
+                                        <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="property-agent-popup">
+                                <a href="#"><i class="fas fa-camera"></i> 03</a>
+                            </div>
+                        </div>
+                        <div class="property-details">
+                            <div class="property-details-inner">
+                                <h5 class="property-title"><a href="/Property/Index/">Contemporary apartment</a></h5>
+                                <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Newport st. mebane, nc</span>
+                                <span class="property-agent-date"><i class="far fa-clock fa-md"></i>6 months ago</span>
+                                <div class="property-price">$220.00 </div>
+                                <div class="property-price">$20.00<span> / ticket</span> </div>
+                                <ul class="property-info list-unstyled d-flex">
+                                    <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>3</span></li>
+                                    <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>4</span></li>
+                                    <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>3,189m</span></li>
+                                </ul>
+                            </div>
+                            <div class="property-btn">
+                                <a class="property-link" href="/Property/Index/">See Details</a>
+                                <ul class="property-listing-actions list-unstyled mb-0">
+                                    @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
+                                    <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Properties -->
+    <!--=================================
+    Review -->
+    <!--<section class="space-pb">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h4>Leave a review for Rylan Tolbert</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="review d-flex">
+                        <div class="review-avatar avatar avatar-xl mr-3">
+                            <img class="img-fluid rounded-circle" src="/Temp/images/avatar/01.jpg" alt="">
+                        </div>
+                        <div class="review-info flex-grow-1">
+                            <span class="mb-2 d-block">Rating:</span>
+                            <ul class="list-unstyled list-inline">
+                                <li class="list-inline-item m-0 text-warning"><i class="fas fa-star"></i></li>
+                                <li class="list-inline-item m-0 text-warning"><i class="fas fa-star"></i></li>
+                                <li class="list-inline-item m-0 text-warning"><i class="fas fa-star"></i></li>
+                                <li class="list-inline-item m-0 text-warning"><i class="fas fa-star-half-alt"></i></li>
+                                <li class="list-inline-item m-0 text-warning"><i class="far fa-star"></i></li>
+                            </ul>
+                            <div class="mb-3">
+                                <span class="mb-2 d-block">Rating comment:</span>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <span> <a href="#"> <b>Login</b>  </a> to leave a review</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+    <!--=================================
+    Review -->
+</div>
+
+
+
+

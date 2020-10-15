@@ -73,13 +73,13 @@ Submit Property -->
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Property Title </label>
-                                            <input type="text" class="form-control" name="Name" placeholder="Property Title">
+                                            <input type="text" class="form-control" required name="Name" placeholder="Property Title">
                                         </div>
                                         <div class="form-group col-md-6 select-border">
                                             <label>Offer</label>
-                                            <select name="SellingType" class="form-control basic-select">
-                                                <option value="true" selected="selected">Direct Sell</option>
-                                                <option value="false">Lottary Sell</option>
+                                            <select name="SellingType" required class="form-control basic-select">
+                                                <option value="false" selected="selected">Direct Sell</option>
+                                                <option value="true">Lottary Sell</option>
                                             </select>
                                         </div>
                                         @*<div class="form-group col-md-6 select-border">
@@ -91,7 +91,7 @@ Submit Property -->
                                             </div>*@
                                         <div class="form-group col-md-6 select-border">
                                             <label>Property Type</label>
-                                            <select name="PropertyType" class="form-control basic-select">
+                                            <select name="PropertyType" required class="form-control basic-select">
                                                 @foreach (var item in propertyTypes)
                                                 {
                                                     <option value="@item.Value">@item.Name</option>
@@ -106,7 +106,7 @@ Submit Property -->
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text"><i class="fas fa-dollar-sign"></i></div>
                                                 </div>
-                                                <input type="number" name="Price" class="form-control" placeholder="Total Amount">
+                                                <input type="number" required name="Price" class="form-control" placeholder="Total Amount">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
@@ -115,16 +115,16 @@ Submit Property -->
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text"><i class="fas fa-dollar-sign"></i></div>
                                                 </div>
-                                                <input type="number" name="TicketPrice" class="form-control" placeholder="Ticket Price">
+                                                <input type="number" required name="TicketPrice" class="form-control" placeholder="Ticket Price">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Area</label>
-                                            <input class="form-control" name="Area" type="number" placeholder="Type (sq ft)">
+                                            <input class="form-control" required name="Area" type="number" placeholder="Type (sq ft)">
                                         </div>
                                         <div class="form-group col-md-6 select-border">
                                             <label>Rooms</label>
-                                            <select name="RoomNumber" class="form-control basic-select">
+                                            <select name="RoomNumber" required class="form-control basic-select">
                                                 @for (int i = 1; i <= 20; i++)
                                                 {
                                                     <option value="@i">@i</option>
@@ -135,7 +135,7 @@ Submit Property -->
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Video</label>
-                                            <input class="form-control" name="VideoUrl" placeholder="URL to oEmbed supported service">
+                                            <input class="form-control" required name="VideoUrl" placeholder="URL to oEmbed supported service">
                                         </div>
                                     </div>
 
@@ -143,7 +143,7 @@ Submit Property -->
 
                                 <div class="tab-pane fade" id="tab-02" role="tabpanel" aria-labelledby="tab-02-tab">
                                     <div class="custom-file">
-                                        <input name="Galerry" type="file" multiple class="custom-file-input" id="galleryFile">
+                                        <input name="Galerry" type="file" required multiple class="custom-file-input" id="galleryFile">
                                         <label class="custom-file-label" for="galleryFile">Choose file</label>
                                     </div>
                                 </div>
@@ -159,8 +159,8 @@ Submit Property -->
 
                                         <div class="form-group col-md-6 select-border">
                                             <label>Regions</label>
-                                            <select name="City" class="form-control basic-select" id="CitySelect">
-                                                <option value="" selected disabled>Select City</option>
+                                            <select name="City" required class="form-control basic-select" id="CitySelect">
+                                                <option value=""  selected disabled>Select City</option>
                                                 @foreach (var item in Model)
                                                 {
                                                     <option value="@item.CityId">@item.Name</option>
@@ -170,7 +170,7 @@ Submit Property -->
                                         </div>
                                         <div class="form-group col-md-6 select-border">
                                             <label>Regions</label>
-                                            <select name="District" class="form-control basic-select" id="DistrictSelect">
+                                            <select name="District" required class="form-control basic-select" id="DistrictSelect">
                                                 <option value="" selected disabled>Select District</option>
                                                 @*@foreach (var item in Model)
                                                 {
@@ -196,7 +196,7 @@ Submit Property -->
                                         </div>
                                         <div class="form-group col-md-6 select-border">
                                             <label>Bedrooms</label>
-                                            <select name="BedroomNumber" class="form-control basic-select">
+                                            <select name="BedroomNumber" required class="form-control basic-select">
                                                 @for (int i = 0; i < 10; i++)
                                                 {
                                                     <option value="@i">@i</option>
@@ -206,7 +206,7 @@ Submit Property -->
                                         </div>
                                         <div class="form-group col-md-6 select-border">
                                             <label>Bathrooms</label>
-                                            <select name="BathroomNumber" class="form-control basic-select">
+                                            <select name="BathNumber" required class="form-control basic-select">
                                                 @for (int i = 0; i < 10; i++)
                                                 {
                                                     <option value="@i">@i</option>
@@ -216,7 +216,7 @@ Submit Property -->
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Parking </label>
-                                            <select name="Parking" class="form-control basic-select">
+                                            <select name="Parking" required class="form-control basic-select">
 
                                                 <option value="true" selected>Yes</option>
                                                 <option value="false">No</option>
@@ -237,7 +237,7 @@ Submit Property -->
 
                                         <div class="form-group col-md-6">
                                             <label>Exercise Room </label>
-                                            <select name="ExcersizeRoom" class="form-control basic-select">
+                                            <select name="ExcerciseRoom" class="form-control basic-select">
                                                 <option value="true" selected>Yes</option>
                                                 <option value="false">No</option>
 
@@ -262,7 +262,7 @@ Submit Property -->
                                         <div class="form-group col-md-6">
                                             <label>Browser file</label>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" multiple="multiple" name="FloorPlans" accept="image/x-png,image/gif,image/jpeg" id="customFile">
+                                                <input type="file" class="custom-file-input" multiple="multiple" required name="FloorPlans" accept="image/x-png,image/gif,image/jpeg" id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
                                         </div>

@@ -1,5 +1,6 @@
 ﻿using HomeLt.Net.Legacy.BLL.Postgre;
 using HomeLt.Net.Legacy.ENTITIES;
+using HomeLt.Net.Legacy.UI.Filters;
 using HomeLt.Net.Legacy.UI.Models.Home;
 using ImageSaver;
 using System;
@@ -25,12 +26,22 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         }
 
 
+        public ActionResult HomeDetail(int id)
+        {
+            using (HomeManager manager=new HomeManager())
+            {
+                var home = manager.Get(f => f.HomeId == id);
+                return View(home);
+            }
+        }
+
+
         public ActionResult AddFav(int homeId, int userId)
         {
             return View();
         }
 
-
+        [LoginFilter]
         public ActionResult AddHome()
         {
             using (CityManager manager = new CityManager())
@@ -68,7 +79,10 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                         PropertyType = model.PropertyType,
                         RoomNumber = model.RoomNumber,
                         UserId = currentUser.UserId,
-                        AddressId = adress.PropertyAdressId
+                        AddressId = adress.PropertyAdressId,
+                        isAvaible=true,
+                        isApproved=model.isApproved
+                       
                         
 
                     };

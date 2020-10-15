@@ -31,7 +31,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         [HttpPost]
         public ActionResult Pay(PayViewModel model)
         {
-            var ticketList = new List<Ticket>();
+            List<Ticket> ticketList = new List<Ticket>();
             var currentUser = Session[Constants.Sessions.SessionUser] as User;
             using (TicketManager ticketManager=new TicketManager())
             {
@@ -46,12 +46,16 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                     ticket.UserId = currentUser.UserId;
                     
                     ticketManager.Add(ticket);
-                    ticketList.Add(ticket);
+                    
 
                 }
-                
+                ticketList= ticketManager.GetList(f => f.HomeId == model.HomeId && f.UserId == currentUser.UserId).Take(amount).ToList();
+                TempData["ticketList"] = ticketList;
+
+
+
             }
-            TempData["ticketList"] = ticketList;
+            
 
             return RedirectToAction("Summary");
         }
@@ -62,7 +66,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
             List<Ticket> tickets = TempData["ticketList"] as List<Ticket>;
             if (tickets==null)
             {
-                return RedirectToAction("/Search/Index");
+                return RedirectToAction("/Search/Index/");
             }
             return View(tickets);
         }

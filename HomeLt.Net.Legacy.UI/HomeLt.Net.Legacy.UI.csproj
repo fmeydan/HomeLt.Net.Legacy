@@ -421,6 +421,7 @@
     <Compile Include="Constants\MailBodies.cs" />
     <Compile Include="Constants\Sessions.cs" />
     <Compile Include="Constants\TempDataMessages.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AdressController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -547,6 +548,8 @@
     <Content Include="Views\Shared\_PartialMessage.cshtml" />
     <Content Include="Views\Ticket\Buy.cshtml" />
     <Content Include="Views\Ticket\Summary.cshtml" />
+    <Content Include="Views\Home\HomeDetail.cshtml" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
     <None Include="Views\User\Profile.3cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Home\AddHome.cshtml" />

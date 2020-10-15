@@ -38,6 +38,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                 var result = manager.Get(f => f.Email == model.Email && f.Password == model.Password);
                 if (result != null)
                 {
+                    var list = result.Tickets;
                     Session.Add(Constants.Sessions.SessionUser, result);
                     return RedirectToAction("Index", "Home");
 
