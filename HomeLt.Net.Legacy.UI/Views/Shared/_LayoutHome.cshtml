@@ -1,7 +1,7 @@
 ﻿@using HomeLt.Net.Legacy.UI.Helpers
 @using HomeLt.Net.Legacy.UI.Constants
-@{ 
-   var currentUser = Session[HomeLt.Net.Legacy.UI.Constants.Sessions.SessionUser] as HomeLt.Net.Legacy.ENTITIES.User;
+@{
+    var currentUser = Session[HomeLt.Net.Legacy.UI.Constants.Sessions.SessionUser] as HomeLt.Net.Legacy.ENTITIES.User;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -46,66 +46,66 @@
 <body>
 
     @*=================================
-    header*@ 
+        header*@
     @*<div class="modal login fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div id="msg"></div>
-            <div class="modal-header border-0">
-                <h5 class="modal-title" id="loginModalLabel">Log in & Register</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <ul class="nav nav-tabs nav-tabs-02 justify-content-center" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="false">Log in</a>
-                    </li>
-                    
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                        <form class="form-row mt-4 align-items-center" id="LoginForm" action="/User/Login" method="post">
-                            <div class="form-group col-sm-12">
-                                <input type="email" class="form-control" required placeholder="Email" id="LoginUserMail" name="Email">
-                            </div>
-                            <div class="form-group col-sm-12">
-                                <input type="Password" class="form-control" required id="UserLoginPassword" placeholder="Password" name="Password">
-                            </div>
-                            <div class="col-sm-6 offset-sm-3 mb-3">
-                                <button  class="btn btn-primary btn-block" id="ButtonSignIn">Login</button>
-                            </div>
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div id="msg"></div>
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="loginModalLabel">Log in & Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs nav-tabs-02 justify-content-center" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="false">Log in</a>
+                        </li>
 
-                        </form>
-                        <div class="login-social-media border pl-4 pr-4 pb-4 pt-0 rounded">
-                            <div class="mb-4 d-block text-center"><b class="bg-white pl-2 pr-2 mt-3 d-block">Login or Sign in with</b>
-                                                                  <a href="@Url.Action("Register","User")">Doesn't have an account? Register Now!</a>
-                            </div>
-                            <form class="row">
-                                <div class="col-sm-6">
-                                    <a class="btn facebook-bg social-bg-hover d-block mb-3" href="#"><span><i class="fab fa-facebook-f"></i>Login with Facebook</span></a>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                            <form class="form-row mt-4 align-items-center" id="LoginForm" action="/User/Login" method="post">
+                                <div class="form-group col-sm-12">
+                                    <input type="email" class="form-control" required placeholder="Email" id="LoginUserMail" name="Email">
                                 </div>
-                                <div class="col-sm-6">
-                                    <a class="btn twitter-bg social-bg-hover d-block mb-3" href="#"><span><i class="fab fa-twitter"></i>Login with Twitter</span></a>
+                                <div class="form-group col-sm-12">
+                                    <input type="Password" class="form-control" required id="UserLoginPassword" placeholder="Password" name="Password">
                                 </div>
-                                <div class="col-sm-6">
-                                    <a class="btn google-bg social-bg-hover d-block mb-3 mb-sm-0" href="#"><span><i class="fab fa-google"></i>Login with Google</span></a>
+                                <div class="col-sm-6 offset-sm-3 mb-3">
+                                    <button  class="btn btn-primary btn-block" id="ButtonSignIn">Login</button>
                                 </div>
-                                <div class="col-sm-6">
-                                    <a class="btn linkedin-bg social-bg-hover d-block" href="#"><span><i class="fab fa-linkedin-in"></i>Login with Linkedin</span></a>
-                                </div>
+
                             </form>
+                            <div class="login-social-media border pl-4 pr-4 pb-4 pt-0 rounded">
+                                <div class="mb-4 d-block text-center"><b class="bg-white pl-2 pr-2 mt-3 d-block">Login or Sign in with</b>
+                                                                      <a href="@Url.Action("Register","User")">Doesn't have an account? Register Now!</a>
+                                </div>
+                                <form class="row">
+                                    <div class="col-sm-6">
+                                        <a class="btn facebook-bg social-bg-hover d-block mb-3" href="#"><span><i class="fab fa-facebook-f"></i>Login with Facebook</span></a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="btn twitter-bg social-bg-hover d-block mb-3" href="#"><span><i class="fab fa-twitter"></i>Login with Twitter</span></a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="btn google-bg social-bg-hover d-block mb-3 mb-sm-0" href="#"><span><i class="fab fa-google"></i>Login with Google</span></a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="btn linkedin-bg social-bg-hover d-block" href="#"><span><i class="fab fa-linkedin-in"></i>Login with Linkedin</span></a>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                   
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>*@
+        </div>*@
     @*=================================
-      Modal login *@
+        Modal login *@
     <header class="header">
         <div class="topbar">
             <div class="container-fluid">
@@ -167,41 +167,46 @@
                 </a>
                 <div class="navbar-collapse collapse justify-content-center">
                     <ul class="nav navbar-nav">
-
-                        @Html.MenuLink("Home", "Index", "Home", "", "nav-link")
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",null)">Properties</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { residency=(int)EnumApproved.Approved})">Approved Properties</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { residency=(int)EnumApproved.NonApproved})">Non-Approved Properties</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { saleType=(int)EnumSaleType.Direct})">Direct Sale</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { saleType=(int)EnumSaleType.Lottery})">Lottery Sale</a></li>
+                        @*@Html.MenuLink("Home", "Index", "Home", "", "nav-link")*@
                         @*@Html.MenuLink("Properties", "Index", "Search", "", "nav-link")*@
-                        @Html.MenuLink("Approved Properties", "Index", "Search",new { residency =(int)EnumApproved.Approved }, "nav-link")
-                        @Html.MenuLink("Non-Approved Properties", "Index", "Search", new { residency = (int)EnumApproved.NonApproved }, "nav-link")
-                        @Html.MenuLink("Direct", "Index", "Search", new {saleType= (int)EnumSaleType.Direct }, "nav-link")
-                        @Html.MenuLink("Lottery", "Index", "Search", new { saleType = (int)EnumSaleType.Lottery }, "nav-link")
-                        @Html.MenuLink("Lottery Results", "Draws", "Lottery", "", "nav-link")
+                        @*@Html.MenuLink("Approved Properties", "Index", "Search",new { residency =(int)EnumApproved.Approved }, "nav-link")
+        @Html.MenuLink("Non-Approved Properties", "Index", "Search", new { residency = (int)EnumApproved.NonApproved }, "nav-link")
+        @Html.MenuLink("Direct", "Index", "Search", new {saleType= (int)EnumSaleType.Direct }, "nav-link")
+        @Html.MenuLink("Lottery", "Index", "Search", new { saleType = (int)EnumSaleType.Lottery }, "nav-link")
+        @Html.MenuLink("Lottery Results", "Draws", "Lottery", "", "nav-link")*@
 
 
 
                         @*@Html.MenuLink("Turkish Citizenship", "citizenship", "services", "", "nav-link")*@
                         @*@Html.MenuLink("How To Join", "howtobuy", "services", "", "nav-link")*@
 
-                        @Html.MenuLink("Blog", "Index", "Blog", "", "nav-link")
+                        @*@Html.MenuLink("Blog", "Index", "Blog", "", "nav-link")*@
 
 
 
                         @*<li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Services <i class="fas fa-chevron-down fa-xs"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    @Html.MenuLink("Properties For You", "propertiesforyou", "Services", "", "dropdown-item")
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services <i class="fas fa-chevron-down fa-xs"></i>
+            </a>
+            <ul class="dropdown-menu">
+                @Html.MenuLink("Properties For You", "propertiesforyou", "Services", "", "dropdown-item")
 
-                                    @Html.MenuLink("Property Management", "PropertyManagement", "Services", "", "dropdown-item")
-                                    @Html.MenuLink("After Join Service", "AfterSale", "Services", "", "dropdown-item")
-                                    @Html.MenuLink("Residence Permit Service", "ResidentPermit", "Services", "", "dropdown-item")
-
-
+                @Html.MenuLink("Property Management", "PropertyManagement", "Services", "", "dropdown-item")
+                @Html.MenuLink("After Join Service", "AfterSale", "Services", "", "dropdown-item")
+                @Html.MenuLink("Residence Permit Service", "ResidentPermit", "Services", "", "dropdown-item")
 
 
 
-                                </ul>
-                            </li>*@
+
+
+            </ul>
+        </li>*@
                         <li class="nav-item dropdown">
                             @Html.MenuLink("About Us", "Index", "AboutUs", "", "nav-link")
 
@@ -337,7 +342,7 @@
     <script src="~/Temp/js/motion.custom.js"></script>
     <script src="~/Temp/card/dist/jquery.card.js"></script>
     <script src="~/Temp/card/dist/card.js"></script>
-    @RenderSection("buyJs",false)
+    @RenderSection("buyJs", false)
 
 
 </body>
