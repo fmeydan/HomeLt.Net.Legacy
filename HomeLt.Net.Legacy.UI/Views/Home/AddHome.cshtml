@@ -143,8 +143,8 @@ Submit Property -->
 
                                 <div class="tab-pane fade" id="tab-02" role="tabpanel" aria-labelledby="tab-02-tab">
                                     <div class="custom-file">
-                                        <input name="Galerry" type="file" multiple class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                        <input name="Galerry" type="file" multiple class="custom-file-input" id="galleryFile">
+                                        <label class="custom-file-label" for="galleryFile">Choose file</label>
                                     </div>
                                 </div>
 
@@ -159,7 +159,7 @@ Submit Property -->
 
                                         <div class="form-group col-md-6 select-border">
                                             <label>Regions</label>
-                                            <select name="City" class="form-control basic-select" id="CitiySelect">
+                                            <select name="City" class="form-control basic-select" id="CitySelect">
                                                 <option value="" selected disabled>Select City</option>
                                                 @foreach (var item in Model)
                                                 {
@@ -172,10 +172,10 @@ Submit Property -->
                                             <label>Regions</label>
                                             <select name="District" class="form-control basic-select" id="DistrictSelect">
                                                 <option value="" selected disabled>Select District</option>
-                                                @foreach (var item in Model)
+                                                @*@foreach (var item in Model)
                                                 {
                                                     <option value="@item.CityId">@item.Name</option>
-                                                }
+                                                }*@
 
                                             </select>
                                         </div>

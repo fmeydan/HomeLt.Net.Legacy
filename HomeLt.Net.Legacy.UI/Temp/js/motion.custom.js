@@ -1,4 +1,6 @@
 ﻿
+
+
 var path = window.location.href;
 var urParts = path.split("/");
 
@@ -24,6 +26,37 @@ var urParts = path.split("/");
 	})
 
 $(document).ready(function () {
+
+	$("#CitySelect").change(function () {
+		
+		var cityId = $("#CitySelect").val();
+		var districtSelect = $("#DistrictSelect");
+		
+		$.ajax({
+			method: "POST",
+			url: "/Adress/GetDistricts/",
+			data: { id: cityId },
+			success: function (model) {
+				districtSelect.empty();
+				var data = $.parseJSON(model);
+				$.each(data, function (k, v) {
+					districtSelect.append('<option value=' + v["DistrictId"]  + '>' + v["Name"] + '</option>');
+					
+                })
+				
+            }
+        })
+
+	})
+
+
+	
+
+
+
+
+
+
 
 	var path = window.location.href;
 	var urParts = path.split("/");

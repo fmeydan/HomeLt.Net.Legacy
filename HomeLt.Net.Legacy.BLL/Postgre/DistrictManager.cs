@@ -1,4 +1,5 @@
 ﻿using HomeLt.Net.Legacy.DAL;
+using HomeLt.Net.Legacy.ENTITIES;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.BLL.Postgre
 {
-    public class DistrictManager : BaseRepository<DistrictManager, HomeltPostgre>, IDisposable
+    public class DistrictManager : BaseRepository<District, HomeltPostgre>, IDisposable
     {
         private bool disposedValue;
 

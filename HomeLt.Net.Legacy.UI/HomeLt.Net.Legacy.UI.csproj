@@ -57,6 +57,9 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql, Version=4.1.5.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.4.1.5\lib\net461\Npgsql.dll</HintPath>
     </Reference>
@@ -418,6 +421,7 @@
     <Compile Include="Constants\MailBodies.cs" />
     <Compile Include="Constants\Sessions.cs" />
     <Compile Include="Constants\TempDataMessages.cs" />
+    <Compile Include="Controllers\AdressController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
@@ -558,6 +562,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Documents\" />
     <Folder Include="Content\Images\Homes\" />
+    <Folder Include="Views\Adress\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HomeLt.Net.Legacy.BLL\HomeLt.Net.Legacy.BLL.csproj">
