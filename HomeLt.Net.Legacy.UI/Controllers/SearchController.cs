@@ -60,7 +60,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
             {
 
                 var list = manager.GetList();
-                if (model.isApproved!=null)
+                if (model.isApproved)
                 {
                     list = list.Where(f => f.isApproved == model.isApproved).ToList();
                 }

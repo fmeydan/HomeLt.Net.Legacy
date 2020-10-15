@@ -26,7 +26,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         }
 
 
-        public ActionResult HomeDetail(int id)
+        public ActionResult Detail(int id)
         {
             using (HomeManager manager=new HomeManager())
             {

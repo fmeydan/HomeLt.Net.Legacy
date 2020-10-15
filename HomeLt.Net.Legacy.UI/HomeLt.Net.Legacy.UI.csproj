@@ -548,7 +548,7 @@
     <Content Include="Views\Shared\_PartialMessage.cshtml" />
     <Content Include="Views\Ticket\Buy.cshtml" />
     <Content Include="Views\Ticket\Summary.cshtml" />
-    <Content Include="Views\Home\HomeDetail.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <None Include="Views\User\Profile.3cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
