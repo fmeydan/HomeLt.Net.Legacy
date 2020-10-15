@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "AddHome";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
-    List<EnumPropertyModel> propertyTypes =  HomeLt.Net.Legacy.UI.Constants.CastEnumToList.EnumList();
+    List<EnumPropertyModel> propertyTypes = HomeLt.Net.Legacy.UI.Constants.CastEnumToList.EnumList();
 }
 <!--=================================
 breadcrumb -->
@@ -24,49 +24,50 @@ breadcrumb -->
 breadcrumb -->
 <!--=================================
 Submit Property -->
-<section class="space-ptb">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title d-flex align-items-center">
-                    <h2>Submit Property</h2>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <ul class="nav nav-tabs nav-tabs-03 nav-fill" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="tab-01-tab" data-toggle="tab" href="#tab-01" role="tab" aria-controls="tab-01" aria-selected="true">
-                                    <span>01</span>
-                                    Basic Information
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab-02-tab" data-toggle="tab" href="#tab-02" role="tab" aria-controls="tab-02" aria-selected="false">
-                                    <span>02</span>
-                                    Gallery
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab-03-tab" data-toggle="tab" href="#tab-03" role="tab" aria-controls="tab-03" aria-selected="false">
-                                    <span>03</span>
-                                    Location
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab-04-tab" data-toggle="tab" href="#tab-04" role="tab" aria-controls="tab-04" aria-selected="false">
-                                    <span>04</span>
-                                    Detailed Information
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab-05-tab" data-toggle="tab" href="#tab-05" role="tab" aria-controls="tab-05" aria-selected="false">
-                                    <span>05</span>
-                                    Floorplans
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content mt-4" id="myTabContent">
-                            <form action="#" method="post" enctype="multipart/form-data">
+<form action="#" method="post" enctype="multipart/form-data">
+    <section class="space-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title d-flex align-items-center">
+                        <h2>Submit Property</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="nav nav-tabs nav-tabs-03 nav-fill" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="tab-01-tab" data-toggle="tab" href="#tab-01" role="tab" aria-controls="tab-01" aria-selected="true">
+                                        <span>01</span>
+                                        Basic Information
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab-02-tab" data-toggle="tab" href="#tab-02" role="tab" aria-controls="tab-02" aria-selected="false">
+                                        <span>02</span>
+                                        Gallery
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab-03-tab" data-toggle="tab" href="#tab-03" role="tab" aria-controls="tab-03" aria-selected="false">
+                                        <span>03</span>
+                                        Location
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab-04-tab" data-toggle="tab" href="#tab-04" role="tab" aria-controls="tab-04" aria-selected="false">
+                                        <span>04</span>
+                                        Detailed Information
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab-05-tab" data-toggle="tab" href="#tab-05" role="tab" aria-controls="tab-05" aria-selected="false">
+                                        <span>05</span>
+                                        Floorplans
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content mt-4" id="myTabContent">
+
                                 <div class="tab-pane fade show active" id="tab-01" role="tabpanel" aria-labelledby="tab-01-tab">
 
                                     <div class="form-row">
@@ -82,18 +83,18 @@ Submit Property -->
                                             </select>
                                         </div>
                                         @*<div class="form-group col-md-6 select-border">
-                    <label>Rental Period</label>
-                    <select class="form-control basic-select">
-                        <option value="value 01" selected="selected">Monthly</option>
-                        <option value="value 02">yearly</option>
-                    </select>
-                </div>*@
+                                                <label>Rental Period</label>
+                                                <select class="form-control basic-select">
+                                                    <option value="value 01" selected="selected">Monthly</option>
+                                                    <option value="value 02">yearly</option>
+                                                </select>
+                                            </div>*@
                                         <div class="form-group col-md-6 select-border">
                                             <label>Property Type</label>
                                             <select name="PropertyType" class="form-control basic-select">
                                                 @foreach (var item in propertyTypes)
                                                 {
-                                                    <option value="@item.Value" >@item.Name</option>
+                                                    <option value="@item.Value">@item.Name</option>
                                                 }
 
 
@@ -128,7 +129,7 @@ Submit Property -->
                                                 {
                                                     <option value="@i">@i</option>
                                                 }
-                                               
+
 
                                             </select>
                                         </div>
@@ -237,7 +238,16 @@ Submit Property -->
                                         <div class="form-group col-md-6">
                                             <label>Exercise Room </label>
                                             <select name="ExcersizeRoom" class="form-control basic-select">
-                                                <option value="true" selected >Yes</option>
+                                                <option value="true" selected>Yes</option>
+                                                <option value="false">No</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label>Approved </label>
+                                            <select name="isApproved" class="form-control basic-select">
+                                                <option value="true" selected>Yes</option>
                                                 <option value="false">No</option>
 
                                             </select>
@@ -257,29 +267,30 @@ Submit Property -->
                                             </div>
                                         </div>
                                         @*<div class="form-group col-md-6">
-                                            <label>Floorplan Title </label>
-                                            <input type="text" class="form-control" placeholder="Awesome family home">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label>Area</label>
-                                            <input class="form-control" placeholder="Type (sq ft)">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label>Description</label>
-                                            <textarea class="form-control" rows="4" placeholder="Description"></textarea>
-                                        </div>*@
+                                                <label>Floorplan Title </label>
+                                                <input type="text" class="form-control" placeholder="Awesome family home">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label>Area</label>
+                                                <input class="form-control" placeholder="Type (sq ft)">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label>Description</label>
+                                                <textarea class="form-control" rows="4" placeholder="Description"></textarea>
+                                            </div>*@
                                     </div>
 
                                     <input type="submit" name="name" value="Kaydet" class="btn btn-primary mt-3" />
                                     @*<a class="btn btn-primary mt-3" href="/Home/AddHome"><i class="fas fa-plus-circle"></i> Upload floorplans</a>*@
                                 </div>
-                            </form>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</form>
 <!--=================================
 Submit Property -->

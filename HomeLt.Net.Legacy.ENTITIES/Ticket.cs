@@ -13,15 +13,18 @@ namespace HomeLt.Net.Legacy.ENTITIES
     {
         [Key]
         public int TicketId { get; set; }
-        public int DrawId { get; set; }
+        public int HomeId { get; set; }
         public int UserId { get; set; }
         public string TicketCode { get; set; }
         [DefaultValue(false)]
         public bool isWin { get; set; }
 
         //navigation
-        [ForeignKey("DrawId")]
-        public virtual Draw Draw { get; set; }
+        [ForeignKey("HomeId")]
+        public virtual Home Home { get; set; }
+
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
 
     }
 }

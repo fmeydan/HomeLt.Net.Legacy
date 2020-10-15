@@ -41,10 +41,13 @@ namespace HomeLt.Net.Legacy.ENTITIES
         [DefaultValue(false)]
         public bool ExcerciseRoom { get; set; }
 
-
-        
         [DefaultValue(false)]
         public bool SellingType { get; set; }
+
+        
+        public bool isApproved { get; set; }
+
+        public int TotalTickets { get; set; }
 
         //navigation
         [ForeignKey("UserId")]

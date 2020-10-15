@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="City.cs" />
     <Compile Include="District.cs" />
-    <Compile Include="Draw.cs" />
     <Compile Include="Favorite.cs" />
     <Compile Include="Home.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

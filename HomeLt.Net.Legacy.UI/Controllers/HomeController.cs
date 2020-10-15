@@ -68,7 +68,8 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                         PropertyType = model.PropertyType,
                         RoomNumber = model.RoomNumber,
                         UserId = currentUser.UserId,
-                        AddressId = adress.PropertyAdressId,
+                        AddressId = adress.PropertyAdressId
+                        
 
                     };
 
@@ -77,8 +78,8 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                     {
                         using (ImageSaver.ImageSave imgs = new ImageSaver.ImageSave())
                         {
-                            var floorPlans = imgs.SaveMultiImage(model.FloorPlans, new FileNamer().ConvertTRCharToENChar(model.Name), Constants.ConstantPaths.HomeImagePath + "/" + currentUser.UserId + new FileNamer().ConvertTRCharToENChar(currentUser.FirstName));
-                            var gallery = imgs.SaveMultiImage(model.Gallery, new FileNamer().ConvertTRCharToENChar(model.Name), Constants.ConstantPaths.HomeImagePath + "/" + currentUser.UserId + new FileNamer().ConvertTRCharToENChar(currentUser.FirstName));
+                            var floorPlans = imgs.SaveMultiImage(model.FloorPlans, new FileNamer().ConvertTRCharToENChar(model.Name));
+                            var gallery = imgs.SaveMultiImage(model.Gallery, new FileNamer().ConvertTRCharToENChar(model.Name));
                             using (PropertyMediaManager propertyMediaManager = new PropertyMediaManager())
                             {
                                 foreach (var item in floorPlans)
@@ -94,6 +95,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                                 
 
                         }
+                            
                         }
                        
                        

@@ -14,6 +14,11 @@ namespace HomeLt.Net.Legacy.BLL.Postgre
 
         protected virtual void Dispose(bool disposing)
         {
+
+
+
+
+
             if (!disposedValue)
             {
                 if (disposing)

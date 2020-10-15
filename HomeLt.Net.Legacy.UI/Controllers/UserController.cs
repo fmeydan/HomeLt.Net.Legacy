@@ -25,6 +25,8 @@ namespace HomeLt.Net.Legacy.UI.Controllers
 
         public ActionResult LoginRegister()
         {
+            var message = TempData["Message"];
+            TempData["Message"] = message;
             return View();
         }
 
@@ -63,7 +65,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                         {
                             using (ImageSave imageSaver = new ImageSave())
                             {
-                                string imagePath = imageSaver.SaveImage(ProfilePic, user.FirstName + user.LastName, Constants.ConstantPaths.UserImagePath + user.FirstName + user.LastName);
+                                string imagePath = imageSaver.SaveImage(ProfilePic, user.FirstName + user.LastName);
                                 if (!string.IsNullOrEmpty(imagePath))
                                 {
                                     mediaManager.Add(new ENTITIES.UserMedia { UserId = user.UserId, Path = imagePath });
@@ -96,41 +98,41 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         {
             UserProfileViewModel model = new UserProfileViewModel();
             User currentUser = Session[Constants.Sessions.SessionUser] as User;
-            var user = new User();
+            
             using (UserManager manager =new UserManager())
             {
                 
-                //var user = manager.Get(f => f.UserId == currentUser.UserId);
-                user = manager.Get(f => f.UserId == currentUser.UserId, "UserMedias");
+                var user = manager.Get(f => f.UserId == currentUser.UserId);
+                
                
+                return View(user);
 
 
 
             }
 
-            using (HomeManager homeManager = new HomeManager())
-            {
+            //using (HomeManager homeManager = new HomeManager())
+            //{
 
-                var homes = homeManager.GetList("PropertyMedias", f => f.UserId == currentUser.UserId);
-                user.Homes = homes;
+            //    var homes = homeManager.GetList("PropertyMedias", f => f.UserId == currentUser.UserId);
+            //    user.Homes = homes;
 
-                model.User = user;
-                model.Homes = homes;
+            //    model.User = user;
+            //    model.Homes = homes;
 
 
 
-            }
-            using (TicketManager ticketManager = new TicketManager())
-            {
-                model.Tickets = ticketManager.GetList(f => f.UserId == user.UserId);
+            //}
+            //using (TicketManager ticketManager = new TicketManager())
+            //{
+            //    model.Tickets = ticketManager.GetList(f => f.UserId == user.UserId);
 
-            }
-            using (FavoriteManager manager=new FavoriteManager())
-            {
-                model.Favorites = manager.GetList(f => f.UserId == user.UserId);
-            }
+            //}
+            //using (FavoriteManager manager=new FavoriteManager())
+            //{
+            //    model.Favorites = manager.GetList(f => f.UserId == user.UserId);
+            //}
 
-            return View(model);
 
         }
 

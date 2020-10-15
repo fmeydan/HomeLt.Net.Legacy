@@ -1,0 +1,212 @@
+﻿@using HomeLt.Net.Legacy.UI.Constants
+@model HomeLt.Net.Legacy.ENTITIES.Home
+@{
+    ViewBag.Title = "Buy";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+
+<!--=================================
+breadcrumb -->
+<div class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html"> <i class="fas fa-home"></i> </a></li>
+                    <li class="breadcrumb-item"> <i class="fas fa-chevron-right"></i> <a href="/Search/Index">Search</a></li>
+                    <li class="breadcrumb-item active"> <i class="fas fa-chevron-right"></i> <span>Buy Ticket</span></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!--=================================
+breadcrumb -->
+<!--=================================
+Submit Property -->
+<form id="creditCard" action="/Ticket/Pay/" method="post">
+    <section class="space-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title d-flex align-items-center">
+                        <h2>Buy Ticket</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="nav nav-tabs nav-tabs-03 nav-fill" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="tab-01-tab" data-toggle="tab" href="#tab-01" role="tab" aria-controls="tab-01" aria-selected="true">
+                                        <span>01</span>
+                                        Property Summary
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab-02-tab" data-toggle="tab" href="#tab-02" role="tab" aria-controls="tab-02" aria-selected="false">
+                                        <span>02</span>
+                                        Payment
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content mt-4" id="myTabContent">
+
+                                <div class="tab-pane fade show active" id="tab-01" role="tabpanel" aria-labelledby="tab-01-tab">
+
+                                    <div class="container">
+                                        <div class="row">
+
+                                            <div class="col-12">
+                                                <div class="section-title d-flex align-items-center">
+                                                    <h2>My properties</h2>
+                                                </div>
+
+
+
+
+                                                <div class="property-item property-col-list mt-4">
+                                                    <div class="row no-gutters">
+
+                                                        <div class="col-lg-4 col-md-5">
+                                                            <div class="property-image bg-overlay-gradient-04">
+                                                                <img class="img-fluid" src="@(Model.PropertyMedias.FirstOrDefault()?.Path ?? "")" alt="">
+                                                                <div class="property-lable">
+                                                                    @{
+                                                                        EnumPropertyType et = (EnumPropertyType)Model.PropertyType;
+                                                                    }
+                                                                    <span class="badge badge-md badge-primary">@et</span>
+
+                                                                </div>
+                                                                <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-7">
+                                                            <div class="property-details">
+                                                                <div class="property-details-inner">
+                                                                    <div class="property-details-inner-box">
+                                                                        <div class="property-details-inner-box-left">
+                                                                            <h5 class="property-title"><a href="/Property/Detail/@Model.HomeId">@Model.Name </a></h5>
+                                                                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>@Model.Address.District.Name / @Model.Address.District.City.Name</span>
+                                                                            @*<span class="property-agent-date"><i class="far fa-clock fa-md"></i>@{((DateTime.Now - item.InsertDate).TotalDays).ToString();} days ago</span>*@
+
+
+                                                                        </div>
+
+                                                                        <div class="property-price">@Model.Price.ToString("C") </div>
+
+                                                                        <div class="property-price">@Model.TicketPrice.ToString("C")<span> / Ticket </span> </div>
+
+                                                                    </div>
+                                                                    <ul class="property-info list-unstyled d-flex">
+                                                                        <li class="flex-fill property-bed text-center"><i class="fas fa-bed"></i>Bed<span>@Model.BedroomNumber</span></li>
+                                                                        <li class="flex-fill property-bath text-center"><i class="fas fa-bath"></i>Bath<span>@Model.BathNumber</span></li>
+                                                                        <li class="flex-fill property-m-sqft text-center"><i class="far fa-square"></i>sqft<span>@Model.Sqft</span></li>
+                                                                        <li class="flex-fill property-m-sqft text-right">
+                                                                            <div class="input-group float-right" style="width:65%">
+                                                                                <div class="input-group-prepend">
+                                                                                    <div class="input-group-text"><i class="fas fa-ticket-alt"></i></div>
+                                                                                </div>
+                                                                                <input type="number" name="Amount" class="form-control" placeholder="Ticket Amount">
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p class="mb-0 d-none d-block mt-3">@Model.Description</p>
+
+                                                                </div>
+                                                                <div class="property-btn">
+                                                                    <a class="property-link" href="/Property/Detail/@Model.HomeId">See Details</a>
+                                                                    <ul class="property-listing-actions list-unstyled mb-0">
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--=================================
+                                    my-properties -->
+                                </div>
+
+
+
+                                <div class="tab-pane fade" id="tab-02" role="tabpanel" aria-labelledby="tab-02-tab">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 " style="padding-left:10%">
+                                            <div class="card-wrapper col-12 col-md-6"></div>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+
+                                            <div class="row ">
+                                                <input type="text" required name="number" class="form-control col-12 col-md-12" placeholder="Card Number">
+                                                <input type="text" required name="name" class="form-control col-12 col-md-12" placeholder="Card Holder" />
+                                                <input type="text" required name="expiry" class="form-control col-6 col-md-6" placeholder="Exp.Date" />
+                                                <input type="text" required name="cvc" class="form-control col-6 col-md-6" placeholder="CVC" />
+                                                <input type="number" name="HomeId" value="@Model.HomeId" hidden   />
+                                                <input type="submit" name="pay" value="Pay Now" class="btn btn-success col-12" />
+                                            </div>
+
+
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</form>
+<!--=================================
+Submit Property -->
+@section buyjs{
+    <script>
+
+
+        $("#creditCard").card({
+            container: '.card-wrapper'
+        })
+
+                //var card = new Card({
+                //    form: '#creditCard',
+                //    container: '.card-wrapper',
+
+                //    formSelectors: {
+                //        numberInput: 'input#number', // optional — default input[name="number"]
+                //        expiryInput: 'input#expiry', // optional — default input[name="expiry"]
+                //        cvcInput: 'input#cvc', // optional — default input[name="cvc"]
+                //        nameInput: 'input#name' // optional - defaults input[name="name"]
+
+                //    },
+                //    placeholders: {
+                //        number: '•••• •••• •••• ••••',
+                //        name: 'Full Name',
+                //        expiry: '••/••',
+                //        cvc: '•••'
+                //    },
+                //    masks: {
+                //        cardNumber: '•' // optional - mask card number
+                //    }
+                //});
+    </script>
+}

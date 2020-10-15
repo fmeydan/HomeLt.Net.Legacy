@@ -169,6 +169,9 @@
     <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="Content\Media\Homes\2fuat\ttttt.jpg" />
+    <Content Include="Content\Media\Homes\2fuat\ttttt.PNG" />
+    <Content Include="Content\Media\Users\fuatMeydan\fuatMeydan.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Temp\about-us.html" />
     <Content Include="Temp\account-agency-management.html" />
@@ -409,19 +412,24 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Constants\ConstantPaths.cs" />
+    <Compile Include="Constants\EnumApproved.cs" />
     <Compile Include="Constants\EnumPropertyType.cs" />
+    <Compile Include="Constants\EnumSaleType.cs" />
     <Compile Include="Constants\MailBodies.cs" />
     <Compile Include="Constants\Sessions.cs" />
     <Compile Include="Constants\TempDataMessages.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\LoginFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ActiveMenuHelper.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Models\Home\AddHomeModel.cs" />
+    <Compile Include="Models\Pay\PayViewModel.cs" />
     <Compile Include="Models\Search\SearchFilterModel.cs" />
     <Compile Include="Models\UserViewModel\UserProfileViewModel.cs" />
     <Compile Include="Models\User\LoginViewModel.cs" />
@@ -533,6 +541,8 @@
     <Content Include="Views\Shared\_PartialLoginRegister.cshtml" />
     <Content Include="Views\User\LoginRegister.cshtml" />
     <Content Include="Views\Shared\_PartialMessage.cshtml" />
+    <Content Include="Views\Ticket\Buy.cshtml" />
+    <Content Include="Views\Ticket\Summary.cshtml" />
     <None Include="Views\User\Profile.3cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Home\AddHome.cshtml" />

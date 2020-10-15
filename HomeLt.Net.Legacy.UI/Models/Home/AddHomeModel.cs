@@ -31,6 +31,8 @@ namespace HomeLt.Net.Legacy.UI.Models.Home
         [DefaultValue(false)]
         public bool SellingType { get; set; }
 
+        public bool isApproved { get; set; }
+
         public HttpPostedFileBase[] Gallery  { get; set; }
         public HttpPostedFileBase[] FloorPlans { get; set; }
         

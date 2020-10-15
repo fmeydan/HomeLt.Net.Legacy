@@ -12,6 +12,7 @@ namespace HomeLt.Net.Legacy.UI.Models.Search
         public int Sqft { get; set; }
         public decimal MinPrice { get; set; }
         public decimal MaxPrice { get; set; }
-        
+        public bool isApproved { get; set; }
+
     }
 }

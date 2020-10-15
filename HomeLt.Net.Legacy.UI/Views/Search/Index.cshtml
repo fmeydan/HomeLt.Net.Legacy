@@ -32,14 +32,15 @@ Listing – grid view -->
         <div class="row">
             <div class="col-md-6">
                 <div class="section-title mb-3 mb-lg-4">
-                    <h2><span class="text-primary">156</span> Results</h2>
+                    <h2><span class="text-primary">@Model.Count()</span> Results</h2>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="property-filter-tag">
                     <ul class="list-unstyled">
-                        <li><a href="#">Apartment <i class="fas fa-times-circle"></i> </a></li>
-                        <li><a class="filter-clear" href="#">Reset Search <i class="fas fa-redo-alt"></i> </a></li>
+                       
+                        @*<li><a href="#">Apartment <i class="fas fa-times-circle"></i> </a></li>*@
+                        <li><a class="filter-clear" href="/Search/Index">Reset Search <i class="fas fa-redo-alt"></i> </a></li>
                     </ul>
                 </div>
             </div>
@@ -76,17 +77,13 @@ Listing – grid view -->
                                             <option>For Sale</option>
                                         </select>
                                     </div>*@
-                                @*<div class="input-group mb-2 select-border">
+                                <div class="input-group mb-2 select-border">
                                         <select class="form-control basic-select">
-                                            <option>Distance from location</option>
-                                            <option>Within 1 mile</option>
-                                            <option>Within 3 miles</option>
-                                            <option>Within 5 miles</option>
-                                            <option>Within 10 miles</option>
-                                            <option>Within 15 miles</option>
-                                            <option>Within 30 miles</option>
+                                            <option selected disabled>Residency</option>
+                                            <option value="true">Approved</option>
+                                            <option value="false">Non-Approved</option>
                                         </select>
-                                    </div>*@
+                                    </div>
                                 <div class="input-group mb-2 select-border">
                                     <select name="Bedroom" class="form-control basic-select">
                                         <option selected disabled>Bedrooms</option>
@@ -100,7 +97,7 @@ Listing – grid view -->
                                             <option>03</option>*@
                                     </select>
                                 </div>
-                                <div class="input-group mb-2 select-border">
+                                @*<div class="input-group mb-2 select-border">
                                     <select class="form-control basic-select">
                                         <option>Sort by</option>
                                         <option>Most popular</option>
@@ -108,7 +105,7 @@ Listing – grid view -->
                                         <option>Lowest price</option>
                                         <option>Most reduced</option>
                                     </select>
-                                </div>
+                                </div>*@
                                 @*<div class="input-group mb-2 select-border">
                                         <select class="form-control basic-select">
                                             <option>Select Floor</option>
@@ -139,15 +136,15 @@ Listing – grid view -->
                     </div>
                     <div class="widget">
                         <div class="widget-title widget-collapse">
-                            <h6>Status of property</h6>
+                            <h6>Resiency</h6>
                             <a class="ml-auto" data-toggle="collapse" href="#status-property" role="button" aria-expanded="false" aria-controls="status-property"> <i class="fas fa-chevron-down"></i> </a>
                         </div>
-                        @*<div class="collapse show" id="status-property">
+                        <div class="collapse show" id="status-property">
                                 <ul class="list-unstyled mb-0 pt-3">
-                                    <li><a href="#">For rent<span class="ml-auto">(500)</span></a></li>
-                                    <li><a href="#">For Sale<span class="ml-auto">(1200)</span></a></li>
+                                    <li><a href="/Search/Index/residency?=1">Approved<span class="ml-auto">@Model.Where(f=>f.isApproved==true).Count()</span></a></li>
+                                    <li><a href="/Search/Index/residency?=0">Non-Approved<span class="ml-auto">@Model.Where(f => f.isApproved != true).Count()</span></a></li>
                                 </ul>
-                            </div>*@
+                            </div>
                     </div>
                     <div class="widget">
                         <div class="widget-title widget-collapse">
@@ -298,13 +295,17 @@ Listing – grid view -->
                         </li>
                     </ul>
                 </div>*@
+            <div class="col-lg-9">
             <div class="row mt-4">
-                @foreach (var item in Model)
+                @if (Model.Count() > 0)
                 {
-                    <div class="col-sm-6">
+
+                    foreach (var item in Model)
+                    {
+                    <div class="col-sm-6" style="min-height:600px">
                         <div class="property-item">
                             <div class="property-image bg-overlay-gradient-04">
-                                <img class="img-fluid" src="@item.PropertyMedias.FirstOrDefault().Path" alt="">
+                                <img class="img-fluid" src="@(item.PropertyMedias.FirstOrDefault()?.Path ?? "")" alt="">
                                 <div class="property-lable">
                                     <span class="badge badge-md badge-primary">@propertyTypes.FirstOrDefault(f => f.Value == item.PropertyType).Name</span>
                                     <span class="badge badge-md badge-info">Sale </span>
@@ -312,7 +313,7 @@ Listing – grid view -->
                                 <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
                                 <div class="property-agent">
                                     <div class="property-agent-image">
-                                        <img class="img-fluid" src="@item.User.UserMedias.FirstOrDefault().Path" alt="">
+                                        <img class="img-fluid" src="@(item.User.UserMedias.FirstOrDefault()?.Path ?? "")" alt="">
                                     </div>
                                     <div class="property-agent-info">
                                         <a class="property-agent-name" href="#">@item.User.FirstName @item.User.LastName </a>
@@ -330,10 +331,16 @@ Listing – grid view -->
                             <div class="property-details">
                                 <div class="property-details-inner">
                                     <h5 class="property-title"><a href="/Property/Index/">@item.Name </a></h5>
-                                    <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>@item.Address.District.Name / @item.Address.District.City.Name</span>
+                                    @*<span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>@item.Address.District.Name / @item.Address.District.City.Name</span>*@
                                     @*<span class="property-agent-date"><i class="far fa-clock fa-md"></i>@{(DateTime.Now - item.InsertDate).TotalDays} days ago</span>*@
-                                    <div class="property-price">@item.Price.ToString("C") </div>
-                                    <div class="property-price">@item.TicketPrice.ToString("C")<span> / Ticket</span> </div>
+                                <div class="row">
+                                    <div class="property-price col-12 col-md-6">@item.Price.ToString("C") </div>
+                                    @if (item.SellingType)
+                                    {
+                                <div class="property-price col-12 col-md-6"> @item.TicketPrice.ToString("C")<span> / <i class="fas fa-ticket-alt"> </i> </span> </div>
+                                    }
+
+                                </div>
 
                                     <ul class="property-info list-unstyled d-flex">
                                         <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>@item.BedroomNumber</span></li>
@@ -343,16 +350,30 @@ Listing – grid view -->
                                 </div>
                                 <div class="property-btn">
                                     <a class="property-link" href="/Property/Detail/@item.HomeId">See Details</a>
+                                    @if (item.SellingType == true)
+                                    {
+                                        <a class="property-link" href="/Ticket/Buy/@item.HomeId" data-toggle="tooltip" data-placement="top" title="Buy Ticket"><i class="fas fa-ticket-alt"></i> Buy Ticket</a>
+
+                                    }
                                     <ul class="property-listing-actions list-unstyled mb-0">
-                                        @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
+
+
+
                                         <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    }
                 }
-
+                else
+                {
+                    <div class="col-12">
+                        <div class="text-center"><i class="fas fa-sad-cry fa-10x"></i></div>
+                        <h1 class="text-center"> Aradığınız Kriterlere Uygun Sonuç Bulunamadı </h1>
+                    </div>
+                }
                 <!--<div class="col-sm-6">
                     <div class="property-item">
                         <div class="property-image bg-overlay-gradient-04">
@@ -619,6 +640,7 @@ Listing – grid view -->
                     </ul>
                 </div>
             </div>
+                </div>
         </div>
     </div>
     </div>

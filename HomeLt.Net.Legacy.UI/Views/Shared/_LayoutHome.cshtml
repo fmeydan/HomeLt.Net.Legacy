@@ -1,4 +1,5 @@
 ﻿@using HomeLt.Net.Legacy.UI.Helpers
+@using HomeLt.Net.Legacy.UI.Constants
 @{ 
    var currentUser = Session[HomeLt.Net.Legacy.UI.Constants.Sessions.SessionUser] as HomeLt.Net.Legacy.ENTITIES.User;
 }
@@ -169,10 +170,10 @@
 
                         @Html.MenuLink("Home", "Index", "Home", "", "nav-link")
                         @*@Html.MenuLink("Properties", "Index", "Search", "", "nav-link")*@
-                        @Html.MenuLink("Approved Properties", "Approved", "Search", "", "nav-link")
-                        @Html.MenuLink("Non-Approved Properties", "NonApproved", "Search", "", "nav-link")
-                        @Html.MenuLink("Direct", "Direct", "Search", "", "nav-link")
-                        @Html.MenuLink("Lottery", "Lottery", "Search", "", "nav-link")
+                        @Html.MenuLink("Approved Properties", "Index", "Search",new { residency =(int)EnumApproved.Approved }, "nav-link")
+                        @Html.MenuLink("Non-Approved Properties", "Index", "Search", new { residency = (int)EnumApproved.NonApproved }, "nav-link")
+                        @Html.MenuLink("Direct", "Index", "Search", new {saleType= (int)EnumSaleType.Direct }, "nav-link")
+                        @Html.MenuLink("Lottery", "Lottery", "Search", new { saleType = (int)EnumSaleType.Loattery }, "nav-link")
                         @Html.MenuLink("Lottery Results", "Draws", "Lottery", "", "nav-link")
 
 
@@ -336,7 +337,7 @@
     <script src="~/Temp/js/motion.custom.js"></script>
     <script src="~/Temp/card/dist/jquery.card.js"></script>
     <script src="~/Temp/card/dist/card.js"></script>
-
+    @RenderSection("buyJs",false)
 
 
 </body>

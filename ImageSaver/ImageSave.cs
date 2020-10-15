@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.IO;
 using System.Web.UI;
+using System.Web.Hosting;
 
 namespace ImageSaver
 {
-    public class ImageSave:IDisposable
+    public class ImageSave : IDisposable
     {
         private bool disposedValue;
 
@@ -17,7 +18,7 @@ namespace ImageSaver
         /// <param name="images"></param>
         /// <param name="ImageName"></param>
         /// <returns></returns>
-        public  List<string> SaveMultipleImageSingleName(HttpPostedFileBase[] images, string ImageName)
+        public List<string> SaveMultipleImageSingleName(HttpPostedFileBase[] images, string ImageName)
         {
             List<string> imagePaths = new List<string>();
             if (images != null)
@@ -69,16 +70,20 @@ namespace ImageSaver
         /// <param name="Name"></param>
         /// <param name="Path"></param>
         /// <returns></returns>
-        public string SaveImage(HttpPostedFileBase Image,string Name,string Path)
+        public string SaveImage(HttpPostedFileBase Image, string Name, string Path = "~/Content/Media/Users/")
         {
-            if (Image!=null)
+            if (Image != null)
             {
+                var serverMapPath = HostingEnvironment.MapPath(Path);
                 string extansion = System.IO.Path.GetExtension(Image.FileName);
-                Directory.CreateDirectory(Path);
-                string savedImagePath = Path + "/" + new FileNamer().ConvertTRCharToENChar(Name) + extansion;
-                
-                Image.SaveAs(savedImagePath);
-                return (savedImagePath);
+
+                String randomName = Guid.NewGuid().ToString();
+                String fileName = randomName + extansion;
+                Directory.CreateDirectory(serverMapPath);
+                string localPath = serverMapPath + fileName;
+                Image.SaveAs(localPath);
+
+                return (Path.Replace("~", "") + fileName);
 
             }
             return "";
@@ -87,22 +92,23 @@ namespace ImageSaver
 
 
 
-        public List<string> SaveMultiImage(HttpPostedFileBase[] Image, string Name, string Path)
+        public List<string> SaveMultiImage(HttpPostedFileBase[] Image, string Name, string Path= "~/Content/Media/Homes/")
         {
-            List<string> paths = new List<string>() ;
+            List<string> paths = new List<string>();
             if (Image != null)
             {
-                
+
                 foreach (var item in Image)
                 {
-                    string extansion = System.IO.Path.GetExtension(item.FileName);
-                    Directory.CreateDirectory(Path);
-                    string savedImagePath = Path + "/" + new FileNamer().ConvertTRCharToENChar(Name) + extansion;
+                    //string extansion = System.IO.Path.GetExtension(item.FileName);
+                    //Directory.CreateDirectory(Path);
+                    //string savedImagePath = Path + "/" + new FileNamer().ConvertTRCharToENChar(Name) + extansion;
 
-                    item.SaveAs(savedImagePath);
-                    paths.Add(savedImagePath);
+                    //item.SaveAs(savedImagePath);
+                    ;
+                    paths.Add(SaveImage(item, Name,Path));
                 }
-               
+
                 return (paths);
 
             }
@@ -111,7 +117,7 @@ namespace ImageSaver
         }
 
 
-        public  string DeleteImage(string path, string name)
+        public string DeleteImage(string path, string name)
         {
 
             string imageServerLocation = HttpContext.Current.Server.MapPath(path);

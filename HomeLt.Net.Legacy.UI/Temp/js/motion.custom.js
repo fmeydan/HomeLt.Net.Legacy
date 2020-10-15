@@ -21,7 +21,13 @@ var urParts = path.split("/");
 
 
 
-    })
+	})
+
+$(document).ready(function () {
+
+
+
+})
 
 //$(document).ready(function (event) {
 //    var loginForm = $("#LoginForm");

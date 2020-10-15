@@ -1,4 +1,5 @@
-﻿@model HomeLt.Net.Legacy.UI.Models.UserViewModel.UserProfileViewModel
+﻿@using HomeLt.Net.Legacy.UI.Constants
+@model HomeLt.Net.Legacy.ENTITIES.User
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
@@ -31,11 +32,11 @@ My profile -->
                 <div class="profile-sidebar bg-holder bg-overlay-black-70" style="background-image: url(/Temp/images/banner-01.jpg);">
                     <div class="d-sm-flex align-items-center position-relative">
                         <div class="profile-avatar">
-                            @*<img class="img-fluid  rounded-circle" src="@(Model.User.UserMedias.Count()>0?Model.User.UserMedias.FirstOrDefault().Path:"")" alt="">*@
+                            <img class="img-fluid  rounded-circle" src="@(Model.UserMedias.Count()>0?Model.UserMedias.FirstOrDefault().Path:"")" alt="">
                         </div>
                         <div class="ml-sm-4">
-                            <h4 class="text-white">@Model.User.FirstName @Model.User.LastName</h4>
-                            <b class="text-white">@Model.User.Email</b>
+                            <h4 class="text-white">@Model.FirstName @Model.LastName</h4>
+                            <b class="text-white">@Model.Email</b>
                         </div>
                         <div class="ml-auto my-4 mt-sm-0">
                             <a class="btn btn-white btn-md" href="/Home/AddHome"> <i class="fa fa-plus-circle"></i>Add listing </a>
@@ -91,409 +92,584 @@ My profile -->
                     </div>
                 </div>
             </div>
-            <div class="tab-content" id="myTabContent">
-                <!--=================================
+            <div class="col-12">
+                <div class="tab-content" id="myTabContent">
+                    <!--=================================
 
-                My profile -->
+        My profile -->
 
-                <div class="tab-pane fade show active" id="tab-01" role="tabpanel" aria-labelledby="tab-01-tab">
-                    <div class="container">
-                        <div class="row">
+                    <div class="tab-pane fade show active" id="tab-01" role="tabpanel" aria-labelledby="tab-01-tab">
+                        <div class="container">
+                            <div class="row">
 
-                            <div class="col-12">
-                                <div class="section-title d-flex align-items-center">
-                                    <h2>Edit profile </h2>
-                                    <span class="ml-auto">Joined Mar 18, 2019</span>
-                                </div>
-                                <form>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>First Name</label>
-                                            <input type="text" class="form-control" name="FirstName" value="@Model.User.FirstName">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Middle Name</label>
-                                            <input type="text" class="form-control" name="Middle Name" value="@Model.User.MiddleName">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Last Name</label>
-                                            <input type="text" class="form-control" name="LastName" value="@Model.User.LastName">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Email address</label>
-                                            <input type="text" class="form-control" name="Email" value="@Model.User.Email">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Phone number</label>
-                                            <input type="text" class="form-control" name="Phone" value="@Model.User.Phone">
-                                        </div>
-                                        @*<div class="form-group col-md-6 select-border">
-                                                <label>User type</label>
-                                                <select class="form-control basic-select">
-                                                    <option value="value 01" selected="selected">Home Buyer</option>
-                                                    <option value="value 02">Home Seller</option>
-                                                    <option value="value 03">Both Buyer and Seller</option>
-                                                    <option value="value 04">Home Owner</option>
-                                                    <option value="value 05">Renter</option>
-                                                    <option value="value 06">Other/Just Looking</option>
-                                                </select>
-                                            </div>*@
-                                        <div class="form-group col-md-6">
-                                            <label>Location</label>
-                                            <input type="text" class="form-control" value="New York, NY">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="d-flex align-items-center">
-                                                <label>Password</label>
-                                                <a class="ml-auto mb-2" href="#">Edit</a>
+                                <div class="col-12">
+                                    <div class="section-title d-flex align-items-center">
+                                        <h2>Edit profile </h2>
+                                        <span class="ml-auto">Joined Mar 18, 2019</span>
+                                    </div>
+                                    <form>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control" name="FirstName" value="@Model.FirstName">
                                             </div>
-                                            <input type="password" class="form-control" value="1234567892">
+                                            <div class="form-group col-md-6">
+                                                <label>Middle Name</label>
+                                                <input type="text" class="form-control" name="Middle Name" value="@Model.MiddleName">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control" name="LastName" value="@Model.LastName">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Email address</label>
+                                                <input type="text" class="form-control" name="Email" value="@Model.Email">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Phone number</label>
+                                                <input type="text" class="form-control" name="Phone" value="@Model.Phone">
+                                            </div>
+                                            @*<div class="form-group col-md-6 select-border">
+                                        <label>User type</label>
+                                        <select class="form-control basic-select">
+                                            <option value="value 01" selected="selected">Home Buyer</option>
+                                            <option value="value 02">Home Seller</option>
+                                            <option value="value 03">Both Buyer and Seller</option>
+                                            <option value="value 04">Home Owner</option>
+                                            <option value="value 05">Renter</option>
+                                            <option value="value 06">Other/Just Looking</option>
+                                        </select>
+                                    </div>*@
+                                            <div class="form-group col-md-6">
+                                                <label>Location</label>
+                                                <input type="text" class="form-control" value="New York, NY">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <div class="d-flex align-items-center">
+                                                    <label>Password</label>
+                                                    <a class="ml-auto mb-2" href="#">Edit</a>
+                                                </div>
+                                                <input type="password" class="form-control" value="1234567892">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label>About Me</label>
+                                                <textarea class="form-control" rows="4" value="About me"></textarea>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <a class="btn btn-primary" href="/User/EditProfile">Save Changes</a>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-12">
-                                            <label>About Me</label>
-                                            <textarea class="form-control" rows="4" value="About me"></textarea>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <a class="btn btn-primary" href="/User/EditProfile">Save Changes</a>
+                                    </form>
+                                    <hr class="my-5" />
+                                    <div class="mb-5">
+                                        <h6>Upload your ID</h6>
+                                        <p>To ensure the safety of agents, we need you to provide your identity before we can take you on a home tour.</p>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="customFile">
+                                            <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                     </div>
-                                </form>
-                                <hr class="my-5" />
-                                <div class="mb-5">
-                                    <h6>Upload your ID</h6>
-                                    <p>To ensure the safety of agents, we need you to provide your identity before we can take you on a home tour.</p>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    <div class="mb-2">
+                                        <h6>Delete Account?</h6>
+                                        <p>This will remove your login information from our system, and you will not be able to login again. It cannot be undone.</p>
+                                        <a class="btn btn-danger" href="#">Yes Delete My Account</a>
                                     </div>
-                                </div>
-                                <div class="mb-2">
-                                    <h6>Delete Account?</h6>
-                                    <p>This will remove your login information from our system, and you will not be able to login again. It cannot be undone.</p>
-                                    <a class="btn btn-danger" href="#">Yes Delete My Account</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <!--=================================
+                    <!--=================================
 
-                My profile End -->
-                <!--=================================
-                My Properties Start -->
-                <div class="tab-pane fade col-12" id="tab-02" role="tabpanel" aria-labelledby="tab-02-tab">
+        My profile End -->
+                    <!--=================================
+        My Properties Start -->
+                    <div class="tab-pane fade col-12" id="tab-02" role="tabpanel" aria-labelledby="tab-02-tab">
 
 
-                    <div class="container">
-                        <div class="row">
+                        <div class="container">
+                            <div class="row">
 
-                            <div class="col-12">
-                                <div class="section-title d-flex align-items-center">
-                                    <h2>My properties</h2>
-                                </div>
-                                @if (Model.Homes==null?false : true)
-                                {
-                                    foreach (var item in Model.Homes)
+                                <div class="col-12">
+                                    <div class="section-title d-flex align-items-center">
+                                        <h2>My properties</h2>
+                                    </div>
+                                    @if (Model.Homes.Count() > 0)
+                                    {
+
+
+                                        foreach (var item in Model.Homes)
+                                        {<div class="property-item property-col-list mt-4">
+                                                <div class="row no-gutters">
+
+                                                    <div class="col-lg-4 col-md-5">
+                                                        <div class="property-image bg-overlay-gradient-04">
+                                                            <img class="img-fluid" src="@(item.PropertyMedias.FirstOrDefault()?.Path ?? "")" alt="">
+                                                            <div class="property-lable">
+                                                                @{
+                                                                    EnumPropertyType et = (EnumPropertyType)item.PropertyType;
+                                                                }
+                                                                <span class="badge badge-md badge-primary">@et</span>
+
+                                                            </div>
+                                                            <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-8 col-md-7">
+                                                        <div class="property-details">
+                                                            <div class="property-details-inner">
+                                                                <div class="property-details-inner-box">
+                                                                    <div class="property-details-inner-box-left">
+                                                                        <h5 class="property-title"><a href="/Property/Detail/@item.HomeId">@item.Name </a></h5>
+                                                                        <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>@item.Address.District.Name / @item.Address.District.City.Name</span>
+                                                                        @*<span class="property-agent-date"><i class="far fa-clock fa-md"></i>@{((DateTime.Now - item.InsertDate).TotalDays).ToString();} days ago</span>*@
+
+
+                                                                    </div>
+
+                                                                    <div class="property-price">@item.Price.ToString("C") </div>
+                                                                    <div class="property-price">@item.TicketPrice.ToString("C")<span class="d-block"> / Ticket </span> </div>
+
+                                                                </div>
+                                                                <ul class="property-info list-unstyled d-flex">
+                                                                    <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>@item.BedroomNumber</span></li>
+                                                                    <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>@item.BathNumber</span></li>
+                                                                    <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>@item.Sqft</span></li>
+                                                                </ul>
+                                                                <p class="mb-0 d-none d-block mt-3">@item.Description</p>
+
+                                                            </div>
+                                                            <div class="property-btn">
+                                                                <a class="property-link" href="/Property/Detail/@item.HomeId">See Details</a>
+                                                                <ul class="property-listing-actions list-unstyled mb-0">
+                                                                    @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
+                                                                    @*<li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="/User/AddFavorite/@item.HomeId"><i class="fas fa-heart text-danger"></i></a></li>*@
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                    }
+                                    else
                                     {
                                         <div class="property-item property-col-list mt-4">
                                             <div class="row no-gutters">
-                                                <div class="col-lg-4 col-md-5">
-                                                    <div class="property-image bg-overlay-gradient-04">
-                                                        @*<img class="img-fluid" src="@item." alt="">*@
-                                                        @*<div class="property-lable">
-                                    @{
-                                        EnumPropertyType et = (EnumPropertyType)item.PropertyType;
-                                    }
-                                    <span class="badge badge-md badge-primary">@et</span>
 
-                                </div>*@
-                                                        <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
-                                                        <div class="property-agent">
-                                                            <div class="property-agent-image">
-                                                                <img class="img-fluid" src="@Model.User.UserMedias.First().Path" alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="property-agent-popup">
-                                                            <a href="#"><i class="fas fa-camera"></i> @item.PropertyMedias.Count()</a>
-                                                        </div>
-                                                    </div>
+
+
+                                                <div class="col-12 col-md-6">
+
+                                                    <h4>Not found any property</h4>
+                                                    <i class="far fa-frown fa-6x"></i>
+
+
+                                                    <a class="btn btn-white btn-md" href="/Home/AddHome"> <i class="fa fa-plus-circle"></i>Add listing </a>
+
+
                                                 </div>
-                                                <div class="col-lg-8 col-md-7">
-                                                    <div class="property-details">
-                                                        <div class="property-details-inner">
-                                                            <div class="property-details-inner-box">
-                                                                <div class="property-details-inner-box-left">
-                                                                    <h5 class="property-title"><a href="/Property/Detail/@item.HomeId">@item.Name </a></h5>
-                                                                    <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>@item.Address.District.Name / @item.Address.District.City.Name</span>
-                                                                    @*<span class="property-agent-date"><i class="far fa-clock fa-md"></i>@{((DateTime.Now - item.InsertDate).TotalDays).ToString();} days ago</span>*@
 
-
-                                                                </div>
-
-                                                                <div class="property-price">@item.Price.ToString("C") </div>
-                                                                <div class="property-price">@item.TicketPrice.ToString("C")<span class="d-block"> / Ticket </span> </div>
-
-                                                            </div>
-                                                            <ul class="property-info list-unstyled d-flex">
-                                                                <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>@item.BedroomNumber</span></li>
-                                                                <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>@item.BathNumber</span></li>
-                                                                <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>@item.Sqft</span></li>
-                                                            </ul>
-                                                            <p class="mb-0 d-none d-block mt-3">@item.Description</p>
-
-                                                        </div>
-                                                        <div class="property-btn">
-                                                            <a class="property-link" href="/Property/Detail/@item.HomeId">See Details</a>
-                                                            <ul class="property-listing-actions list-unstyled mb-0">
-                                                                @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
-                                                                @*<li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="/User/AddFavorite/@item.HomeId"><i class="fas fa-heart text-danger"></i></a></li>*@
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                }
-                                else
-                                {
-                                    <div class="property-item property-col-list mt-4">
-                                        <div class="row no-gutters">
-                                           
-
-
-                                            <div class="col-12 col-md-6">
-
-                                                <h4>Not found any property</h4>
-                                                <i class="far fa-frown fa-6x"></i>
-
-
-                                                <a class="btn btn-white btn-md" href="/Home/AddHome"> <i class="fa fa-plus-circle"></i>Add listing </a>
 
 
                                             </div>
+                                        </div>
+
+                                    }
 
 
-                                          
+
+
+                                    @*<div class="property-item property-col-list mt-4">
+                                <div class="row no-gutters">
+                                    <div class="col-lg-4 col-md-5">
+                                        <div class="property-image bg-overlay-gradient-04">
+                                            <img class="img-fluid" src="/Temp/images/property/list/02.jpg" alt="">
+                                            <div class="property-lable">
+                                                <span class="badge badge-md badge-primary">Summer House</span>
+                                                <span class="badge badge-md badge-info">Hot </span>
+                                            </div>
+                                            <div class="property-agent">
+                                                <div class="property-agent-image">
+                                                    <img class="img-fluid" src="/Temp/images/avatar/02.jpg" alt="">
+                                                </div>
+                                                <div class="property-agent-info">
+                                                    <a class="property-agent-name" href="#">Alice Williams</a>
+                                                    <span class="d-block">Company Agent</span>
+                                                    <ul class="property-agent-contact list-unstyled">
+                                                        <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
+                                                        <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="property-agent-popup">
+                                                <a href="#"><i class="fas fa-camera"></i> 12</a>
+                                            </div>
                                         </div>
                                     </div>
-
-                                }
-
-
-
-
-                                @*<div class="property-item property-col-list mt-4">
-            <div class="row no-gutters">
-                <div class="col-lg-4 col-md-5">
-                    <div class="property-image bg-overlay-gradient-04">
-                        <img class="img-fluid" src="/Temp/images/property/list/02.jpg" alt="">
-                        <div class="property-lable">
-                            <span class="badge badge-md badge-primary">Summer House</span>
-                            <span class="badge badge-md badge-info">Hot </span>
-                        </div>
-                        <div class="property-agent">
-                            <div class="property-agent-image">
-                                <img class="img-fluid" src="/Temp/images/avatar/02.jpg" alt="">
-                            </div>
-                            <div class="property-agent-info">
-                                <a class="property-agent-name" href="#">Alice Williams</a>
-                                <span class="d-block">Company Agent</span>
-                                <ul class="property-agent-contact list-unstyled">
-                                    <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                    <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="property-agent-popup">
-                            <a href="#"><i class="fas fa-camera"></i> 12</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-7">
-                    <div class="property-details">
-                        <div class="property-details-inner">
-                            <div class="property-details-inner-box">
-                                <div class="property-details-inner-box-left">
-                                    <h5 class="property-title"><a href="property-detail-style-01.html">The citizen apartment 5th floor</a></h5>
-                                    <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Border st. nicholasville, ky</span>
-                                    <span class="property-agent-date"><i class="far fa-clock fa-md"></i>6 months ago</span>
+                                    <div class="col-lg-8 col-md-7">
+                                        <div class="property-details">
+                                            <div class="property-details-inner">
+                                                <div class="property-details-inner-box">
+                                                    <div class="property-details-inner-box-left">
+                                                        <h5 class="property-title"><a href="property-detail-style-01.html">The citizen apartment 5th floor</a></h5>
+                                                        <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Border st. nicholasville, ky</span>
+                                                        <span class="property-agent-date"><i class="far fa-clock fa-md"></i>6 months ago</span>
+                                                    </div>
+                                                    <div class="property-price">$250.00<span class="d-block"> / month</span> </div>
+                                                </div>
+                                                <ul class="property-info list-unstyled d-flex">
+                                                    <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>2</span></li>
+                                                    <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>3</span></li>
+                                                    <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>2,324m</span></li>
+                                                </ul>
+                                                <p class="mb-0 d-none d-block mt-3">Success isn’t really that difficult. There is a significant portion of the population here in North America, that actually.</p>
+                                            </div>
+                                            <div class="property-btn">
+                                                <a class="property-link" href="property-detail-style-01.html">See Details</a>
+                                                <ul class="property-listing-actions list-unstyled mb-0">
+                                                    <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
+                                                    <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="fas fa-heart text-danger"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="property-price">$250.00<span class="d-block"> / month</span> </div>
                             </div>
-                            <ul class="property-info list-unstyled d-flex">
-                                <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>2</span></li>
-                                <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>3</span></li>
-                                <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>2,324m</span></li>
-                            </ul>
-                            <p class="mb-0 d-none d-block mt-3">Success isn’t really that difficult. There is a significant portion of the population here in North America, that actually.</p>
-                        </div>
-                        <div class="property-btn">
-                            <a class="property-link" href="property-detail-style-01.html">See Details</a>
-                            <ul class="property-listing-actions list-unstyled mb-0">
-                                <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                                <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="fas fa-heart text-danger"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="property-item property-col-list mt-4">
-            <div class="row no-gutters">
-                <div class="col-lg-4 col-md-5">
-                    <div class="property-image bg-overlay-gradient-04">
-                        <img class="img-fluid" src="/Temp/images/property/list/03.jpg" alt="">
-                        <div class="property-lable">
-                            <span class="badge badge-md badge-primary">Summer House</span>
-                            <span class="badge badge-md badge-info">Hot </span>
-                        </div>
-                        <div class="property-agent">
-                            <div class="property-agent-image">
-                                <img class="img-fluid" src="/Temp/images/avatar/03.jpg" alt="">
-                            </div>
-                            <div class="property-agent-info">
-                                <a class="property-agent-name" href="#">Sara lisbon</a>
-                                <span class="d-block">Company Agent</span>
-                                <ul class="property-agent-contact list-unstyled">
-                                    <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                    <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="property-agent-popup">
-                            <a href="#"><i class="fas fa-camera"></i> 03</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-7">
-                    <div class="property-details">
-                        <div class="property-details-inner">
-                            <div class="property-details-inner-box">
-                                <div class="property-details-inner-box-left">
-                                    <h5 class="property-title"><a href="property-detail-style-01.html">Cottage woods housed for sale</a></h5>
-                                    <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Newport st. mebane, nc</span>
-                                    <span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 months ago</span>
+                            <div class="property-item property-col-list mt-4">
+                                <div class="row no-gutters">
+                                    <div class="col-lg-4 col-md-5">
+                                        <div class="property-image bg-overlay-gradient-04">
+                                            <img class="img-fluid" src="/Temp/images/property/list/03.jpg" alt="">
+                                            <div class="property-lable">
+                                                <span class="badge badge-md badge-primary">Summer House</span>
+                                                <span class="badge badge-md badge-info">Hot </span>
+                                            </div>
+                                            <div class="property-agent">
+                                                <div class="property-agent-image">
+                                                    <img class="img-fluid" src="/Temp/images/avatar/03.jpg" alt="">
+                                                </div>
+                                                <div class="property-agent-info">
+                                                    <a class="property-agent-name" href="#">Sara lisbon</a>
+                                                    <span class="d-block">Company Agent</span>
+                                                    <ul class="property-agent-contact list-unstyled">
+                                                        <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
+                                                        <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="property-agent-popup">
+                                                <a href="#"><i class="fas fa-camera"></i> 03</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-7">
+                                        <div class="property-details">
+                                            <div class="property-details-inner">
+                                                <div class="property-details-inner-box">
+                                                    <div class="property-details-inner-box-left">
+                                                        <h5 class="property-title"><a href="property-detail-style-01.html">Cottage woods housed for sale</a></h5>
+                                                        <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Newport st. mebane, nc</span>
+                                                        <span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 months ago</span>
+                                                    </div>
+                                                    <div class="property-price">$326.00<span class="d-block"> / month</span> </div>
+                                                </div>
+                                                <ul class="property-info list-unstyled d-flex">
+                                                    <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>3</span></li>
+                                                    <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
+                                                    <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>3,987m</span></li>
+                                                </ul>
+                                                <p class="mb-0 d-none d-block mt-3">I truly believe Augustine’s words are true and if you look at history you know it is true. There are many people in.</p>
+                                            </div>
+                                            <div class="property-btn">
+                                                <a class="property-link" href="property-detail-style-01.html">See Details</a>
+                                                <ul class="property-listing-actions list-unstyled mb-0">
+                                                    <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
+                                                    <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="fas fa-heart text-danger"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="property-price">$326.00<span class="d-block"> / month</span> </div>
+                            </div>*@
+                                </div>
                             </div>
-                            <ul class="property-info list-unstyled d-flex">
-                                <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>3</span></li>
-                                <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
-                                <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>3,987m</span></li>
-                            </ul>
-                            <p class="mb-0 d-none d-block mt-3">I truly believe Augustine’s words are true and if you look at history you know it is true. There are many people in.</p>
                         </div>
-                        <div class="property-btn">
-                            <a class="property-link" href="property-detail-style-01.html">See Details</a>
-                            <ul class="property-listing-actions list-unstyled mb-0">
-                                <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                                <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="fas fa-heart text-danger"></i></a></li>
-                            </ul>
-                        </div>
+
+                        <!--=================================
+            my-properties -->
                     </div>
-                </div>
-            </div>
-        </div>*@
+
+                    <!--=================================
+
+        My Properties End -->
+                    <!--=================================
+        Saved Homes Start -->
+                    <div class="tab-pane fade show " id="tab-03" role="tabpanel" aria-labelledby="tab-01-tab">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="section-title d-flex align-items-center">
+                                        <h2>Favorite Homes</h2>
+                                    </div>
+                                    <div class="row">
+                                        @if (Model.FavoriteHomes.Count > 0)
+                                        {
+
+
+                                            foreach (var item in Model.FavoriteHomes)
+                                            {
+                                                <div class="col-md-6 col-lg-4">
+                                                    <div class="property-item">
+                                                        <div class="property-image bg-overlay-gradient-04">
+                                                            <img class="img-fluid" src="@item.Home.PropertyMedias.FirstOrDefault().Path" alt="">
+                                                            @*<div class="property-lable">
+                                                        @{
+                                                            EnumPropertyType et = (EnumPropertyType)item.Home.PropertyType;
+                                                        }
+                                                        <span class="badge badge-md badge-primary">@et</span>
+
+
+                                                    </div>*@
+                                                            <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
+                                                            <div class="property-agent">
+                                                                <div class="property-agent-image">
+                                                                    <img class="img-fluid" src="@item.Home.User.UserMedias.FirstOrDefault().Path" alt="">
+                                                                </div>
+                                                                <div class="property-agent-info">
+                                                                    <a class="property-agent-name" href="#">@item.Home.User.FirstName @item.Home.User.LastName</a>
+
+                                                                    <ul class="property-agent-contact list-unstyled">
+                                                                        <li><a href="@item.Home.User.Phone"><i class="fas fa-mobile-alt"></i> </a></li>
+                                                                        <li><a href="@item.Home.User.Email"><i class="fas fa-envelope"></i> </a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="property-agent-popup">
+                                                                <a href="/Property/Detail/@item.HomeId"><i class="fas fa-camera"></i> @item.Home.PropertyMedias.Count()</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="property-details">
+                                                            <div class="property-details-inner">
+                                                                <h5 class="property-title"><a href="property-detail-style-01.html">@item.Home.Name </a></h5>
+                                                                <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>@item.Home.Address.District.Name / @item.Home.Address.District.City.Name</span>
+                                                                @*<span class="property-agent-date"><i class="far fa-clock fa-md"></i>@{(DateTime.Now - item.Home.InsertDate).TotalDays.ToString();} days ago</span>*@
+                                                                <div class="property-price">@item.Home.Price.ToString("c") </div>
+
+                                                                <div class="property-price">@item.Home.TicketPrice.ToString("c")<span> / Ticket</span> </div>
+                                                                <ul class="property-info list-unstyled d-flex">
+                                                                    <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>@item.Home.BedroomNumber</span></li>
+                                                                    <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>@item.Home.BathNumber</span></li>
+                                                                    <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>@item.Home.Sqft m</span></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="property-btn">
+                                                                <a class="property-link" href="/Property/Detail/@item.HomeId">See Details</a>
+                                                                <ul class="property-listing-actions list-unstyled mb-0">
+
+                                                                    <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="/User/RemoveFav/@item.HomeId"><i class="fas fa-heart text-danger"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        @*<div class="col-md-6 col-lg-4">
+                                    <div class="property-item">
+                                        <div class="property-image bg-overlay-gradient-04">
+                                            <img class="img-fluid" src="/Temp/images/property/grid/02.jpg" alt="">
+                                            <div class="property-lable">
+                                                <span class="badge badge-md badge-primary">Apartment</span>
+                                                <span class="badge badge-md badge-info">New </span>
+                                            </div>
+                                            <div class="property-agent">
+                                                <div class="property-agent-image">
+                                                    <img class="img-fluid" src="/Temp/images/avatar/02.jpg" alt="">
+                                                </div>
+                                                <div class="property-agent-info">
+                                                    <a class="property-agent-name" href="#">John doe</a>
+                                                    <span class="d-block">Company Agent</span>
+                                                    <ul class="property-agent-contact list-unstyled">
+                                                        <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
+                                                        <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="property-agent-popup">
+                                                <a href="#"><i class="fas fa-camera"></i> 12</a>
+                                            </div>
+                                        </div>
+                                        <div class="property-details">
+                                            <div class="property-details-inner">
+                                                <h5 class="property-title"><a href="property-detail-style-01.html">Awesome family home</a></h5>
+                                                <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Vermont dr. hephzibah</span>
+                                                <span class="property-agent-date"><i class="far fa-clock fa-md"></i>2 months ago</span>
+                                                <div class="property-price">$326.00<span> / month</span> </div>
+                                                <ul class="property-info list-unstyled d-flex">
+                                                    <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>2</span></li>
+                                                    <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>3</span></li>
+                                                    <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>215m</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="property-btn">
+                                                <a class="property-link" href="property-detail-style-01.html">See Details</a>
+                                                <ul class="property-listing-actions list-unstyled mb-0">
+                                                    <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
+                                                    <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="fas fa-heart text-danger"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="property-item">
+                                        <div class="property-image bg-overlay-gradient-04">
+                                            <img class="img-fluid" src="/Temp/images/property/grid/03.jpg" alt="">
+                                            <div class="property-lable">
+                                                <span class="badge badge-md badge-primary">Summer House</span>
+                                                <span class="badge badge-md badge-info">Hot </span>
+                                            </div>
+                                            <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
+                                            <div class="property-agent">
+                                                <div class="property-agent-image">
+                                                    <img class="img-fluid" src="/Temp/images/avatar/03.jpg" alt="">
+                                                </div>
+                                                <div class="property-agent-info">
+                                                    <a class="property-agent-name" href="#">Felica queen</a>
+                                                    <span class="d-block">Investment</span>
+                                                    <ul class="property-agent-contact list-unstyled">
+                                                        <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
+                                                        <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="property-agent-popup">
+                                                <a href="#"><i class="fas fa-camera"></i> 03</a>
+                                            </div>
+                                        </div>
+                                        <div class="property-details">
+                                            <div class="property-details-inner">
+                                                <h5 class="property-title"><a href="property-detail-style-01.html">Contemporary apartment</a></h5>
+                                                <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Newport st. mebane, nc</span>
+                                                <span class="property-agent-date"><i class="far fa-clock fa-md"></i>6 months ago</span>
+                                                <div class="property-price">$658.00<span> / month</span> </div>
+                                                <ul class="property-info list-unstyled d-flex">
+                                                    <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>3</span></li>
+                                                    <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>4</span></li>
+                                                    <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>3,189m</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="property-btn">
+                                                <a class="property-link" href="property-detail-style-01.html">See Details</a>
+                                                <ul class="property-listing-actions list-unstyled mb-0">
+                                                    <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
+                                                    <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="fas fa-heart text-danger"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!--=================================
-                    my-properties -->
-                </div>
-
-                <!--=================================
-
-                My Properties End -->
-                <!--=================================
-                Saved Homes Start -->
-                <div class="tab-pane fade show " id="tab-03" role="tabpanel" aria-labelledby="tab-01-tab">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="section-title d-flex align-items-center">
-                                    <h2>Favorite Homes</h2>
-                                </div>
-                                <div class="row">
-                                    @if (Model.Favorites == null?false : true)
-                                    {
+        Saved Homes End -->
+                    <!--=================================
+        My Draws Start -->
+                    <div class="tab-pane fade col-12" id="tab-02" role="tabpanel" aria-labelledby="tab-02-tab">
 
 
-                                        foreach (var item in Model.Favorites)
-                                        {
-                                            <div class="col-md-6 col-lg-4">
-                                                <div class="property-item">
-                                                    <div class="property-image bg-overlay-gradient-04">
-                                                        <img class="img-fluid" src="@item.Home.PropertyMedias.FirstOrDefault().Path" alt="">
-                                                        @*<div class="property-lable">
-                                                                @{
-                                                                    EnumPropertyType et = (EnumPropertyType)item.Home.PropertyType;
-                                                                }
-                                                                <span class="badge badge-md badge-primary">@et</span>
+                        <div class="container">
+                            <div class="row">
 
-
-                                                            </div>*@
-                                                        <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
-                                                        <div class="property-agent">
-                                                            <div class="property-agent-image">
-                                                                <img class="img-fluid" src="@item.Home.User.UserMedias.FirstOrDefault().Path" alt="">
-                                                            </div>
-                                                            <div class="property-agent-info">
-                                                                <a class="property-agent-name" href="#">@item.Home.User.FirstName @item.Home.User.LastName</a>
-
-                                                                <ul class="property-agent-contact list-unstyled">
-                                                                    <li><a href="@item.Home.User.Phone"><i class="fas fa-mobile-alt"></i> </a></li>
-                                                                    <li><a href="@item.Home.User.Email"><i class="fas fa-envelope"></i> </a></li>
-                                                                </ul>
-                                                            </div>
+                                <div class="col-12">
+                                    <div class="section-title d-flex align-items-center">
+                                        <h2>My Draws</h2>
+                                    </div>
+                                    <div class="property-item property-col-list mt-4">
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-4 col-md-5">
+                                                <div class="property-image bg-overlay-gradient-04">
+                                                    <img class="img-fluid" src="/Temp/images/property/list/01.jpg" alt="">
+                                                    <div class="property-lable">
+                                                        <span class="badge badge-md badge-primary">Bungalow</span>
+                                                        <span class="badge badge-md badge-info">Sale </span>
+                                                    </div>
+                                                    <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
+                                                    <div class="property-agent">
+                                                        <div class="property-agent-image">
+                                                            <img class="img-fluid" src="/Temp/images/avatar/01.jpg" alt="">
                                                         </div>
-                                                        <div class="property-agent-popup">
-                                                            <a href="/Property/Detail/@item.HomeId"><i class="fas fa-camera"></i> @item.Home.PropertyMedias.Count()</a>
+                                                        <div class="property-agent-info">
+                                                            <a class="property-agent-name" href="#">Alice Williams</a>
+                                                            <span class="d-block">Company Agent</span>
+                                                            <ul class="property-agent-contact list-unstyled">
+                                                                <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
+                                                                <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
+                                                            </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="property-details">
-                                                        <div class="property-details-inner">
-                                                            <h5 class="property-title"><a href="property-detail-style-01.html">@item.Home.Name </a></h5>
-                                                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>@item.Home.Address.District.Name / @item.Home.Address.District.City.Name</span>
-                                                            @*<span class="property-agent-date"><i class="far fa-clock fa-md"></i>@{(DateTime.Now - item.Home.InsertDate).TotalDays.ToString();} days ago</span>*@
-                                                            <div class="property-price">@item.Home.Price.ToString("c") </div>
-
-                                                            <div class="property-price">@item.Home.TicketPrice.ToString("c")<span> / Ticket</span> </div>
-                                                            <ul class="property-info list-unstyled d-flex">
-                                                                <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>@item.Home.BedroomNumber</span></li>
-                                                                <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>@item.Home.BathNumber</span></li>
-                                                                <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>@item.Home.Sqft m</span></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="property-btn">
-                                                            <a class="property-link" href="/Property/Detail/@item.HomeId">See Details</a>
-                                                            <ul class="property-listing-actions list-unstyled mb-0">
-
-                                                                <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="/User/RemoveFav/@item.HomeId"><i class="fas fa-heart text-danger"></i></a></li>
-                                                            </ul>
-                                                        </div>
+                                                    <div class="property-agent-popup">
+                                                        <a href="#"><i class="fas fa-camera"></i> 04</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                        }
-                                    }
-                                    @*<div class="col-md-6 col-lg-4">
-                                            <div class="property-item">
+                                            <div class="col-lg-8 col-md-7">
+                                                <div class="property-details">
+                                                    <div class="property-details-inner">
+                                                        <div class="property-details-inner-box">
+                                                            <div class="property-details-inner-box-left">
+                                                                <h5 class="property-title"><a href="property-detail-style-01.html">Ample apartment at last floor </a></h5>
+                                                                <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Virginia drive temple hills</span>
+                                                                <span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 days ago</span>
+                                                            </div>
+                                                            <div class="property-price">$150.00<span class="d-block"> / month</span> </div>
+                                                        </div>
+                                                        <ul class="property-info list-unstyled d-flex">
+                                                            <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>1</span></li>
+                                                            <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
+                                                            <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>145m</span></li>
+                                                        </ul>
+                                                        <p class="mb-0 d-none d-block mt-3">For those of you who are serious about having more, doing more, giving more and being with some understanding.</p>
+
+                                                    </div>
+
+
+                                                    <div class="property-btn">
+                                                        <a class="property-link" href="property-detail-style-01.html">See Details</a>
+                                                        <ul class="property-listing-actions list-unstyled mb-0">
+                                                            <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
+                                                            <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="fas fa-heart text-danger"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="property-item property-col-list mt-4">
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-4 col-md-5">
                                                 <div class="property-image bg-overlay-gradient-04">
-                                                    <img class="img-fluid" src="/Temp/images/property/grid/02.jpg" alt="">
+                                                    <img class="img-fluid" src="/Temp/images/property/list/02.jpg" alt="">
                                                     <div class="property-lable">
-                                                        <span class="badge badge-md badge-primary">Apartment</span>
-                                                        <span class="badge badge-md badge-info">New </span>
+                                                        <span class="badge badge-md badge-primary">Summer House</span>
+                                                        <span class="badge badge-md badge-info">Hot </span>
                                                     </div>
                                                     <div class="property-agent">
                                                         <div class="property-agent-image">
                                                             <img class="img-fluid" src="/Temp/images/avatar/02.jpg" alt="">
                                                         </div>
                                                         <div class="property-agent-info">
-                                                            <a class="property-agent-name" href="#">John doe</a>
+                                                            <a class="property-agent-name" href="#">Alice Williams</a>
                                                             <span class="d-block">Company Agent</span>
                                                             <ul class="property-agent-contact list-unstyled">
                                                                 <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
@@ -505,17 +681,24 @@ My profile -->
                                                         <a href="#"><i class="fas fa-camera"></i> 12</a>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="col-lg-8 col-md-7">
                                                 <div class="property-details">
                                                     <div class="property-details-inner">
-                                                        <h5 class="property-title"><a href="property-detail-style-01.html">Awesome family home</a></h5>
-                                                        <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Vermont dr. hephzibah</span>
-                                                        <span class="property-agent-date"><i class="far fa-clock fa-md"></i>2 months ago</span>
-                                                        <div class="property-price">$326.00<span> / month</span> </div>
+                                                        <div class="property-details-inner-box">
+                                                            <div class="property-details-inner-box-left">
+                                                                <h5 class="property-title"><a href="property-detail-style-01.html">The citizen apartment 5th floor</a></h5>
+                                                                <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Border st. nicholasville, ky</span>
+                                                                <span class="property-agent-date"><i class="far fa-clock fa-md"></i>6 months ago</span>
+                                                            </div>
+                                                            <div class="property-price">$250.00<span class="d-block"> / month</span> </div>
+                                                        </div>
                                                         <ul class="property-info list-unstyled d-flex">
                                                             <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>2</span></li>
                                                             <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>3</span></li>
-                                                            <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>215m</span></li>
+                                                            <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>2,324m</span></li>
                                                         </ul>
+                                                        <p class="mb-0 d-none d-block mt-3">Success isn’t really that difficult. There is a significant portion of the population here in North America, that actually.</p>
                                                     </div>
                                                     <div class="property-btn">
                                                         <a class="property-link" href="property-detail-style-01.html">See Details</a>
@@ -527,22 +710,23 @@ My profile -->
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="property-item">
+                                    </div>
+                                    <div class="property-item property-col-list mt-4">
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-4 col-md-5">
                                                 <div class="property-image bg-overlay-gradient-04">
-                                                    <img class="img-fluid" src="/Temp/images/property/grid/03.jpg" alt="">
+                                                    <img class="img-fluid" src="/Temp/images/property/list/03.jpg" alt="">
                                                     <div class="property-lable">
                                                         <span class="badge badge-md badge-primary">Summer House</span>
                                                         <span class="badge badge-md badge-info">Hot </span>
                                                     </div>
-                                                    <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
                                                     <div class="property-agent">
                                                         <div class="property-agent-image">
                                                             <img class="img-fluid" src="/Temp/images/avatar/03.jpg" alt="">
                                                         </div>
                                                         <div class="property-agent-info">
-                                                            <a class="property-agent-name" href="#">Felica queen</a>
-                                                            <span class="d-block">Investment</span>
+                                                            <a class="property-agent-name" href="#">Sara lisbon</a>
+                                                            <span class="d-block">Company Agent</span>
                                                             <ul class="property-agent-contact list-unstyled">
                                                                 <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
                                                                 <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
@@ -553,17 +737,24 @@ My profile -->
                                                         <a href="#"><i class="fas fa-camera"></i> 03</a>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="col-lg-8 col-md-7">
                                                 <div class="property-details">
                                                     <div class="property-details-inner">
-                                                        <h5 class="property-title"><a href="property-detail-style-01.html">Contemporary apartment</a></h5>
-                                                        <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Newport st. mebane, nc</span>
-                                                        <span class="property-agent-date"><i class="far fa-clock fa-md"></i>6 months ago</span>
-                                                        <div class="property-price">$658.00<span> / month</span> </div>
+                                                        <div class="property-details-inner-box">
+                                                            <div class="property-details-inner-box-left">
+                                                                <h5 class="property-title"><a href="property-detail-style-01.html">Cottage woods housed for sale</a></h5>
+                                                                <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Newport st. mebane, nc</span>
+                                                                <span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 months ago</span>
+                                                            </div>
+                                                            <div class="property-price">$326.00<span class="d-block"> / month</span> </div>
+                                                        </div>
                                                         <ul class="property-info list-unstyled d-flex">
                                                             <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>3</span></li>
-                                                            <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>4</span></li>
-                                                            <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>3,189m</span></li>
+                                                            <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
+                                                            <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>3,987m</span></li>
                                                         </ul>
+                                                        <p class="mb-0 d-none d-block mt-3">I truly believe Augustine’s words are true and if you look at history you know it is true. There are many people in.</p>
                                                     </div>
                                                     <div class="property-btn">
                                                         <a class="property-link" href="property-detail-style-01.html">See Details</a>
@@ -574,210 +765,21 @@ My profile -->
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>*@
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--=================================
-                Saved Homes End -->
-                <!--=================================
-                My Draws Start -->
-                <div class="tab-pane fade col-12" id="tab-02" role="tabpanel" aria-labelledby="tab-02-tab">
-
-
-                    <div class="container">
-                        <div class="row">
-
-                            <div class="col-12">
-                                <div class="section-title d-flex align-items-center">
-                                    <h2>My Draws</h2>
-                                </div>
-                                <div class="property-item property-col-list mt-4">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-4 col-md-5">
-                                            <div class="property-image bg-overlay-gradient-04">
-                                                <img class="img-fluid" src="/Temp/images/property/list/01.jpg" alt="">
-                                                <div class="property-lable">
-                                                    <span class="badge badge-md badge-primary">Bungalow</span>
-                                                    <span class="badge badge-md badge-info">Sale </span>
-                                                </div>
-                                                <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
-                                                <div class="property-agent">
-                                                    <div class="property-agent-image">
-                                                        <img class="img-fluid" src="/Temp/images/avatar/01.jpg" alt="">
-                                                    </div>
-                                                    <div class="property-agent-info">
-                                                        <a class="property-agent-name" href="#">Alice Williams</a>
-                                                        <span class="d-block">Company Agent</span>
-                                                        <ul class="property-agent-contact list-unstyled">
-                                                            <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                                            <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="property-agent-popup">
-                                                    <a href="#"><i class="fas fa-camera"></i> 04</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-7">
-                                            <div class="property-details">
-                                                <div class="property-details-inner">
-                                                    <div class="property-details-inner-box">
-                                                        <div class="property-details-inner-box-left">
-                                                            <h5 class="property-title"><a href="property-detail-style-01.html">Ample apartment at last floor </a></h5>
-                                                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Virginia drive temple hills</span>
-                                                            <span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 days ago</span>
-                                                        </div>
-                                                        <div class="property-price">$150.00<span class="d-block"> / month</span> </div>
-                                                    </div>
-                                                    <ul class="property-info list-unstyled d-flex">
-                                                        <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>1</span></li>
-                                                        <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
-                                                        <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>145m</span></li>
-                                                    </ul>
-                                                    <p class="mb-0 d-none d-block mt-3">For those of you who are serious about having more, doing more, giving more and being with some understanding.</p>
-
-                                                </div>
-
-
-                                                <div class="property-btn">
-                                                    <a class="property-link" href="property-detail-style-01.html">See Details</a>
-                                                    <ul class="property-listing-actions list-unstyled mb-0">
-                                                        <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                                                        <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="fas fa-heart text-danger"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="property-item property-col-list mt-4">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-4 col-md-5">
-                                            <div class="property-image bg-overlay-gradient-04">
-                                                <img class="img-fluid" src="/Temp/images/property/list/02.jpg" alt="">
-                                                <div class="property-lable">
-                                                    <span class="badge badge-md badge-primary">Summer House</span>
-                                                    <span class="badge badge-md badge-info">Hot </span>
-                                                </div>
-                                                <div class="property-agent">
-                                                    <div class="property-agent-image">
-                                                        <img class="img-fluid" src="/Temp/images/avatar/02.jpg" alt="">
-                                                    </div>
-                                                    <div class="property-agent-info">
-                                                        <a class="property-agent-name" href="#">Alice Williams</a>
-                                                        <span class="d-block">Company Agent</span>
-                                                        <ul class="property-agent-contact list-unstyled">
-                                                            <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                                            <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="property-agent-popup">
-                                                    <a href="#"><i class="fas fa-camera"></i> 12</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-7">
-                                            <div class="property-details">
-                                                <div class="property-details-inner">
-                                                    <div class="property-details-inner-box">
-                                                        <div class="property-details-inner-box-left">
-                                                            <h5 class="property-title"><a href="property-detail-style-01.html">The citizen apartment 5th floor</a></h5>
-                                                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Border st. nicholasville, ky</span>
-                                                            <span class="property-agent-date"><i class="far fa-clock fa-md"></i>6 months ago</span>
-                                                        </div>
-                                                        <div class="property-price">$250.00<span class="d-block"> / month</span> </div>
-                                                    </div>
-                                                    <ul class="property-info list-unstyled d-flex">
-                                                        <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>2</span></li>
-                                                        <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>3</span></li>
-                                                        <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>2,324m</span></li>
-                                                    </ul>
-                                                    <p class="mb-0 d-none d-block mt-3">Success isn’t really that difficult. There is a significant portion of the population here in North America, that actually.</p>
-                                                </div>
-                                                <div class="property-btn">
-                                                    <a class="property-link" href="property-detail-style-01.html">See Details</a>
-                                                    <ul class="property-listing-actions list-unstyled mb-0">
-                                                        <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                                                        <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="fas fa-heart text-danger"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="property-item property-col-list mt-4">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-4 col-md-5">
-                                            <div class="property-image bg-overlay-gradient-04">
-                                                <img class="img-fluid" src="/Temp/images/property/list/03.jpg" alt="">
-                                                <div class="property-lable">
-                                                    <span class="badge badge-md badge-primary">Summer House</span>
-                                                    <span class="badge badge-md badge-info">Hot </span>
-                                                </div>
-                                                <div class="property-agent">
-                                                    <div class="property-agent-image">
-                                                        <img class="img-fluid" src="/Temp/images/avatar/03.jpg" alt="">
-                                                    </div>
-                                                    <div class="property-agent-info">
-                                                        <a class="property-agent-name" href="#">Sara lisbon</a>
-                                                        <span class="d-block">Company Agent</span>
-                                                        <ul class="property-agent-contact list-unstyled">
-                                                            <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                                            <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="property-agent-popup">
-                                                    <a href="#"><i class="fas fa-camera"></i> 03</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-7">
-                                            <div class="property-details">
-                                                <div class="property-details-inner">
-                                                    <div class="property-details-inner-box">
-                                                        <div class="property-details-inner-box-left">
-                                                            <h5 class="property-title"><a href="property-detail-style-01.html">Cottage woods housed for sale</a></h5>
-                                                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Newport st. mebane, nc</span>
-                                                            <span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 months ago</span>
-                                                        </div>
-                                                        <div class="property-price">$326.00<span class="d-block"> / month</span> </div>
-                                                    </div>
-                                                    <ul class="property-info list-unstyled d-flex">
-                                                        <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>3</span></li>
-                                                        <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
-                                                        <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>3,987m</span></li>
-                                                    </ul>
-                                                    <p class="mb-0 d-none d-block mt-3">I truly believe Augustine’s words are true and if you look at history you know it is true. There are many people in.</p>
-                                                </div>
-                                                <div class="property-btn">
-                                                    <a class="property-link" href="property-detail-style-01.html">See Details</a>
-                                                    <ul class="property-listing-actions list-unstyled mb-0">
-                                                        <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                                                        <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="fas fa-heart text-danger"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!--=================================
+            my-properties -->
                     </div>
 
                     <!--=================================
-                    my-properties -->
+
+        My Properties End -->
                 </div>
 
-                <!--=================================
-
-                My Properties End -->
             </div>
         </div>
     </div>
