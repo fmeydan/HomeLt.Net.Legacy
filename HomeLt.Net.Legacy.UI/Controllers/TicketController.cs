@@ -32,15 +32,16 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         public ActionResult Pay(PayViewModel model)
         {
             List<Ticket> ticketList = new List<Ticket>();
+
+            Ticket ticket = new Ticket();
             var currentUser = Session[Constants.Sessions.SessionUser] as User;
             using (TicketManager ticketManager=new TicketManager())
             {
                 int amount = model.Amount==0? 1:model.Amount;
                 for (int i = 1; i <= amount; i++)
                 {
-                    Ticket ticket = new Ticket();
                     ticket.HomeId = model.HomeId;
-                   
+                    
 
                     ticket.TicketCode = Guid.NewGuid().ToString();
                     ticket.UserId = currentUser.UserId;
@@ -53,6 +54,14 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                 TempData["ticketList"] = ticketList;
 
 
+                //TODO: Ev maksimum bilet sayısının geçilip geçilmediği kontrolü yapılacak.
+                using (HomeManager manager = new HomeManager())
+                {
+                    var home = ticket.Home;
+                    home.SoldTicket += amount;
+                    manager.Update(home);
+
+                }
 
             }
             

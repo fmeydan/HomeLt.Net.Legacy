@@ -241,9 +241,9 @@ Listing – grid view -->
                         </div>*@
                 </div>
             </div>
-            @*<div class="col-lg-9">
+            <div class="col-lg-9">
                 <div class="property-filter d-sm-flex">
-                    <ul class="property-short list-unstyled d-sm-flex mb-0">
+                    @*<ul class="property-short list-unstyled d-sm-flex mb-0">
                         <li>
                             <form class="form-inline">
                                 <div class="form-group d-lg-flex d-block">
@@ -260,42 +260,42 @@ Listing – grid view -->
                                 </div>
                             </form>
                         </li>
-                    </ul>
+                    </ul>*@
                     <ul class="property-view-list list-unstyled d-flex mb-0">
+                        <li><a class="filter-clear" href="/Search/Index">Reset Search <i class="fas fa-redo-alt"></i> </a></li>
                         <li>
-                            <form class="form-inline">
-                                <div class="form-group d-lg-flex d-block">
-                                    <label class="justify-content-start pr-2">Sort by: </label>
-                                    <div class="short-by">
-                                        <select class="form-control basic-select">
-                                            <option>12</option>
-                                            <option>18 </option>
-                                            <option>24 </option>
-                                            <option>64 </option>
-                                            <option>128</option>
-                                        </select>
-                                    </div>
+
+
+                            <div class="form-group d-lg-flex d-block">
+                                <label class="justify-content-start pr-2">Display: </label>
+                                <div class="short-by">
+                                    <select class="form-control basic-select" name="count">
+                                        <option>10</option>
+                                        <option>20</option>
+
+                                    </select>
                                 </div>
-                            </form>
+                            </div>
+
                         </li>
-                        <li><a href="index-half-map.html"><i class="fas fa-map-marker-alt fa-lg"></i></a></li>
-                        <li>
-                            <a class="property-list-icon" href="property-list.html">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="property-grid-icon active" href="property-grid.html">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </a>
-                        </li>
+                        @*<li><a href="index-half-map.html"><i class="fas fa-map-marker-alt fa-lg"></i></a></li>
+        <li>
+            <a class="property-list-icon" href="property-list.html">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </li>
+        <li>
+            <a class="property-grid-icon active" href="property-grid.html">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </li>*@
                     </ul>
-                </div>*@
-            <div class="col-lg-9">
+                </div>
+            
             <div class="row mt-4">
                 @if (Model.Count() > 0)
                 {
@@ -352,7 +352,7 @@ Listing – grid view -->
                                     <a class="property-link" href="/Home/Detail/@item.HomeId">See Details</a>
                                     @if (item.SellingType == true)
                                     {
-                                        <a class="property-link" href="/Ticket/Buy/@item.HomeId" data-toggle="tooltip" data-placement="top" title="Buy Ticket"><i class="fas fa-ticket-alt"></i> Buy Ticket</a>
+                                        <a class="property-link" href="/Ticket/Buy/@item.HomeId" data-toggle="tooltip" data-placement="top" title="Buy Ticket"><i class="fas fa-ticket-alt"></i>Buy</a>
 
                                     }
                                     <ul class="property-listing-actions list-unstyled mb-0">
@@ -640,7 +640,7 @@ Listing – grid view -->
                     </ul>
                 </div>
             </div>
-                </div>
+               
         </div>
     </div>
     </div>

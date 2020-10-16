@@ -13,7 +13,7 @@ namespace HomeLt.Net.Legacy.DAL.Postgre
         
         string IMigrationMetadata.Id
         {
-            get { return "202010150345065_v13"; }
+            get { return "202010161356129_v-13"; }
         }
         
         string IMigrationMetadata.Source

@@ -433,7 +433,8 @@
     </Compile>
     <Compile Include="Helpers\ActiveMenuHelper.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
-    <Compile Include="Models\Home\AddHomeModel.cs" />
+    <Compile Include="Models\Home\HomeIndexViewModel.cs" />
+    <Compile Include="Models\Property\AddHomeModel.cs" />
     <Compile Include="Models\Pay\PayViewModel.cs" />
     <Compile Include="Models\Search\SearchFilterModel.cs" />
     <Compile Include="Models\UserViewModel\UserProfileViewModel.cs" />

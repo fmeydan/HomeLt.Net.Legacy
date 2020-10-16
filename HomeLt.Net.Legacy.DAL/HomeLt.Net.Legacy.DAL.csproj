@@ -153,9 +153,9 @@
     <Compile Include="Postgre\202010150034454_v112.designer.cs">
       <DependentUpon>202010150034454_v112.cs</DependentUpon>
     </Compile>
-    <Compile Include="Postgre\202010150345065_v13.cs" />
-    <Compile Include="Postgre\202010150345065_v13.designer.cs">
-      <DependentUpon>202010150345065_v13.cs</DependentUpon>
+    <Compile Include="Postgre\202010161356129_v-13.cs" />
+    <Compile Include="Postgre\202010161356129_v-13.designer.cs">
+      <DependentUpon>202010161356129_v-13.cs</DependentUpon>
     </Compile>
     <Compile Include="Postgre\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -218,8 +218,8 @@
     <EmbeddedResource Include="Postgre\202010150034454_v112.resx">
       <DependentUpon>202010150034454_v112.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010150345065_v13.resx">
-      <DependentUpon>202010150345065_v13.cs</DependentUpon>
+    <EmbeddedResource Include="Postgre\202010161356129_v-13.resx">
+      <DependentUpon>202010161356129_v-13.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

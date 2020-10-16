@@ -12,46 +12,69 @@ namespace HomeLt.Net.Legacy.UI.Controllers
     public class SearchController : Controller
     {
         // GET: Search
-        public ActionResult Index(int? propertyType, int? residency,int? saleType)
+        public ActionResult Index(int? propertyType, int? residency,int? saleType,int? count,int? pageNumber,int? cityId)
         {
             
             using (HomeManager manager = new HomeManager())
             {
-                if (propertyType != null)
+                if (propertyType == null && residency==null&&saleType==null)
                 {
-                    var filtered = manager.GetList(f => f.PropertyType == propertyType && f.isAvaible==true);
-                    return View(filtered);
-
+                    var unfiltered = manager.GetList(f => f.isAvaible == true);
+                    unfiltered = unfiltered.Take(10).ToList();
+                    return View(unfiltered);
+                   
                 }
-                try
-                {
-                    if (residency != null)
-                    {
-                        bool residennt = Convert.ToBoolean(residency);
-                        var result = manager.GetList(f => f.isApproved == residennt && f.isAvaible==true);
-                        return View(result);
-                    }
-
-                    if (saleType!=null)
-                    {
-                        bool saletype = Convert.ToBoolean(saleType);
-                        var result = manager.GetList(f => f.SellingType == saletype && f.isAvaible==true);
-                        return View(result);
-                    }
-                }
-                catch (Exception e)
+                else
                 {
                     
+                    try
+                    {
+                        if (propertyType!=null)
+                        {
+                            var filtered = manager.GetList(f => f.PropertyType == propertyType && f.isAvaible == true).Take(10).ToList();
+                            return View(filtered);
+
+                        }
+                        if (residency != null)
+                        {
+                            bool residennt = Convert.ToBoolean(residency);
+                            var result = manager.GetList(f => f.isApproved == residennt && f.isAvaible == true).Take(10).ToList();
+                            return View(result);
+                        }
+
+                        if (saleType != null)
+                        {
+                            bool saletype = Convert.ToBoolean(saleType);
+                            var result = manager.GetList(f => f.SellingType == saletype && f.isAvaible == true).Take(10).ToList();
+                            return View(result);
+                        }
+                        if (cityId!=null)
+                        {
+                            var result = manager.GetList(f => f.Address.District.City.CityId == cityId);
+                            return View(result);
+                        }
+                       
+                    }
+                    catch (Exception e)
+                    {
+
+
+                    }
+
+
+
 
                 }
-                var unfiltered = manager.GetList(f => f.isAvaible == true);
-                return View(unfiltered);
 
-
-
+                return View (manager.GetList(f => f.isAvaible == true).Take(10));
             }
+               
           
         }
+
+
+
+        
 
         [HttpPost]
         public ActionResult Index(SearchFilterModel model)
@@ -105,6 +128,12 @@ namespace HomeLt.Net.Legacy.UI.Controllers
             }
         }
 
+
+
+        public void FilterCount(int count,int pageNumber)
+        {
+
+        }
 
        
     }

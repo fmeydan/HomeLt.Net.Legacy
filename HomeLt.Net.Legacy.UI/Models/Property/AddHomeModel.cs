@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
-namespace HomeLt.Net.Legacy.UI.Models.Home
+namespace HomeLt.Net.Legacy.UI.Models.Property
 {
     public class AddHomeModel
     {

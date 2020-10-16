@@ -106,6 +106,7 @@
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Postgre\PropertyAdressManager.cs" />
     <Compile Include="Postgre\PropertyMediaManager.cs" />
+    <Compile Include="Postgre\TestimonalManager.cs" />
     <Compile Include="Postgre\TicketManager.cs" />
     <Compile Include="Postgre\UserManager.cs" />
     <Compile Include="Postgre\UserMediaManager.cs" />

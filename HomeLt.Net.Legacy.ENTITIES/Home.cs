@@ -49,6 +49,8 @@ namespace HomeLt.Net.Legacy.ENTITIES
 
         public int TotalTickets { get; set; }
 
+        public int SoldTicket { get; set; }
+
         //navigation
         [ForeignKey("UserId")]
         public virtual User User { get; set; }

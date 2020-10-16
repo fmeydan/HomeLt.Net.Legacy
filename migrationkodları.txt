@@ -1,0 +1,2 @@
+add-migration -configurationtypename HomeLt.Net.Legacy.DAL.Postgre.Configuration v-
+update-database -configurationtypename HomeLt.Net.Legacy.DAL.Postgre.Configuration

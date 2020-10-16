@@ -1,4 +1,4 @@
-﻿
+﻿@model HomeLt.Net.Legacy.UI.Models.Home.HomeIndexViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
@@ -189,11 +189,12 @@ banner -->
         </div>
         <div class="row justify-content-center mt-5">
             <div class="col-lg-7 text-center">
-                <p class="mb-4">Ten years and thousands of home buyers have turned to Real Villa to find their dream home. We offer a comprehensive list of for-sale properties, as well as the knowledge and tools to make informed real estate decisions. Today, more than ever, Real Villa is the home of home Search.</p>
-                <div class="popup-video">
-                    @*<a class="popup-icon popup-youtube" href="https://www.youtube.com/watch?v=LgvseYYhqU0"> <i class="flaticon-play-button"></i> </a>*@
-                </div>
-            </div>
+                <p class="mb-4">
+                    The fees required for your passport, Visa and the flight ticket will be covered by us. All the taxes of the house you won will be payed by us. All the legal fees will be funded by us. Electricity, water, natural gas subscriptions are covered by our side. Until your house gets ready, we will be hosting you at 4.05 star hotels which will be paid from us. During this process, all the transfer fees will be covered by us.</p>
+                    <div class="popup-video">
+                        @*<a class="popup-icon popup-youtube" href="https://www.youtube.com/watch?v=LgvseYYhqU0"> <i class="flaticon-play-button"></i> </a>*@
+                    </div>
+</div>
         </div>
     </div>
 </section>
@@ -317,336 +318,86 @@ Browse properties -->
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="property-item">
-                    <div class="property-image bg-overlay-gradient-04">
-                        <img class="img-fluid" src="~/Temp/images/homes/indoor/1.jpg" alt="">
-                        <div class="property-lable">
-                            <span class="badge badge-md badge-primary">Approved</span>
-                            <span class="badge badge-md badge-info">Sale </span>
-                        </div>
-                        <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
-                        <div class="property-agent">
-                            <div class="property-agent-image">
-                                <img class="img-fluid" src="~/Temp/images/avatar/01.jpg" alt="">
+            @foreach (var item in Model.FeaturedProperties)
+            {
+                <div class="col-sm-6 col-md-4">
+                    <div class="property-item">
+                        <div class="property-image bg-overlay-gradient-04">
+                            <img class="img-fluid" src="@(item.PropertyMedias.FirstOrDefault()?.Path ?? "")" alt="">
+                            <div class="property-lable">
+                                <span class="badge badge-md badge-primary">@(((HomeLt.Net.Legacy.UI.Constants.EnumPropertyType)item.PropertyType).ToString())</span>
+                                <span class="badge badge-md badge-info">Sale </span>
                             </div>
-                            <div class="property-agent-info">
-                                <a class="property-agent-name" href="#">Alice Williams</a>
-                                <span class="d-block">Company Agent</span>
-                                <ul class="property-agent-contact list-unstyled">
-                                    <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                    <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="property-agent-popup">
-                            <a href="#"><i class="fas fa-camera"></i> 06</a>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-details-inner">
-                            <h5 class="property-title"><a href="/Property/Index/">Ample apartment at last floor </a></h5>
-                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Virginia drive temple hills</span>
-                            <span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 days ago</span>
-                            <div class="property-price">$350.000.00 </div>
-                            <div class="property-price">$30.00<span> / Ticket</span> </div>
-                            <ul class="property-info list-unstyled d-flex">
-                                <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>1</span></li>
-                                <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
-                                <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>145m</span></li>
-                            </ul>
-                            <div class="mt-1">
-                                <span>Ticket Sold</span>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 99%;" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100">99%</div>
+                            <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
+                            <div class="property-agent">
+                                <div class="property-agent-image">
+                                    <img class="img-fluid" src="@(item.User.UserMedias.FirstOrDefault()?.Path ?? "")" alt="">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="property-btn">
-                            <a class="property-link" href="/Property/Index">See Details</a>
-                            <ul class="property-listing-actions list-unstyled mb-0">
-                                @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
-                                <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="property-item">
-                    <div class="property-image bg-overlay-gradient-04">
-                        <img class="img-fluid" src="~/Temp/images/homes/outdoor/12.jpg" alt="">
-                        <div class="property-lable">
-                            <span class="badge badge-md badge-primary">Approved</span>
-                            <span class="badge badge-md badge-info">New </span>
-                        </div>
-                        <div class="property-agent">
-                            <div class="property-agent-image">
-                                <img class="img-fluid" src="~/Temp/images/avatar/02.jpg" alt="">
-                            </div>
-                            <div class="property-agent-info">
-                                <a class="property-agent-name" href="#">John doe</a>
-                                <span class="d-block">Company Agent</span>
-                                <ul class="property-agent-contact list-unstyled">
-                                    <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                    <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="property-agent-popup">
-                            <a href="#"><i class="fas fa-camera"></i> 12</a>
-                        </div>
-                    </div>
+                                <div class="property-agent-info">
+                                    <a class="property-agent-name" href="#">@item.User.FirstName @item.User.LastName </a>
 
-                    <div class="property-details">
-                        <div class="property-details-inner">
-                            <h5 class="property-title"><a href="/Property/Index/">Awesome family home</a></h5>
-                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Vermont dr. hephzibah</span>
-                            <span class="property-agent-date"><i class="far fa-clock fa-md"></i>2 months ago</span>
-                            <div class="property-price">$150.000.00 </div>
-                            <div class="property-price">$10.00<span> / ticket</span> </div>
-                            <ul class="property-info list-unstyled d-flex">
-                                <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>2</span></li>
-                                <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>3</span></li>
-                                <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>215m</span></li>
-                            </ul>
-                            <div class="mt-1">
-                                <span>Ticket Sold</span>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                                    <ul class="property-agent-contact list-unstyled">
+                                        <li><a href="@item.User.Phone"><i class="fas fa-mobile-alt"></i> </a></li>
+                                        <li><a href="@item.User.Email"><i class="fas fa-envelope"></i> </a></li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="property-btn">
-                            <a class="property-link" href="/Property/Index/">See Details</a>
-                            <ul class="property-listing-actions list-unstyled mb-0">
-                                <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                                <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="property-item">
-                    <div class="property-image bg-overlay-gradient-04">
-                        <img class="img-fluid" src="~/Temp/images/homes/indoor/8.jpg" alt="">
-                        <div class="property-lable">
-                            <span class="badge badge-md badge-secondary">Non-Approved</span>
-                            <span class="badge badge-md badge-info">Hot </span>
-                        </div>
-                        <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
-                        <div class="property-agent">
-                            <div class="property-agent-image">
-                                <img class="img-fluid" src="~/Temp/images/avatar/03.jpg" alt="">
-                            </div>
-                            <div class="property-agent-info">
-                                <a class="property-agent-name" href="#">Felica queen</a>
-                                <span class="d-block">Investment</span>
-                                <ul class="property-agent-contact list-unstyled">
-                                    <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                    <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
-                                </ul>
+                            <div class="property-agent-popup">
+                                <a href="/Home/Detail/@item.HomeId"><i class="fas fa-camera"></i> @item.PropertyMedias.Count()</a>
                             </div>
                         </div>
-                        <div class="property-agent-popup">
-                            <a href="#"><i class="fas fa-camera"></i> 03</a>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-details-inner">
-                            <h5 class="property-title"><a href="/Property/Index/">Contemporary apartment</a></h5>
-                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Newport st. mebane, nc</span>
-                            <span class="property-agent-date"><i class="far fa-clock fa-md"></i>6 months ago</span>
-                            <div class="property-price">$480.000.00 </div>
-                            <div class="property-price">$30.00<span> / ticket</span> </div>
-                            <ul class="property-info list-unstyled d-flex">
-                                <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>3</span></li>
-                                <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>4</span></li>
-                                <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>3,189m</span></li>
-                            </ul>
-                            <div class="mt-1">
-                                <span>Ticket Sold</span>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100">5%</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="property-btn">
-                            <a class="property-link" href="/Property/Index/">See Details</a>
-                            <ul class="property-listing-actions list-unstyled mb-0">
-                                <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                                <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="property-item">
-                    <div class="property-image bg-overlay-gradient-04">
-                        <img class="img-fluid" src="~/Temp/images/homes/indoor/7.jpg" alt="">
-                        <div class="property-lable">
-                            <span class="badge badge-md badge-primary">Approved</span>
-                            <span class="badge badge-md badge-info">Hot </span>
-                        </div>
-                        <div class="property-agent">
-                            <div class="property-agent-image">
-                                <img class="img-fluid" src="~/Temp/images/avatar/04.jpg" alt="">
-                            </div>
-                            <div class="property-agent-info">
-                                <a class="property-agent-name" href="#">Sara lisbon</a>
-                                <span class="d-block">Construction</span>
-                                <ul class="property-agent-contact list-unstyled">
-                                    <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                    <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
-                                </ul>
+                        <div class="property-details">
+                            <div class="property-details-inner">
+                                <h5 class="property-title"><a href="/Home/Detail/@item.HomeId">@item.Name </a></h5>
+                                <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>@item.Address.AddressLine1</span>
+                                @*<span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 days ago</span>*@
+                                <p class="mb-0 d-block mt-3">@item.Address.AddressLine2</p>
+                                <div class="property-price">@item.Price.ToString("C")</div>
+                                @if (item.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Lottery))
+                                {
+                                    <div class="property-price">@(item?.TicketPrice.ToString("C")?? "") <span> / Ticket</span> </div>
+                                }
+                                else
+                                {
+                                    <div class="property-price" style="height:36px"> </div>
+                                }
 
-                            </div>
-                        </div>
-                        <div class="property-agent-popup">
-                            <a href="#"><i class="fas fa-camera"></i> 04</a>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-details-inner">
-                            <h5 class="property-title"><a href="/Property/Index/">Family home for sale</a></h5>
-                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Border st. nicholasville, ky</span>
-                            <span class="property-agent-date"><i class="far fa-clock fa-md"></i>12 months ago</span>
-                            <div class="property-price">$195.000.00 </div>
-                            <div class="property-price">$20.00 <span> / Ticket</span> </div>
-                            <ul class="property-info list-unstyled d-flex">
-                                <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>2</span></li>
-                                <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>1</span></li>
-                                <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>2,356m</span></li>
-                            </ul>
-                            <div class="mt-1">
-                                <span>Ticket Sold</span>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="property-btn">
-                            <a class="property-link" href="/Property/Index/">See Details</a>
-                            <ul class="property-listing-actions list-unstyled mb-0">
-                                <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                                <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
-                            </ul>
+                                <ul class="property-info list-unstyled d-flex">
+                                    <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>1</span></li>
+                                    <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
+                                    <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>145m</span></li>
+                                </ul>
+                                <div class="mt-1" style="height:36.8px">
+                                    @if (item.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Lottery))
+                                    {
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="property-item">
-                    <div class="property-image bg-overlay-gradient-04">
-                        <img class="img-fluid" src="~/Temp/images/homes/outdoor/2.jpg" alt="">
-                        <div class="property-lable">
-                            <span class="badge badge-md badge-primary">Approved</span>
-                            <span class="badge badge-md badge-info">Rent </span>
-                        </div>
-                        <span class="property-trending" title="trending"><i class="fas fa-bolt"></i></span>
-                        <div class="property-agent">
-                            <div class="property-agent-image">
-                                <img class="img-fluid" src="~/Temp/images/avatar/05.jpg" alt="">
+                                        <span>Ticket Sold</span>
+                                        <div class="progress">
+                                            @{
+                                                string percentage = ((item.SoldTicket * 100) / item.TotalTickets).ToString();
+                                                percentage = percentage + "%";
+                                            }
+                                            <div class="progress-bar" role="progressbar" style="width: @(percentage=="0%"?"10%":percentage)" aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100">@percentage</div>
+                                        </div>
+
+                                    }
+                                </div>
                             </div>
-                            <div class="property-agent-info">
-                                <a class="property-agent-name" href="#">Mellissa Doe</a>
-                                <span class="d-block">Founder & CEO</span>
-                                <ul class="property-agent-contact list-unstyled">
-                                    <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                    <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
+                            <div class="property-btn">
+                                <a class="property-link" href="/Property/Index/">See Details</a>
+                                <ul class="property-listing-actions list-unstyled mb-0">
+                                    @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
+                                    <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="property-agent-popup">
-                            <a href="#"><i class="fas fa-camera"></i> 10</a>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-details-inner">
-                            <h5 class="property-title"><a href="/Property/Index/">Luxury villa with pool</a></h5>
-                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>West Indian St. Missoula</span>
-                            <span class="property-agent-date"><i class="far fa-clock fa-md"></i>2 years ago</span>
-                            <div class="property-price">$255.000.00 </div>
-                            <div class="property-price">$20.00 <span> / Ticket</span> </div>
-                            <ul class="property-info list-unstyled d-flex">
-                                <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>5</span></li>
-                                <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>4</span></li>
-                                <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>1,658m</span></li>
-                            </ul>
-                            <div class="mt-1">
-                                <span>Ticket Sold</span>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 68%;" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">68%</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="property-btn">
-                            <a class="property-link" href="/Property/Index/">See Details</a>
-                            <ul class="property-listing-actions list-unstyled mb-0">
-                                <li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>
-                                <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="property-item">
-                    <div class="property-image bg-overlay-gradient-04">
-                        <img class="img-fluid" src="~/Temp/images/homes/indoor/10.jpg" alt="">
-                        <div class="property-lable">
-                            <span class="badge badge-md badge-secondary">Non-Approved</span>
-                            <span class="badge badge-md badge-info">New </span>
-                        </div>
-                        <div class="property-agent">
-                            <div class="property-agent-image">
-                                <img class="img-fluid" src="~/Temp/images/avatar/06.jpg" alt="">
-                            </div>
-                            <div class="property-agent-info">
-                                <a class="property-agent-name" href="#">Michael Bean</a>
-                                <span class="d-block">Research</span>
-                                <ul class="property-agent-contact list-unstyled">
-                                    <li><a href="#"><i class="fas fa-mobile-alt"></i> </a></li>
-                                    <li><a href="#"><i class="fas fa-envelope"></i> </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="property-agent-popup">
-                            <a href="#"><i class="fas fa-camera"></i> 02</a>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-details-inner">
-                            <h5 class="property-title"><a href="/Property/Index/">184 lexington avenue</a></h5>
-                            <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Hamilton rd. willoughby, oh</span>
-                            <span class="property-agent-date"><i class="far fa-clock fa-md"></i>3 years ago</span>
-                            <div class="property-price">$485.000.00 </div>
-                            <div class="property-price">$20.00<span> / ticket</span> </div>
-                            <ul class="property-info list-unstyled d-flex">
-                                <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>2</span></li>
-                                <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
-                                <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>3,657m</span></li>
-                            </ul>
-                            <div class="mt-1">
-                                <span>Ticket Sold</span>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 82%;" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">82%</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="property-btn">
-                            <a class="property-link" href="/Property/Index/">See Details</a>
-                            <ul class="property-listing-actions list-unstyled mb-0">
-                                @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
-                                <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
+
+
+
+           
             <div class="col-12 text-center">
                 <a class="btn btn-link" href="/Search/Index/"><i class="fas fa-plus"></i>View All Listings</a>
             </div>
@@ -670,38 +421,66 @@ Featured properties-->
         <div class="row">
             <div class="col-12">
                 <div class="owl-carousel owl-nav-top-right" data-animateOut="fadeOut" data-nav-arrow="true" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="0">
-                    <div class="item">
-                        <div class="property-offer">
-                            <div class="property-offer-item">
-                                <div class="property-offer-image bg-holder" style="background: url(/Temp/images/homes/indoor/4.jpg);">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-10 col-sm-12">
-                                            <div class="property-details">
-                                                <div class="property-details-inner">
-                                                    <h5 class="property-title"><a href="/Property/Index/">Ample apartment at last floor </a></h5>
-                                                    <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>Virginia drive temple hills</span>
-                                                    <span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 days ago</span>
-                                                    <p class="mb-0 d-block mt-3">Use a past defeat as a motivator. Remind yourself you have nowhere to go except up as you.</p>
-                                                    <div class="property-price">$385.000.00 </div>
-                                                    <div class="property-price">$30.00 <span> / Ticket</span> </div>
-                                                    <ul class="property-info list-unstyled d-flex">
-                                                        <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>1</span></li>
-                                                        <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
-                                                        <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>145m</span></li>
-                                                    </ul>
-                                                    <div class="mt-1">
-                                                        <span>Ticket Sold</span>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
+                    @foreach (var item in Model.BestOffer)
+                    {
+                        <div class="item">
+                            <div class="property-offer">
+                                <div class="property-offer-item">
+                                    <div class="property-offer-image bg-holder" style="background: url(@(item.PropertyMedias.FirstOrDefault()?.Path ?? ""));">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-10 col-sm-12">
+                                                <div class="property-details">
+                                                    <div class="property-details-inner">
+                                                        <h5 class="property-title"><a href="/Home/Detail/@item.HomeId">@item.Name </a></h5>
+                                                        <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>@item.Address.AddressLine1</span>
+                                                        @*<span class="property-agent-date"><i class="far fa-clock fa-md"></i>10 days ago</span>*@
+                                                        <p class="mb-0 d-block mt-3">@item.Address.AddressLine2</p>
+                                                        <div class="property-price">@item.Price.ToString("C")</div>
+                                                        @if (item.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Lottery))
+                                                        {
+                                                            <div class="property-price">@item.TicketPrice.ToString("C") <span> / Ticket</span> </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="property-price" style="height:36px"> </div>
+                                                        }
+
+                                                        <ul class="property-info list-unstyled d-flex">
+                                                            <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>1</span></li>
+                                                            <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>2</span></li>
+                                                            <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>145m</span></li>
+                                                        </ul>
+                                                        <div class="mt-1" style="height:36.8px">
+                                                            @if (item.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Lottery))
+                                                            {
+
+                                                                <span>Ticket Sold</span>
+                                                                <div class="progress">
+                                                                    @{
+                                                                        string percentage = ((item.SoldTicket * 100) / item.TotalTickets).ToString();
+                                                                        percentage = percentage + "%";
+                                                                    }
+                                                                    <div class="progress-bar" role="progressbar" style="width: @(percentage=="0%"?"10%":percentage)" aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100">@percentage</div>
+                                                                </div>
+
+                                                            }
                                                         </div>
+
                                                     </div>
-                                                </div>
-                                                <div class="property-btn">
-                                                    <a class="property-link" href="/Property/Index/">See Details</a>
-                                                    <ul class="property-listing-actions list-unstyled mb-0">
-                                                        @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
-                                                        <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
-                                                    </ul>
+
+                                                    <div class="property-btn">
+                                                        <a class="property-link" href="/Property/Index/">See Details</a>
+                                                        @if (item.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Lottery))
+                                                        {
+                                                            <a class="property-link" href="/Ticket/Buy/@item.HomeId" data-toggle="tooltip" data-placement="top" title="Buy Ticket"><i class="fas fa-ticket-alt"></i>Buy</a>
+
+                                                        }
+                                                        <ul class="property-listing-actions list-unstyled mb-0">
+                                                            @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
+
+                                                            <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -709,47 +488,9 @@ Featured properties-->
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="property-offer">
-                            <div class="property-offer-item">
-                                <div class="property-offer-image bg-holder" style="background: url(/Temp/images/homes/outdoor/2.jpg);">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-10 col-sm-12">
-                                            <div class="property-details">
-                                                <div class="property-details-inner">
-                                                    <h5 class="property-title"><a href="/Property/Index/">Luxury villa with pool</a></h5>
-                                                    <span class="property-address"><i class="fas fa-map-marker-alt fa-xs"></i>West Indian St. Missoula</span>
-                                                    <span class="property-agent-date"><i class="far fa-clock fa-md"></i>2 years ago</span>
-                                                    <p class="mb-0 d-block mt-3">For those of you who are serious about having more, doing more, giving more and being more.</p>
-                                                    <div class="property-price">$325.000.00 </div>
-                                                    <div class="property-price">$30.00 <span> / Ticket</span> </div>
-                                                    <ul class="property-info list-unstyled d-flex">
-                                                        <li class="flex-fill property-bed"><i class="fas fa-bed"></i>Bed<span>5</span></li>
-                                                        <li class="flex-fill property-bath"><i class="fas fa-bath"></i>Bath<span>4</span></li>
-                                                        <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>1,658m</span></li>
-                                                    </ul>
-                                                    <div class="mt-1">
-                                                        <span>Ticket Sold</span>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35%</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="property-btn">
-                                                    <a class="property-link" href="/Property/Index/">See Details</a>
-                                                    <ul class="property-listing-actions list-unstyled mb-0">
-                                                        @*<li class="property-compare"><a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i class="fas fa-exchange-alt"></i></a></li>*@
-                                                        <li class="property-favourites"><a data-toggle="tooltip" data-placement="top" title="Favourite" href="#"><i class="far fa-heart"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
+
+                   
                 </div>
             </div>
         </div>
@@ -897,7 +638,7 @@ Most popular places -->
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-md-6 mb-4 mb-lg-0">
-                        <a href="/Search/Index/">
+                        <a href="/Search/Index?=34">
                             <div class="location-item bg-overlay-gradient bg-holder" style="background-image: url(/Temp/images/cities/istanbul.jpg);">
                                 <div class="location-item-info">
                                     <h5 class="location-item-title">İstanbul</h5>
@@ -907,7 +648,7 @@ Most popular places -->
                         </a>
                     </div>
                     <div class="col-md-6 mb-4 mb-md-0">
-                        <a href="/Search/Index/">
+                        <a href="/Search/Index?=35">
                             <div class="location-item bg-overlay-gradient bg-holder" style="background-image: url(/Temp/images/cities/izmir.jpg);">
                                 <div class="location-item-info">
                                     <h5 class="location-item-title">İzmir</h5>
@@ -917,7 +658,7 @@ Most popular places -->
                         </a>
                     </div>
                     <div class="col-lg-12 mt-0 mt-lg-4">
-                        <a href="/Search/Index/">
+                        <a href="/Search/Index?=48">
                             <div class="location-item bg-overlay-gradient bg-holder" style="background-image: url(/Temp/images/cities/mugla.jpg);">
                                 <div class="location-item-info">
                                     <h5 class="location-item-title">Mugla</h5>

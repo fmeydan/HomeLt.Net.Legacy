@@ -2,6 +2,7 @@
 using HomeLt.Net.Legacy.ENTITIES;
 using HomeLt.Net.Legacy.UI.Filters;
 using HomeLt.Net.Legacy.UI.Models.Home;
+using HomeLt.Net.Legacy.UI.Models.Property;
 using ImageSaver;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,21 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            using (CityManager mn = new CityManager())
+            HomeIndexViewModel model = new HomeIndexViewModel();
+
+            using (HomeManager manager = new HomeManager())
             {
-                var test = mn.GetList();
-                var test2 = test.FirstOrDefault().Districts.FirstOrDefault().Name;
+
+                model.FeaturedProperties = manager.GetList(f=>f.isAvaible==true).Take(6).ToList();
+                model.BestOffer = manager.GetList(f => f.isAvaible == true).OrderBy(f=>f.Price).Take(5).ToList();
+                
+            }
+            using (TestimonalManager manager= new TestimonalManager())
+            {
+                model.Testimonals = manager.GetList().Take(5).ToList();
             }
 
-            return View();
+            return View(model);
         }
 
 
