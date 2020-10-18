@@ -173,6 +173,7 @@
                         <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { residency=(int)EnumApproved.NonApproved})">Non-Approved Properties</a></li>
                         <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { saleType=(int)EnumSaleType.Direct})">Direct Sale</a></li>
                         <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { saleType=(int)EnumSaleType.Lottery})">Lottery Sale</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Results","Lottery",null)">Lottery Result</a></li>
                         @*@Html.MenuLink("Home", "Index", "Home", "", "nav-link")*@
                         @*@Html.MenuLink("Properties", "Index", "Search", "", "nav-link")*@
                         @*@Html.MenuLink("Approved Properties", "Index", "Search",new { residency =(int)EnumApproved.Approved }, "nav-link")

@@ -12,12 +12,13 @@ namespace HomeLt.Net.Legacy.UI.Controllers
     public class SearchController : Controller
     {
         // GET: Search
-        public ActionResult Index(int? propertyType, int? residency,int? saleType,int? count,int? pageNumber,int? cityId)
+        [HttpGet]
+        public ActionResult Index(/*int? propertyType, int? residency,int? saleType,int? count,int? pageNumber,int? cityId*/ SearchFilterModel model)
         {
             
             using (HomeManager manager = new HomeManager())
             {
-                if (propertyType == null && residency==null&&saleType==null)
+                if (model.PropertyType == null && model.Residency==null&&model.SaleType==null)
                 {
                     var unfiltered = manager.GetList(f => f.isAvaible == true);
                     unfiltered = unfiltered.Take(10).ToList();
@@ -29,28 +30,28 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                     
                     try
                     {
-                        if (propertyType!=null)
+                        if (model.PropertyType!=null)
                         {
-                            var filtered = manager.GetList(f => f.PropertyType == propertyType && f.isAvaible == true).Take(10).ToList();
+                            var filtered = manager.GetList(f => f.PropertyType == model.PropertyType && f.isAvaible == true).Take(10).ToList();
                             return View(filtered);
 
                         }
-                        if (residency != null)
+                        if (model.Residency != null)
                         {
-                            bool residennt = Convert.ToBoolean(residency);
+                            bool residennt = Convert.ToBoolean(model.Residency);
                             var result = manager.GetList(f => f.isApproved == residennt && f.isAvaible == true).Take(10).ToList();
                             return View(result);
                         }
 
-                        if (saleType != null)
+                        if (model.SaleType != null)
                         {
-                            bool saletype = Convert.ToBoolean(saleType);
+                            bool saletype = Convert.ToBoolean(model.SaleType);
                             var result = manager.GetList(f => f.SellingType == saletype && f.isAvaible == true).Take(10).ToList();
                             return View(result);
                         }
-                        if (cityId!=null)
+                        if (model.CityId!=null)
                         {
-                            var result = manager.GetList(f => f.Address.District.City.CityId == cityId);
+                            var result = manager.GetList(f => f.Address.District.City.CityId == model.CityId);
                             return View(result);
                         }
                        
@@ -77,40 +78,40 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         
 
         [HttpPost]
-        public ActionResult Index(SearchFilterModel model)
+        public ActionResult SearchWithFilter(SearchFilterModel model)
         {
             using (HomeManager manager= new HomeManager())
             {
 
-                var list = manager.GetList();
-                if (model.isApproved)
+                var list = manager.GetList(f=>f.isAvaible==true);
+                if (model.isApproved!=null)
                 {
                     list = list.Where(f => f.isApproved == model.isApproved).ToList();
                 }
-                if (model.MaxPrice>0)
+                if (model.MaxPrice!=null && model.MaxPrice>0)
                 {
                     list = list.Where(f => f.Price <= model.MaxPrice).ToList();
 
                 }
-                if (model.MinPrice > 0)
+                if (model.MinPrice > 0 && model.MinPrice!=null)
                 {
                     list = list.Where(f => f.Price >= model.MinPrice).ToList();
 
                 }
-                if (model.PropertyType>0)
+                if (model.PropertyType!=null)
                 {
                     list = list.Where(f => f.PropertyType == model.PropertyType).ToList();
 
                 }
 
-                if (model.Sqft > 0)
+                if (model.Sqft > 0 && model.Sqft!=null)
                 {
                     list = list.Where(f => f.Sqft == model.Sqft).ToList();
 
                 }
-                if (model.Bedroom > 0)
+                if (model.Bedroom !=null)
                 {
-                    list = list.Where(f => f.BedroomNumber <= model.Bedroom).ToList();
+                    list = list.Where(f => f.BedroomNumber == model.Bedroom).ToList();
 
                 }
 

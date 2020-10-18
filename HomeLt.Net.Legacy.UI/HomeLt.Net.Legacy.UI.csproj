@@ -424,6 +424,7 @@
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AdressController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LotteryController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -551,6 +552,8 @@
     <Content Include="Views\Ticket\Summary.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\Lottery\Results.cshtml" />
+    <Content Include="Views\Search\SearchWithFilter.cshtml" />
     <None Include="Views\User\Profile.3cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Home\AddHome.cshtml" />

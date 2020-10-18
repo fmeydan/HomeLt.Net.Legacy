@@ -10,3 +10,11 @@
     padding: 5px;
     box-shadow: 0 0 20px 0px darkseagreen;
 }
+
+
+.mw-265p{
+    max-width:265px!important;
+}
+.mh-265px{
+    max-height:265px!important;
+}
