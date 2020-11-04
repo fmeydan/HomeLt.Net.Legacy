@@ -10,6 +10,7 @@ namespace HomeLt.Net.Legacy.UI.Models.Home
     {
         public List<HomeLt.Net.Legacy.ENTITIES.Home> BestOffer { get; set; }
         public List<HomeLt.Net.Legacy.ENTITIES.Home> FeaturedProperties { get; set; }
+        
         public List<Testimonal> Testimonals { get; set; }
 
     }

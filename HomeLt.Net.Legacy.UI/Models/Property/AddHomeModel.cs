@@ -8,6 +8,7 @@ namespace HomeLt.Net.Legacy.UI.Models.Property
 {
     public class AddHomeModel
     {
+        public int HomeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }

@@ -19,6 +19,14 @@ namespace HomeLt.Net.Legacy.UI.Constants
             TempDataDictionary result = new TempDataDictionary { { "class", classAttribute }, { "msg", message } };
             return result;
         }
+
+
+
+        public static TempDataDictionary CreateTempDataInfo(string alertType,string infoMessage)
+        {
+            TempDataDictionary result = new TempDataDictionary { { "type", alertType }, { "msg", infoMessage } };
+            return result;
+        }
       
 
 }

@@ -135,9 +135,10 @@ Listing – grid view -->
                             </form>
                         </div>
                     </div>
-                    <div class="widget">
+
+                   <!-- <div class="widget">
                         <div class="widget-title widget-collapse">
-                            <h6>Resiency</h6>
+                            <h6>Residency</h6>
                             <a class="ml-auto" data-toggle="collapse" href="#status-property" role="button" aria-expanded="false" aria-controls="status-property"> <i class="fas fa-chevron-down"></i> </a>
                         </div>
                         <div class="collapse show" id="status-property">
@@ -167,7 +168,7 @@ Listing – grid view -->
                                     <li><a href="#">Insurability<span class="ml-auto">(32)</span></a></li>*@
                             </ul>
                         </div>
-                    </div>
+                    </div>-->
                     @*<div class="widget">
                             <div class="widget-title">
                                 <h6>Mortgage calculator</h6>
@@ -306,7 +307,7 @@ Listing – grid view -->
                     <div class="col-sm-6" style="min-height:600px">
                         <div class="property-item">
                             <div class="property-image bg-overlay-gradient-04">
-                                <img class="img-fluid mw-265p" src="@(item.PropertyMedias.FirstOrDefault()?.Path ?? "")" alt="">
+                                <img class="img-fluid" src="@(item.PropertyMedias.FirstOrDefault()?.Path ?? "")" alt="">
                                 <div class="property-lable">
                                     @if (item.isApproved)
                                     {

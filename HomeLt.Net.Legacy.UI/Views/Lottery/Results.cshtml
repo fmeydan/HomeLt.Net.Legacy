@@ -135,39 +135,7 @@ Listing – grid view -->
                             </form>
                         </div>
                     </div>
-                    <div class="widget">
-                        <div class="widget-title widget-collapse">
-                            <h6>Resiency</h6>
-                            <a class="ml-auto" data-toggle="collapse" href="#status-property" role="button" aria-expanded="false" aria-controls="status-property"> <i class="fas fa-chevron-down"></i> </a>
-                        </div>
-                        <div class="collapse show" id="status-property">
-                            <ul class="list-unstyled mb-0 pt-3">
-                                <li><a href="/Search/Index/residency?=1">Approved<span class="ml-auto">@Model.Where(f => f.Home.isApproved == true).Count()</span></a></li>
-                                <li><a href="/Search/Index/residency?=0">Non-Approved<span class="ml-auto">@Model.Where(f => f.Home.isApproved != true).Count()</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="widget-title widget-collapse">
-                            <h6>Type of property</h6>
-                            <a class="ml-auto" data-toggle="collapse" href="#type-property" role="button" aria-expanded="false" aria-controls="type-property"> <i class="fas fa-chevron-down"></i> </a>
-                        </div>
-                        <div class="collapse show" id="type-property">
-                            <ul class="list-unstyled mb-0 pt-3">
-                                @foreach (var item in propertyTypes)
-                                {
-                                    <li><a href="/Search/Index/propertyType?=@item.Value">@item.Name<span class="ml-auto">@Model.Count(f => f.Home.PropertyType == item.Value)</span></a></li>
-                                }
-
-                                @*<li><a href="#">Commercial<span class="ml-auto">(45)</span></a></li>
-                                    <li><a href="#">Industrial<span class="ml-auto">(23)</span></a></li>
-                                    <li><a href="#">Apartment<span class="ml-auto">(05)</span></a></li>
-                                    <li><a href="#">Building code<span class="ml-auto">(10)</span></a></li>
-                                    <li><a href="#">Communal land<span class="ml-auto">(47)</span></a></li>
-                                    <li><a href="#">Insurability<span class="ml-auto">(32)</span></a></li>*@
-                            </ul>
-                        </div>
-                    </div>
+                   
                     @*<div class="widget">
                             <div class="widget-title">
                                 <h6>Mortgage calculator</h6>

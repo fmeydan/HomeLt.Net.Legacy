@@ -1,0 +1,149 @@
+﻿@model List<HomeLt.Net.Legacy.ENTITIES.Home>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+@section HomeListCss{
+
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Areas/Admin/Temp/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Areas/Admin/Temp/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        @*@Html.Partial("_PartialMessage")*@
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Home List</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Admin/Main/Index">Home</a></li>
+                    <li class="breadcrumb-item active">Home List</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- /.card -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DataTable with default features</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Owner</th>
+                                    <th>Approval</th>
+                                    <th>Price</th>
+                                    <th>Ticket Price</th>
+                                    <th>Total Ticket</th>
+                                    <th>Sold Ticket</th>
+                                    <th>Property Type</th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="@(item.isAvaible==false?"bg-red":"")">
+                                        <td>@item.HomeId</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.User.FirstName @item.User.LastName</td>
+                                        <td>@item.isApproved</td>
+                                        <td>@item.Price.ToString("C")</td>
+                                        <td>@item.TicketPrice.ToString("C")</td>
+                                        <td>@item.TotalTickets</td>
+                                        <td>@item.SoldTicket</td>
+                                        <td>@((HomeLt.Net.Legacy.UI.Constants.EnumPropertyType)item.PropertyType)</td>
+                                        <td>
+                                            <a href="@Url.Action("Edit","Property",new { id=item.HomeId})" class="btn btn-outline-warning" btn-sm>Edit</a>
+                                            @if (item.isAvaible)
+                                            {
+                                                <a href="@Url.Action("ToggleActive","Property",new { id=item.HomeId})" class="btn btn-outline-danger" btn-sm>Delete</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("ToggleActive","Property",new { id=item.HomeId})" class="btn btn-outline-success" btn-sm>Activate</a>
+                                            }
+
+
+
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Owner</th>
+                                    <th>Approval</th>
+                                    <th>Price</th>
+                                    <th>Ticket Price</th>
+                                    <th>Total Ticket</th>
+                                    <th>Sold Ticket</th>
+                                    <th>Property Type</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+
+@section HomeListJs{
+    <script src="~/Areas/Admin/Temp/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Temp/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/Temp/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/Admin/Temp/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+    <script>
+
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+        });
+    </script>
+    @{var info = TempData["Info"] as TempDataDictionary;
+        if (info != null)
+        {
+            <script>
+        $(function () {
+            infoMessage('@info["type"]', '@info["msg"]')
+        })
+            </script>
+        }
+    }
+
+}

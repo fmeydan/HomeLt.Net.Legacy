@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MSSQL\Test.cs" />
+    <Compile Include="Postgre\AdminUserManager.cs" />
     <Compile Include="Postgre\CityManager.cs" />
     <Compile Include="Postgre\DistrictManager.cs" />
     <Compile Include="Postgre\FavoriteManager.cs" />

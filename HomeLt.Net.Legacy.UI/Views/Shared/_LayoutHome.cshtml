@@ -125,10 +125,11 @@
                                     Choose location<i class="fas fa-chevron-down pl-2"></i>
                                 </a>
                                 <div class="dropdown-menu mt-0" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Global</a>
-                                    <a class="dropdown-item" href="#">Arizona</a>
-                                    <a class="dropdown-item" href="#">British columbia</a>
-                                    <a class="dropdown-item" href="#">Commercial</a>
+                                    <a class="dropdown-item" href="@Url.Action("ChangeLang","Home",new { lang="en"})">Global</a>
+                                    <a class="dropdown-item" href="@Url.Action("ChangeLang","Home",new { lang="tr"})">Turkish</a>
+                                    @*<a class="dropdown-item" href="#">Arizona</a>
+        <a class="dropdown-item" href="#">British columbia</a>
+        <a class="dropdown-item" href="#">Commercial</a>*@
                                 </div>
                             </div>
                             @*<div class="social d-inline-block">
@@ -163,51 +164,26 @@
             <div class="container-fluid">
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse"><i class="fas fa-align-left"></i></button>
                 <a class="navbar-brand" href="/">
-                    <img class="img-fluid" src="/Temp/images/logo.svg" alt="logo">
+                    <img class="img-fluid" src="/Temp/images/logo3.svg" alt="logo" style="height:unset!important">
                 </a>
                 <div class="navbar-collapse collapse justify-content-center">
                     <ul class="nav navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",null)">Properties</a></li>
-                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { residency=(int)EnumApproved.Approved})">Approved Properties</a></li>
-                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { residency=(int)EnumApproved.NonApproved})">Non-Approved Properties</a></li>
-                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { saleType=(int)EnumSaleType.Direct})">Direct Sale</a></li>
-                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { saleType=(int)EnumSaleType.Lottery})">Lottery Sale</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="@Url.Action("Index","Search",null)"  aria-haspopup="true" aria-expanded="false">
+                                Properties <i class="fas fa-chevron-down fa-xs"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { residency=(int)EnumApproved.Approved})">Approved Properties</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { residency=(int)EnumApproved.NonApproved})">Non-Approved Properties</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { saleType=(int)EnumSaleType.Direct})">Direct Sale</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Search",new { saleType=(int)EnumSaleType.Lottery})">Lottery Sale</a></li>
+                            </ul>
+                        </li>
+           
+                       
                         <li class="nav-item"><a class="nav-link" href="@Url.Action("Results","Lottery",null)">Lottery Result</a></li>
-                        @*@Html.MenuLink("Home", "Index", "Home", "", "nav-link")*@
-                        @*@Html.MenuLink("Properties", "Index", "Search", "", "nav-link")*@
-                        @*@Html.MenuLink("Approved Properties", "Index", "Search",new { residency =(int)EnumApproved.Approved }, "nav-link")
-        @Html.MenuLink("Non-Approved Properties", "Index", "Search", new { residency = (int)EnumApproved.NonApproved }, "nav-link")
-        @Html.MenuLink("Direct", "Index", "Search", new {saleType= (int)EnumSaleType.Direct }, "nav-link")
-        @Html.MenuLink("Lottery", "Index", "Search", new { saleType = (int)EnumSaleType.Lottery }, "nav-link")
-        @Html.MenuLink("Lottery Results", "Draws", "Lottery", "", "nav-link")*@
-
-
-
-                        @*@Html.MenuLink("Turkish Citizenship", "citizenship", "services", "", "nav-link")*@
-                        @*@Html.MenuLink("How To Join", "howtobuy", "services", "", "nav-link")*@
-
-                        @*@Html.MenuLink("Blog", "Index", "Blog", "", "nav-link")*@
-
-
-
-                        @*<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Services <i class="fas fa-chevron-down fa-xs"></i>
-            </a>
-            <ul class="dropdown-menu">
-                @Html.MenuLink("Properties For You", "propertiesforyou", "Services", "", "dropdown-item")
-
-                @Html.MenuLink("Property Management", "PropertyManagement", "Services", "", "dropdown-item")
-                @Html.MenuLink("After Join Service", "AfterSale", "Services", "", "dropdown-item")
-                @Html.MenuLink("Residence Permit Service", "ResidentPermit", "Services", "", "dropdown-item")
-
-
-
-
-
-            </ul>
-        </li>*@
+                     
                         <li class="nav-item dropdown">
                             @Html.MenuLink("About Us", "Index", "AboutUs", "", "nav-link")
 

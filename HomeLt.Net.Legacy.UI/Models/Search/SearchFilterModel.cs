@@ -18,6 +18,7 @@ namespace HomeLt.Net.Legacy.UI.Models.Search
         public int? PageNumber { get; set; }
         public int? SaleType { get; set; }
         public int? Residency { get; set; }
-       
+        public string Location { get; set; }
+
     }
 }

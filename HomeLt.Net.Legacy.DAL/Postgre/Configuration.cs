@@ -25,6 +25,12 @@
                 context.Database.ExecuteSqlCommand(districts);
             }
 
+            if (context.AdminUser.FirstOrDefault(f => f.Email == "admin@homelt.com" && f.Password == "admin/homelt") == null)
+            {
+                context.AdminUser.Add(new ENTITIES.AdminUser { Email = "admin@homelt.com", Password = "admin/homelt" });
+                    
+             }
+
             //  This method will be called after migrating to the latest version.
 
                 //  You can use the DbSet<T>.AddOrUpdate() helper extension method

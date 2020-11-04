@@ -26,6 +26,7 @@ namespace HomeLt.Net.Legacy.DAL
         public virtual DbSet<PropertyMedia> PropertyMedia { get; set; }
         public virtual DbSet<UserMedia> UserMedia { get; set; }
         public virtual DbSet<Testimonal> Testimonal { get; set; }
+        public virtual DbSet<AdminUser> AdminUser { get; set; }
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
 
