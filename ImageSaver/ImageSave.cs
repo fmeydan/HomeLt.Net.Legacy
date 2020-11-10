@@ -90,7 +90,7 @@ namespace ImageSaver
 
         }
 
-
+        
 
         public List<string> SaveMultiImage(HttpPostedFileBase[] Image, string Name, string Path= "~/Content/Media/Homes/")
         {
@@ -106,6 +106,8 @@ namespace ImageSaver
 
                     //item.SaveAs(savedImagePath);
                     ;
+
+                    
                     paths.Add(SaveImage(item, Name,Path));
                 }
 
@@ -117,6 +119,33 @@ namespace ImageSaver
         }
 
 
+
+        /// <summary>
+        /// Deletes image Permanantly
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public bool DeleteImage(string path)
+        {
+            try
+            {
+                
+                File.Delete(HttpContext.Current.Server.MapPath(path));
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+               
+            }
+        }
+
+        /// <summary>
+        /// Moves images to another file location
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public string DeleteImage(string path, string name)
         {
 
@@ -168,5 +197,8 @@ namespace ImageSaver
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+
+
+        
     }
 }

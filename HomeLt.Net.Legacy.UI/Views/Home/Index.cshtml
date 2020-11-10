@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 
     List<EnumPropertyModel> propertyTypes = CastEnumToList.EnumList();
+    var currentUSer = Session[HomeLt.Net.Legacy.UI.Constants.Sessions.SessionUser] as HomeLt.Net.Legacy.ENTITIES.User;
 }
 
 
@@ -118,8 +119,8 @@ banner -->
                                         <div class="form-group col-md-3 form-row">
                                             <label>Select Price Range</label>
                                             <div>
-                                                <input class="form-control mb-1" name="MinPrice" placeholder="Min.Price">
-                                                <input class="form-control" name="MaxPrice" placeholder="Max.Price">
+                                                <input class="form-control mb-1 float-right" name="MinPrice" placeholder="Min.Price">
+                                                <input class="form-control float-right" name="MaxPrice" placeholder="Max.Price">
                                             </div>
                                         </div>
                                       
@@ -339,12 +340,13 @@ Browse properties -->
                                     <li class="flex-fill property-m-sqft"><i class="far fa-square"></i>sqft<span>145m</span></li>
                                 </ul>
                                 <div class="mt-1" style="height:36.8px">
-                                    @if (item.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Lottery))
+                                    @if (item.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Lottery) )
                                     {
 
                                         <span>Ticket Sold</span>
                                         <div class="progress">
                                             @{
+                                                
                                                 string percentage = ((item.SoldTicket * 100) / item.TotalTickets).ToString();
                                                 percentage = percentage + "%";
                                             }
@@ -358,7 +360,15 @@ Browse properties -->
                                 <a class="property-link" href="/Property/Index/@item.HomeId">See Details</a>
                                 @if (item.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Lottery))
                                 {
-                                    <a class="property-link" href="/Ticket/Buy/@item.HomeId" data-toggle="tooltip" data-placement="top" title="Buy Ticket"><i class="fas fa-ticket-alt"></i>Buy</a>
+                                    if (currentUSer != null && item.UserId == currentUSer.UserId)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        <a class="property-link" href="/Ticket/Buy/@item.HomeId" data-toggle="tooltip" data-placement="top" title="Buy Ticket"><i class="fas fa-ticket-alt"></i>Buy</a>
+                                    }
+
 
                                 }
                                 <ul class="property-listing-actions list-unstyled mb-0">
@@ -402,7 +412,7 @@ Featured properties-->
                         <div class="item">
                             <div class="property-offer">
                                 <div class="property-offer-item">
-                                    <div class="property-offer-image bg-holder" style="background: url(@(item.PropertyMedias.FirstOrDefault()?.Path ?? ""));">
+                                    <div class="property-offer-image bg-holder" style="background: url(@(item.PropertyMedias.Where(f=>f.MediaType==Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.Galerry)).FirstOrDefault()?.Path ?? "")); background-size:cover">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-10 col-sm-12">
                                                 <div class="property-details">

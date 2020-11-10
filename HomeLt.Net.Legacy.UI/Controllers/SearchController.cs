@@ -14,7 +14,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
         // GET: Search
         [HttpGet]
         public ActionResult Index(/*int? propertyType, int? residency,int? saleType,int? count,int? pageNumber,int? cityId*/ SearchFilterModel model)
-        {
+       {
             
             using (HomeManager manager = new HomeManager())
             {

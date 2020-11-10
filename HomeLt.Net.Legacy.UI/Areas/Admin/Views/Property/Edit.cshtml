@@ -1,8 +1,433 @@
-﻿
+﻿@model HomeLt.Net.Legacy.ENTITIES.Home
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Edit</h2>
 
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Project Edit</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Areas/Admin/Main/Index/">Home</a></li>
+                    <li class="breadcrumb-item active">Home Edit</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<form action="#" method="post" enctype="multipart/form-data">
+    <section class="content container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">General</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="inputName">Property ID</label>
+                            <input type="number" id="homeid" class="form-control" name="HomeId" disabled value="@Model.HomeId">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Property Name</label>
+                            <input type="text" id="inputName" class="form-control" name="name" value="@Model.Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDescription">Property Description</label>
+                            <textarea id="inputDescription" class="form-control" rows="4" name="Description">@Model.Description</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputClientCompany">Owner Name</label>
+                            <input type="text" id="inputClientCompany" class="form-control" value="@Model.User.FirstName @Model.User.LastName">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputStatus">Status</label>
+                            <select name="isAvaible" class="form-control custom-select">
+                                <option selected disabled>Select Status</option>
+                                <option value="1">Available</option>
+                                <option value="0">UnAvailable</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputStatus">Approval Type</label>
+                            <select name="isApproved" class="form-control custom-select">
+                                <option selected disabled>Select Approvl</option>
+                                <option value="1">Approved</option>
+                                <option value="0">NonApproved</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputProjectLeader">Property Price</label>
+                            <input type="number" id="inputProjectLeader" class="form-control" value="@Model.Price">
+                        </div>
+                        @if (Model.SellingType != Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Direct))
+                        {
+                            <div class="form-group">
+                                <label for="inputProjectLeader">Ticket Price</label>
+                                <input type="number" id="inputProjectLeader" class="form-control" value="@Model.TicketPrice">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputProjectLeader">Total Ticket</label>
+                                <input type="number" id="totalTicket" class="form-control" name="TotalTicket" value="@Model.TotalTickets">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="inputProjectLeader">Sold Ticket</label>
+                                <input type="number" id="soldTicket" class="form-control" name="SoldTicket" value="@Model.SoldTicket">
+                            </div>
+                        }
+
+
+
+
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Rooms and Utilities</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="inputName">Room Number</label>
+                            <input type="number" id="inputName" class="form-control" name="roomnumber" value="@Model.RoomNumber">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputName">Bedroom Number</label>
+                            <input type="number" id="inputName" class="form-control" name="bedroomnumber" value="@Model.BedroomNumber">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Bathroom Number</label>
+                            <input type="number" id="inputName" class="form-control" name="bathnumber" value="@Model.BathNumber">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputName">Sqft</label>
+                            <input type="number" id="inputName" class="form-control" name="sqft" value="@Model.Sqft">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputName">Building Age</label>
+                            <input type="number" id="inputName" class="form-control" name="buildingage" value="@Model.BuildingAge">
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="inputStatus">Parking</label>
+                            <select name="parking" class="form-control custom-select">
+                                <option selected disabled>Select</option>
+                                <option value="1">Have</option>
+                                <option value="0">Do not have</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="inputStatus">Central Heating</label>
+                            <select name="parking" class="form-control custom-select">
+                                <option selected disabled>Select</option>
+                                <option value="1">Have</option>
+                                <option value="0">Do not have</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="inputStatus">Excersize Room</label>
+                            <select name="parking" class="form-control custom-select">
+                                <option selected disabled>Select</option>
+                                <option value="1">Have</option>
+                                <option value="0">Do not have</option>
+
+                            </select>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            @* **** Medias **** *@
+            <div class="col-md-6">
+
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Medias</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <label><h3>Gallery</h3></label>
+                        <div class="swiper-container">
+                            <!-- Additional required wrapper -->
+
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+
+
+                                @foreach (var item in Model.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.Galerry)))
+                                {<div class="swiper-slide">
+
+
+
+                                        <img src="@item.Path" alt="" style="height:50%;width:fit-content" />
+
+
+
+                                        <div class="btn-group btn-group-sm w-100">
+
+                                            <a href="@Url.Action("DeletePropertyMedia",new {id=item.PropertyMediaId })" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+
+                                    </div>
+                                }
+
+
+
+
+
+                            </div>
+
+
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+
+
+                        </div>
+
+
+
+
+
+                        @*<table class="table">
+            <thead>
+                <tr>
+                    <th>Gallerry Images</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.Galerry)))
+                {
+
+
+                    <tr>
+                        <td><img src="@item.Path" alt="" width="50" /></td>
+
+
+                        <td class="text-right py-0 align-middle">
+                            <div class="btn-group btn-group-sm">
+
+                                <a href="@Url.Action("DeletePropertyMedia",new {id=item.PropertyMediaId })" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+
+            </tbody>
+        </table>*@
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" multiple="multiple" required name="Galerry" accept="image/x-png,image/gif,image/jpeg" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+
+                    <div class="card-body ">
+                        <label><h3>Floor Plans</h3></label>
+                        <div class="swiper-container">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+
+
+                                @foreach (var item in Model.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.FloorPlans)))
+                                {<div class="swiper-slide">
+
+
+
+                                        <img src="@item.Path" alt="" style="height:50%;width:100%" />
+
+
+
+                                        <div class="btn-group btn-group-sm w-100">
+
+                                            <a href="@Url.Action("DeletePropertyMedia",new {id=item.PropertyMediaId })" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+
+                                    </div>
+                                }
+
+
+
+
+
+                            </div>
+
+
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+
+
+                        </div>
+
+
+
+
+
+
+
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" multiple="multiple" required name="FloorPlans" accept="image/x-png,image/gif,image/jpeg" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body ">
+                        <label><h3>Property Papers</h3></label>
+                        <div class="swiper-container">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+
+
+                                @foreach (var item in Model.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.PropertyPapers)))
+                                {<div class="swiper-slide">
+
+
+
+                                        <img src="@item.Path" alt="" style="width:100%" />
+
+
+
+                                        <div class="btn-group btn-group-sm w-100">
+
+                                            <a href="@Url.Action("DeletePropertyMedia",new {id=item.PropertyMediaId })" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+
+                                    </div>
+                                }
+
+
+
+
+
+                            </div>
+
+
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+
+
+                        </div>
+
+
+
+
+
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" multiple="multiple" required name="PropertyPapers" accept="image/x-png,image/gif,image/jpeg" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <input type="submit" value="Save Changes" class="btn btn-success w-100">
+            </div>
+        </div>
+    </section>
+</form>
+<!-- /.content -->
+@section EditPropertyJs{
+    <script>
+
+
+        var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+
+            loop: true,
+            autoHeight: true,
+
+
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+
+        })
+    </script>
+
+}

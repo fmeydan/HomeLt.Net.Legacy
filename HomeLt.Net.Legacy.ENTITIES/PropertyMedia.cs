@@ -17,8 +17,8 @@ namespace HomeLt.Net.Legacy.ENTITIES
         public string Path { get; set; }
         [DefaultValue(false)]
         public bool isDefault { get; set; }
-        [DefaultValue(false)]
-        public bool MediaType { get; set; }
+        
+        public short MediaType { get; set; }
         //navigation
         [ForeignKey("HomeId")]
        public virtual Home Home { get; set; }

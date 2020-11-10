@@ -58,7 +58,10 @@ namespace HomeLt.Net.Legacy.UI.Controllers
             {
                 
                 if (!manager.CheckUser(user.Email))
+
                 {
+
+                    user.RegisterDate = DateTime.Now;
                     if (manager.Add(user))
                     {
 

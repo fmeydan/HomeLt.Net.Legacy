@@ -92,74 +92,22 @@
     <Compile Include="BaseContext.cs" />
     <Compile Include="HomeltPostgre.cs" />
     <Compile Include="HomeLtSql.cs" />
-    <Compile Include="MSSQL\202010142233059_v10.cs" />
-    <Compile Include="MSSQL\202010142233059_v10.designer.cs">
-      <DependentUpon>202010142233059_v10.cs</DependentUpon>
+    <Compile Include="MSSQL\202011101313530_v1.cs" />
+    <Compile Include="MSSQL\202011101313530_v1.designer.cs">
+      <DependentUpon>202011101313530_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="MSSQL\Configuration.cs" />
-    <Compile Include="Postgre\202010082134297_v1.cs" />
-    <Compile Include="Postgre\202010082134297_v1.designer.cs">
-      <DependentUpon>202010082134297_v1.cs</DependentUpon>
+    <Compile Include="Postgre\202011101315482_v1.cs" />
+    <Compile Include="Postgre\202011101315482_v1.designer.cs">
+      <DependentUpon>202011101315482_v1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Postgre\202010121007511_v2.cs" />
-    <Compile Include="Postgre\202010121007511_v2.designer.cs">
-      <DependentUpon>202010121007511_v2.cs</DependentUpon>
+    <Compile Include="Postgre\202011101437117_v2.cs" />
+    <Compile Include="Postgre\202011101437117_v2.designer.cs">
+      <DependentUpon>202011101437117_v2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Postgre\202010131935594_v3.cs" />
-    <Compile Include="Postgre\202010131935594_v3.designer.cs">
-      <DependentUpon>202010131935594_v3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010141154379_v4.cs" />
-    <Compile Include="Postgre\202010141154379_v4.designer.cs">
-      <DependentUpon>202010141154379_v4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010141642004_v5.cs" />
-    <Compile Include="Postgre\202010141642004_v5.designer.cs">
-      <DependentUpon>202010141642004_v5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010141652396_v.cs" />
-    <Compile Include="Postgre\202010141652396_v.designer.cs">
-      <DependentUpon>202010141652396_v.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010141748572_v6.cs" />
-    <Compile Include="Postgre\202010141748572_v6.designer.cs">
-      <DependentUpon>202010141748572_v6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010141938475_v7.cs" />
-    <Compile Include="Postgre\202010141938475_v7.designer.cs">
-      <DependentUpon>202010141938475_v7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010142229185_v9.cs" />
-    <Compile Include="Postgre\202010142229185_v9.designer.cs">
-      <DependentUpon>202010142229185_v9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010142339171_v10.cs" />
-    <Compile Include="Postgre\202010142339171_v10.designer.cs">
-      <DependentUpon>202010142339171_v10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010142341388_v101.cs" />
-    <Compile Include="Postgre\202010142341388_v101.designer.cs">
-      <DependentUpon>202010142341388_v101.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010150029053_v11.cs" />
-    <Compile Include="Postgre\202010150029053_v11.designer.cs">
-      <DependentUpon>202010150029053_v11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010150031478_v111.cs" />
-    <Compile Include="Postgre\202010150031478_v111.designer.cs">
-      <DependentUpon>202010150031478_v111.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010150034454_v112.cs" />
-    <Compile Include="Postgre\202010150034454_v112.designer.cs">
-      <DependentUpon>202010150034454_v112.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010161356129_v-13.cs" />
-    <Compile Include="Postgre\202010161356129_v-13.designer.cs">
-      <DependentUpon>202010161356129_v-13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Postgre\202010281042355_v14.cs" />
-    <Compile Include="Postgre\202010281042355_v14.designer.cs">
-      <DependentUpon>202010281042355_v14.cs</DependentUpon>
+    <Compile Include="Postgre\202011101533572_v3.cs" />
+    <Compile Include="Postgre\202011101533572_v3.designer.cs">
+      <DependentUpon>202011101533572_v3.cs</DependentUpon>
     </Compile>
     <Compile Include="Postgre\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,56 +125,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MSSQL\202010142233059_v10.resx">
-      <DependentUpon>202010142233059_v10.cs</DependentUpon>
+    <EmbeddedResource Include="MSSQL\202011101313530_v1.resx">
+      <DependentUpon>202011101313530_v1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010082134297_v1.resx">
-      <DependentUpon>202010082134297_v1.cs</DependentUpon>
+    <EmbeddedResource Include="Postgre\202011101315482_v1.resx">
+      <DependentUpon>202011101315482_v1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010121007511_v2.resx">
-      <DependentUpon>202010121007511_v2.cs</DependentUpon>
+    <EmbeddedResource Include="Postgre\202011101437117_v2.resx">
+      <DependentUpon>202011101437117_v2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010131935594_v3.resx">
-      <DependentUpon>202010131935594_v3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010141154379_v4.resx">
-      <DependentUpon>202010141154379_v4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010141642004_v5.resx">
-      <DependentUpon>202010141642004_v5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010141652396_v.resx">
-      <DependentUpon>202010141652396_v.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010141748572_v6.resx">
-      <DependentUpon>202010141748572_v6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010141938475_v7.resx">
-      <DependentUpon>202010141938475_v7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010142229185_v9.resx">
-      <DependentUpon>202010142229185_v9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010142339171_v10.resx">
-      <DependentUpon>202010142339171_v10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010142341388_v101.resx">
-      <DependentUpon>202010142341388_v101.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010150029053_v11.resx">
-      <DependentUpon>202010150029053_v11.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010150031478_v111.resx">
-      <DependentUpon>202010150031478_v111.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010150034454_v112.resx">
-      <DependentUpon>202010150034454_v112.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010161356129_v-13.resx">
-      <DependentUpon>202010161356129_v-13.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Postgre\202010281042355_v14.resx">
-      <DependentUpon>202010281042355_v14.cs</DependentUpon>
+    <EmbeddedResource Include="Postgre\202011101533572_v3.resx">
+      <DependentUpon>202011101533572_v3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

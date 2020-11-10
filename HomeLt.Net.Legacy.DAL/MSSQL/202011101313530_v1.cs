@@ -3,10 +3,24 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class v10 : DbMigration
+    public partial class v1 : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.AdminUsers",
+                c => new
+                    {
+                        AdminId = c.Int(nullable: false, identity: true),
+                        Email = c.String(maxLength: 50),
+                        Password = c.String(maxLength: 24),
+                        FirstName = c.String(maxLength: 50),
+                        LastName = c.String(maxLength: 50),
+                        InsertDate = c.DateTime(nullable: false),
+                        LastLogin = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.AdminId);
+            
             CreateTable(
                 "dbo.Cities",
                 c => new
@@ -46,11 +60,15 @@
                         AddressId = c.Int(nullable: false),
                         isAvaible = c.Boolean(nullable: false),
                         InsertDate = c.DateTime(nullable: false),
+                        UpdateTime = c.DateTime(),
                         BuildingAge = c.Short(nullable: false),
                         Parking = c.Boolean(nullable: false),
                         CentralHeating = c.Boolean(nullable: false),
                         ExcerciseRoom = c.Boolean(nullable: false),
                         SellingType = c.Boolean(nullable: false),
+                        isApproved = c.Boolean(nullable: false),
+                        TotalTickets = c.Int(nullable: false),
+                        SoldTicket = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.HomeId)
                 .ForeignKey("dbo.PropertyAdresses", t => t.AddressId, cascadeDelete: true)
@@ -80,7 +98,7 @@
                         HomeId = c.Int(nullable: false),
                         Path = c.String(),
                         isDefault = c.Boolean(nullable: false),
-                        MediaType = c.Boolean(nullable: false),
+                        MediaType = c.Short(nullable: false),
                     })
                 .PrimaryKey(t => t.PropertyMediaId)
                 .ForeignKey("dbo.Homes", t => t.HomeId, cascadeDelete: true)
@@ -146,10 +164,23 @@
                 .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.Testimonals",
+                c => new
+                    {
+                        TestimonalId = c.Int(nullable: false, identity: true),
+                        UserId = c.Int(nullable: false),
+                        TestimonalDescription = c.String(),
+                    })
+                .PrimaryKey(t => t.TestimonalId)
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Testimonals", "UserId", "dbo.Users");
             DropForeignKey("dbo.UserMedias", "UserId", "dbo.Users");
             DropForeignKey("dbo.Tickets", "UserId", "dbo.Users");
             DropForeignKey("dbo.Tickets", "HomeId", "dbo.Homes");
@@ -160,6 +191,7 @@
             DropForeignKey("dbo.Homes", "AddressId", "dbo.PropertyAdresses");
             DropForeignKey("dbo.PropertyAdresses", "DistrictId", "dbo.Districts");
             DropForeignKey("dbo.Districts", "CityId", "dbo.Cities");
+            DropIndex("dbo.Testimonals", new[] { "UserId" });
             DropIndex("dbo.UserMedias", new[] { "UserId" });
             DropIndex("dbo.Tickets", new[] { "UserId" });
             DropIndex("dbo.Tickets", new[] { "HomeId" });
@@ -170,6 +202,7 @@
             DropIndex("dbo.Homes", new[] { "AddressId" });
             DropIndex("dbo.Homes", new[] { "UserId" });
             DropIndex("dbo.Districts", new[] { "CityId" });
+            DropTable("dbo.Testimonals");
             DropTable("dbo.UserMedias");
             DropTable("dbo.Tickets");
             DropTable("dbo.Favorites");
@@ -179,6 +212,7 @@
             DropTable("dbo.Homes");
             DropTable("dbo.Districts");
             DropTable("dbo.Cities");
+            DropTable("dbo.AdminUsers");
         }
     }
 }

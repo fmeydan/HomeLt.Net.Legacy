@@ -1772,7 +1772,9 @@ button {
   margin-right: 0; }
 
 .navbar-brand img {
-  height: 40px; }
+  /*height: 40px;*/ 
+  height:unset;
+}
 
 .navbar .navbar-brand {
   color: #ffffff;
@@ -1980,7 +1982,8 @@ button {
     font-size: 14px;
     border-radius: 0px;
     border: none;
-    left: 100%;
+    left: 70%;
+    top:70%;
     -webkit-transform: translate3d(-50%, 10px, 0);
             transform: translate3d(-50%, 10px, 0);
     -webkit-transition: all 0.3s ease-in-out;
@@ -3977,7 +3980,7 @@ ul li:last-child {
     -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); }
   .navbar-brand img {
-    height: 34px; }
+    height: 50px; }
   .navbar .navbar-nav {
     padding: 10px 0; }
   .navbar .navbar-nav .nav-link {

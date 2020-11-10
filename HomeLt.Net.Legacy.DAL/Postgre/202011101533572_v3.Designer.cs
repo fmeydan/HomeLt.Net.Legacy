@@ -7,13 +7,13 @@ namespace HomeLt.Net.Legacy.DAL.Postgre
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class v11 : IMigrationMetadata
+    public sealed partial class v3 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(v11));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(v3));
         
         string IMigrationMetadata.Id
         {
-            get { return "202010150029053_v11"; }
+            get { return "202011101533572_v3"; }
         }
         
         string IMigrationMetadata.Source

@@ -16,6 +16,7 @@ namespace HomeLt.Net.Legacy.ENTITIES
         public int UserMediaId { get; set; }
         public int UserId { get; set; }
         public string Path { get; set; }
+        public short MediaType { get; set; }
 
         //navigation
         [ForeignKey("UserId")]

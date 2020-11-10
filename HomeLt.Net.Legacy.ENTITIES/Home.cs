@@ -32,6 +32,7 @@ namespace HomeLt.Net.Legacy.ENTITIES
         [DefaultValue(true)]
         public bool isAvaible { get; set; }
         public DateTime InsertDate { get; set; }
+        public DateTime? UpdateTime { get; set; }
 
         public short BuildingAge { get; set; }
         [DefaultValue(false)]

@@ -6,6 +6,8 @@
 
 
     List<EnumPropertyModel> propertyTypes = CastEnumToList.EnumList();
+    var currentUSer = Session[HomeLt.Net.Legacy.UI.Constants.Sessions.SessionUser] as HomeLt.Net.Legacy.ENTITIES.User;
+
 }
 
 <!--=================================
@@ -304,10 +306,10 @@ Listing – grid view -->
 
                     foreach (var item in Model)
                     {
-                    <div class="col-sm-6" style="min-height:600px">
+                    <div class="col-sm-6" style="min-height:400px">
                         <div class="property-item">
                             <div class="property-image bg-overlay-gradient-04">
-                                <img class="img-fluid" src="@(item.PropertyMedias.FirstOrDefault()?.Path ?? "")" alt="">
+                                <img class="img-fluid" src="@(item.PropertyMedias.Where(f=>f.MediaType==Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.Galerry)).FirstOrDefault()?.Path ?? "")" alt="" style="max-height:265px;width:fit-content">
                                 <div class="property-lable">
                                     @if (item.isApproved)
                                     {
@@ -362,7 +364,15 @@ Listing – grid view -->
                                     <a class="property-link" href="/Home/Detail/@item.HomeId">See Details</a>
                                     @if (item.SellingType == true)
                                     {
-                                        <a class="property-link" href="/Ticket/Buy/@item.HomeId" data-toggle="tooltip" data-placement="top" title="Buy Ticket"><i class="fas fa-ticket-alt"></i>Buy</a>
+                                        if (currentUSer != null && currentUSer.UserId == item.UserId)
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            <a class="property-link" href="/Ticket/Buy/@item.HomeId" data-toggle="tooltip" data-placement="top" title="Buy Ticket"><i class="fas fa-ticket-alt"></i>Buy</a>
+                                        }
+
 
                                     }
                                     <ul class="property-listing-actions list-unstyled mb-0">

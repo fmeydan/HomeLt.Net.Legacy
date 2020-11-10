@@ -2164,9 +2164,11 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\PropertyController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainController.cs" />
+    <Compile Include="Areas\Admin\Model\AdminHomeEditModel.cs" />
     <Compile Include="Areas\Admin\Model\AdminIndexModel.cs" />
     <Compile Include="Constants\ConstantPaths.cs" />
     <Compile Include="Constants\EnumApproved.cs" />
+    <Compile Include="Constants\EnumMediaType.cs" />
     <Compile Include="Constants\EnumPropertyType.cs" />
     <Compile Include="Constants\EnumSaleType.cs" />
     <Compile Include="Constants\MailBodies.cs" />

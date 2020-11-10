@@ -32,6 +32,7 @@ namespace HomeLt.Net.Legacy.ENTITIES
         public string Password { get; set; }
         public DateTime? BirthDay { get; set; }
         public DateTime? LastLogin { get; set; }
+        public DateTime RegisterDate { get; set; }
         [DefaultValue(false)]
         public bool isActive { get; set; }
         public Guid ActivationCode { get; set; }

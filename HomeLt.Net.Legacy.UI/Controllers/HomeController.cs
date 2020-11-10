@@ -91,8 +91,9 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                         RoomNumber = model.RoomNumber,
                         UserId = currentUser.UserId,
                         AddressId = adress.PropertyAdressId,
-                        isAvaible=true,
-                        isApproved=model.isApproved
+                        isAvaible = true,
+                        isApproved = model.isApproved,
+                        TotalTickets = model.TotalTicket
                        
                         
 
@@ -105,16 +106,21 @@ namespace HomeLt.Net.Legacy.UI.Controllers
                         {
                             var floorPlans = imgs.SaveMultiImage(model.FloorPlans, new FileNamer().ConvertTRCharToENChar(model.Name));
                             var gallery = imgs.SaveMultiImage(model.Gallery, new FileNamer().ConvertTRCharToENChar(model.Name));
+                            var propertyPapers = imgs.SaveMultiImage(model.PropertyPapers, new FileNamer().ConvertTRCharToENChar(model.Name));
                             using (PropertyMediaManager propertyMediaManager = new PropertyMediaManager())
                             {
                                 foreach (var item in floorPlans)
                                 {
-                                    propertyMediaManager.Add(new PropertyMedia { HomeId = home.HomeId, Path = item });
+                                    propertyMediaManager.Add(new PropertyMedia { HomeId = home.HomeId, Path = item,MediaType=Convert.ToInt16(Constants.EnumMediaType.FloorPlans) });
                                 }
                                 foreach (var item in gallery)
                                 {
-                                    propertyMediaManager.Add(new PropertyMedia { HomeId = home.HomeId, Path = item, MediaType = true });
+                                    propertyMediaManager.Add(new PropertyMedia { HomeId = home.HomeId, Path = item, MediaType =Convert.ToInt16(Constants.EnumMediaType.Galerry) });
 
+                                }
+                                foreach (var item in propertyPapers)
+                                {
+                                    propertyMediaManager.Add(new PropertyMedia { HomeId = home.HomeId, Path = item, MediaType = Convert.ToInt16(Constants.EnumMediaType.PropertyPapers) });
                                 }
                                 
                                 

@@ -16,7 +16,8 @@ namespace HomeLt.Net.Legacy.UI.Models.Property
         public short RoomNumber { get; set; }
         public short BedroomNumber { get; set; }
         public short BathNumber { get; set; }
-        
+        public int TotalTicket { get; set; }
+
         public short Area { get; set; }
         public short PropertyType { get; set; }
         public int UserId { get; set; }
@@ -40,6 +41,7 @@ namespace HomeLt.Net.Legacy.UI.Models.Property
 
         public HttpPostedFileBase[] Gallery  { get; set; }
         public HttpPostedFileBase[] FloorPlans { get; set; }
+        public HttpPostedFileBase[] PropertyPapers { get; set; }
         
         public string VideoUrl { get; set; }
         public string GoogleMapAdress { get; set; }
