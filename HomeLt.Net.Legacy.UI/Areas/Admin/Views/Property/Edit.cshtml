@@ -1,7 +1,8 @@
-﻿@model HomeLt.Net.Legacy.ENTITIES.Home
+﻿@model HomeLt.Net.Legacy.UI.Areas.Admin.Model.AdminHomeEditModel
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    List<HomeLt.Net.Legacy.UI.Constants.EnumPropertyModel> propertyTypes = HomeLt.Net.Legacy.UI.Constants.CastEnumToList.EnumList();
 }
 
 
@@ -26,6 +27,7 @@
 
 <!-- Main content -->
 <form action="#" method="post" enctype="multipart/form-data">
+
     <section class="content container">
         <div class="row">
             <div class="col-md-6">
@@ -42,28 +44,28 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="inputName">Property ID</label>
-                            <input type="number" id="homeid" class="form-control" name="HomeId" disabled value="@Model.HomeId">
+                            <input type="number" id="homeid" class="form-control" name="HomeId" value="@Model.Home.HomeId">
                         </div>
                         <div class="form-group">
                             <label for="inputName">Property Name</label>
-                            <input type="text" id="inputName" class="form-control" name="name" value="@Model.Name">
+                            <input type="text" id="inputName" class="form-control" name="name" value="@Model.Home.Name">
                         </div>
                         <div class="form-group">
                             <label for="inputDescription">Property Description</label>
-                            <textarea id="inputDescription" class="form-control" rows="4" name="Description">@Model.Description</textarea>
+                            <textarea id="inputDescription" class="form-control" rows="4" name="Description">@Model.Home.Description</textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="inputClientCompany">Owner Name</label>
-                            <input type="text" id="inputClientCompany" class="form-control" value="@Model.User.FirstName @Model.User.LastName">
+                            <input type="text" id="inputClientCompany" class="form-control" value="@Model.Home.User.FirstName @Model.Home.User.LastName">
                         </div>
 
                         <div class="form-group">
                             <label for="inputStatus">Status</label>
-                            <select name="isAvaible" class="form-control custom-select">
-                                <option selected disabled>Select Status</option>
-                                <option value="1">Available</option>
-                                <option value="0">UnAvailable</option>
+                            <select name="isAvailable" class="form-control custom-select">
+
+                                <option value="true" @(Model.Home.isAvaible == true ? "selected" : "")>Available</option>
+                                <option value="false" @(Model.Home.isAvaible == false ? "selected" : "")>UnAvailable</option>
 
                             </select>
                         </div>
@@ -71,38 +73,54 @@
                         <div class="form-group">
                             <label for="inputStatus">Approval Type</label>
                             <select name="isApproved" class="form-control custom-select">
-                                <option selected disabled>Select Approvl</option>
-                                <option value="1">Approved</option>
-                                <option value="0">NonApproved</option>
+
+                                <option value="true" @(Model.Home.isApproved == true ? "selected" : "")>Approved</option>
+                                <option value="false" @(Model.Home.isApproved == false ? "selected" : "")>NonApproved</option>
 
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="inputProjectLeader">Property Price</label>
-                            <input type="number" id="inputProjectLeader" class="form-control" value="@Model.Price">
+                            <label for="PropertyType">Property Type</label>
+                            <select name="PropertyType" class="form-control custom-select">
+                                @foreach (var item in propertyTypes)
+                                {
+                                    <option value="@item.Value" @(Model.Home.PropertyType == item.Value ? "selected" : "")>@item.Name</option>
+
+                                }
+                            </select>
                         </div>
-                        @if (Model.SellingType != Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Direct))
-                        {
+
+                        <div class="form-group">
+                            <label for="SellingType">Sale Type</label>
+                            <select name="SellingType" class="form-control custom-select" id="sellingType">
+                                <option value="false" @(Model.Home.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Direct) ? "select" : "")>Direct</option>
+                                <option value="true" @(Model.Home.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Lottery) ? "select" : "")>Lottery</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputProjectLeader">Property Price</label>
+                            <input type="number" id="inputProjectLeader" name="price" class="form-control" value="@Model.Home.Price">
+                        </div>
+
+                       
+
+                        <div id="ticketSection" @(Model.Home.SellingType == Convert.ToBoolean(HomeLt.Net.Legacy.UI.Constants.EnumSaleType.Direct) ? "hidden" : "")>
                             <div class="form-group">
                                 <label for="inputProjectLeader">Ticket Price</label>
-                                <input type="number" id="inputProjectLeader" class="form-control" value="@Model.TicketPrice">
+                                <input type="number" id="inputProjectLeader" name="TicketPrice" class="form-control" value="@Model.Home.TicketPrice">
                             </div>
 
                             <div class="form-group">
                                 <label for="inputProjectLeader">Total Ticket</label>
-                                <input type="number" id="totalTicket" class="form-control" name="TotalTicket" value="@Model.TotalTickets">
+                                <input type="number" id="totalTicket" class="form-control" name="TotalTicket" value="@Model.Home.TotalTickets">
                             </div>
 
 
                             <div class="form-group">
                                 <label for="inputProjectLeader">Sold Ticket</label>
-                                <input type="number" id="soldTicket" class="form-control" name="SoldTicket" value="@Model.SoldTicket">
+                                <input type="number" id="soldTicket" class="form-control" name="SoldTicket" value="@Model.Home.SoldTicket">
                             </div>
-                        }
-
-
-
-
+                        </div>
 
                     </div>
                     <!-- /.card-body -->
@@ -111,6 +129,7 @@
             </div>
 
 
+            @*Rooms And Utilitsies*@
             <div class="col-md-6">
                 <div class="card card-primary">
                     <div class="card-header">
@@ -124,56 +143,56 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="inputName">Room Number</label>
-                            <input type="number" id="inputName" class="form-control" name="roomnumber" value="@Model.RoomNumber">
+                            <input type="number" id="inputName" class="form-control" name="roomnumber" value="@Model.Home.RoomNumber">
                         </div>
 
 
                         <div class="form-group">
                             <label for="inputName">Bedroom Number</label>
-                            <input type="number" id="inputName" class="form-control" name="bedroomnumber" value="@Model.BedroomNumber">
+                            <input type="number" id="inputName" class="form-control" name="bedroomnumber" value="@Model.Home.BedroomNumber">
                         </div>
                         <div class="form-group">
                             <label for="inputName">Bathroom Number</label>
-                            <input type="number" id="inputName" class="form-control" name="bathnumber" value="@Model.BathNumber">
+                            <input type="number" id="inputName" class="form-control" name="bathnumber" value="@Model.Home.BathNumber">
                         </div>
 
                         <div class="form-group">
                             <label for="inputName">Sqft</label>
-                            <input type="number" id="inputName" class="form-control" name="sqft" value="@Model.Sqft">
+                            <input type="number" id="inputName" class="form-control" name="Area" value="@Model.Home.Sqft">
                         </div>
 
                         <div class="form-group">
                             <label for="inputName">Building Age</label>
-                            <input type="number" id="inputName" class="form-control" name="buildingage" value="@Model.BuildingAge">
+                            <input type="number" id="inputName" class="form-control" name="buildingage" value="@Model.Home.BuildingAge">
                         </div>
 
                         <div class="form-group">
 
                             <label for="inputStatus">Parking</label>
                             <select name="parking" class="form-control custom-select">
-                                <option selected disabled>Select</option>
-                                <option value="1">Have</option>
-                                <option value="0">Do not have</option>
+
+                                <option value="true" @(Model.Home.Parking == true ? "selected" : "")>Have</option>
+                                <option value="false" @(Model.Home.Parking != true ? "selected" : "")>Do not have</option>
 
                             </select>
                         </div>
                         <div class="form-group">
 
                             <label for="inputStatus">Central Heating</label>
-                            <select name="parking" class="form-control custom-select">
-                                <option selected disabled>Select</option>
-                                <option value="1">Have</option>
-                                <option value="0">Do not have</option>
+                            <select name="CentralHeating" class="form-control custom-select">
+                                @*<option selected disabled>Select</option>*@
+                                <option value="true" @(Model.Home.CentralHeating == true ? "selected" : "")>Have</option>
+                                <option value="false" @(Model.Home.CentralHeating == false ? "selected" : "")>Do not have</option>
 
                             </select>
                         </div>
                         <div class="form-group">
 
                             <label for="inputStatus">Excersize Room</label>
-                            <select name="parking" class="form-control custom-select">
+                            <select name="ExcerciseRoom" class="form-control custom-select">
                                 <option selected disabled>Select</option>
-                                <option value="1">Have</option>
-                                <option value="0">Do not have</option>
+                                <option value="true" @(Model.Home.ExcerciseRoom == true ? "selected" : "")>Have</option>
+                                <option value="false" @(Model.Home.ExcerciseRoom == false ? "selected" : "")>Do not have</option>
 
                             </select>
                         </div>
@@ -185,8 +204,58 @@
                     </div>
                 </div>
 
+                @*Adress*@
+
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Adress</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="form-group">
+
+                            <label for="inputStatus">Select City</label>
+                            <select name="CityId" id="CitySelect" class="form-control custom-select">
+                                @foreach (var item in Model.Cities)
+                                {
+                                    <option value="@item.CityId" @(Model.Home.Address.District.CityId == item.CityId ? "selected" : "")>@item.Name</option>
+
+                                }
+
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Regions</label>
+                            <select name="DistrictId" required class="form-control basic-select" id="DistrictSelect">
+                                @foreach (var item in Model.Districts)
+                                {
+                                    <option value="@item.DistrictId" @(item.DistrictId == Model.Home.Address.DistrictId ? "selected" : "")>@item.Name</option>
+                                }
+
+
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputName">Street</label>
+                            <input type="text" id="streetname" class="form-control" name="StreetName" value="@Model.Home.Address.AddressLine1">
+                        </div>
+
+                        
+
+                    </div>
+                </div>
 
             </div>
+
+
 
 
             @* **** Medias **** *@
@@ -211,7 +280,7 @@
                                 <!-- Slides -->
 
 
-                                @foreach (var item in Model.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.Galerry)))
+                                @foreach (var item in Model.Home.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.Galerry)))
                                 {<div class="swiper-slide">
 
 
@@ -247,40 +316,40 @@
 
 
                         @*<table class="table">
-            <thead>
-                <tr>
-                    <th>Gallerry Images</th>
+                                <thead>
+                                    <tr>
+                                        <th>Gallerry Images</th>
 
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-
-                @foreach (var item in Model.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.Galerry)))
-                {
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
 
-                    <tr>
-                        <td><img src="@item.Path" alt="" width="50" /></td>
+                                    @foreach (var item in Model.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.Galerry)))
+                                    {
 
 
-                        <td class="text-right py-0 align-middle">
-                            <div class="btn-group btn-group-sm">
-
-                                <a href="@Url.Action("DeletePropertyMedia",new {id=item.PropertyMediaId })" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                }
+                                        <tr>
+                                            <td><img src="@item.Path" alt="" width="50" /></td>
 
 
+                                            <td class="text-right py-0 align-middle">
+                                                <div class="btn-group btn-group-sm">
+
+                                                    <a href="@Url.Action("DeletePropertyMedia",new {id=item.PropertyMediaId })" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
 
 
-            </tbody>
-        </table>*@
+
+
+                                </tbody>
+                            </table>*@
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" multiple="multiple" required name="Galerry" accept="image/x-png,image/gif,image/jpeg" id="customFile">
+                            <input type="file" class="custom-file-input" multiple="multiple"  name="Gallery" accept="image/x-png,image/gif,image/jpeg" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
@@ -293,7 +362,7 @@
                                 <!-- Slides -->
 
 
-                                @foreach (var item in Model.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.FloorPlans)))
+                                @foreach (var item in Model.Home.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.FloorPlans)))
                                 {<div class="swiper-slide">
 
 
@@ -331,7 +400,7 @@
 
 
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" multiple="multiple" required name="FloorPlans" accept="image/x-png,image/gif,image/jpeg" id="customFile">
+                            <input type="file" class="custom-file-input" multiple="multiple"  name="FloorPlans" accept="image/x-png,image/gif,image/jpeg" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
@@ -345,7 +414,7 @@
                                 <!-- Slides -->
 
 
-                                @foreach (var item in Model.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.PropertyPapers)))
+                                @foreach (var item in Model.Home.PropertyMedias.Where(f => f.MediaType == Convert.ToInt16(HomeLt.Net.Legacy.UI.Constants.EnumMediaType.PropertyPapers)))
                                 {<div class="swiper-slide">
 
 
@@ -381,7 +450,7 @@
 
 
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" multiple="multiple" required name="PropertyPapers" accept="image/x-png,image/gif,image/jpeg" id="customFile">
+                            <input type="file" class="custom-file-input" multiple="multiple"  name="PropertyPapers" accept="image/x-png,image/gif,image/jpeg" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>

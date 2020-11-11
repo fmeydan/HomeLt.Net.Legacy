@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HomeLt.Net.Legacy.BLL.Postgre
 {
-   public class PropertyAdressManager : BaseRepository<PropertyAdress, HomeltPostgre>
+   public class PropertyAdressManager : BaseRepository<PropertyAdress, HomeltPostgre>,IDisposable
     {
         private bool disposedValue;
 

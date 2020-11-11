@@ -45,7 +45,7 @@ namespace HomeLt.Net.Legacy.UI.Models.Property
         
         public string VideoUrl { get; set; }
         public string GoogleMapAdress { get; set; }
-        public int District { get; set; }
+        public int DistrictId { get; set; }
         public int City { get; set; }
         public string Street { get; set; }
         public string AdresssDescription { get; set; }

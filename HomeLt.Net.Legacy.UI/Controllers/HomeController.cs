@@ -69,7 +69,7 @@ namespace HomeLt.Net.Legacy.UI.Controllers
             User currentUser = Session[Constants.Sessions.SessionUser] as User;
             using (HomeManager manager = new HomeManager())
             {
-                var adress = new PropertyAdress { DistrictId = model.District, AddressLine1 = model.AdresssDescription };
+                var adress = new PropertyAdress { DistrictId = model.DistrictId, AddressLine1 = model.AdresssDescription };
                 if (new PropertyAdressManager().Add(adress))
                 {
                     Home home = new Home

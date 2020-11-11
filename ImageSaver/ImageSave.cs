@@ -86,7 +86,7 @@ namespace ImageSaver
                 return (Path.Replace("~", "") + fileName);
 
             }
-            return "";
+            return null;
 
         }
 
